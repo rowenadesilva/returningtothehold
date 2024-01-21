@@ -54,9 +54,7 @@ export default function ScrollSimple() {
         yPos = 0;
         SVGtracker++;
         console.log(SVGtracker);
-        currentBall.style.display = "none";
         currentBall = trackerRef[SVGtracker - 1];
-        currentBall.style.display = "block";
       }
 
       // check if tracker is at upper end of SVG
@@ -64,9 +62,7 @@ export default function ScrollSimple() {
         yPos = svgRef.clientHeight;
         SVGtracker--;
         console.log(SVGtracker);
-        currentBall.style.display = "none";
         currentBall = trackerRef[SVGtracker - 1];
-        currentBall.style.display = "block";
       }
     });
   });
