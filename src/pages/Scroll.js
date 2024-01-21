@@ -19,13 +19,22 @@ export default function ScrollSimple() {
       var max_scroll = this.scrollHeight - this.clientHeight;
       var current_scroll = this.scrollTop;
       var bottom = 100;
+
+      // add SVG elements at bottom of list
       if (current_scroll + bottom >= max_scroll) {
         var ul = document.getElementsByClassName("ul")[0];
-        var current = parseInt(ul.dataset.current, 10);
-        var li = document.getElementsByClassName("li")[current];
+        var li = document.getElementsByClassName("li")[0];
         var new_li = li.cloneNode(true);
         ul.appendChild(new_li);
-        ul.dataset.current = current + 1;
+      }
+
+      // add SVG elements at top of list
+      if (current_scroll - bottom <= 0) {
+        var ul = document.getElementsByClassName("ul")[0];
+        var li = document.getElementsByClassName("li")[0];
+        var new_li = li.cloneNode(true);
+        console.log(ul)
+        ul.insertBefore(new_li, ul.firstChild);
       }
 
       // BINDING TRACKER TO SCROLL

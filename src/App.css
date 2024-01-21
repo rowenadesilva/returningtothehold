@@ -89,6 +89,8 @@ ul {
   );
   offset-distance: 0%;
   animation: red-ball 2s linear alternate infinite;
+  offset-rotate: 0;
+
 }
 
 /* @keyframes red-ball {
