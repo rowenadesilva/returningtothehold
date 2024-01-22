@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
-import warnMixin from "tar/lib/warn-mixin";
+import ArchiveCard from "../components/ArchiveCard";
 
 export default function ScrollSimple() {
   var yPos = 0;
   var SVGtracker = 1;
   var maxYPos = 0;
-  var scrollPosPrev = 0; //  checking down or upwards scroll 
+  var scrollPosPrev = 0; //  checking down or upwards scroll
   var currentBall = null;
+  const [archiveDisplay, setArchiveDisplay] = useState("none");
 
   useEffect(() => {
     const divRef = document.getElementById("container");
@@ -15,11 +16,23 @@ export default function ScrollSimple() {
     const svgRef = document.getElementById("line");
     currentBall = document.getElementsByClassName("trackerRef")[0];
 
+    var container = document.getElementById("respContainer");
+    var svg = document.getElementById("line");
+
+    // RESIZE
+    const resize = () => {
+      var width = parseInt(getComputedStyle(svg).width, 10);
+      container.style.transform = "scale(" + width / 1406 + ")";
+    };
+    window.addEventListener("resize", resize);
+    resize();
+
     // INFINITE SCROLL
     divRef.addEventListener("scroll", function () {
       addNewSVG(this); // dynamically adds new SVGs for infinite scroll
       updateTrackerPos(this); // updates tracker position with scroll
       checkEnd(this); // checks if tracker is at SVG end or beginning
+      showCards();
       scrollPosPrev = this.scrollTop; // reset scroll direction check
     });
 
@@ -41,7 +54,6 @@ export default function ScrollSimple() {
         var ul = document.getElementsByClassName("ul")[0];
         var li = document.getElementsByClassName("li")[0];
         var new_li = li.cloneNode(true);
-        console.log(ul);
         ul.insertBefore(new_li, ul.firstChild);
       }
     };
@@ -97,6 +109,7 @@ export default function ScrollSimple() {
       if (window.innerHeight / 3 >= yScreenPos) {
         // SCROLLING DOWN
         if (scrollPosPrev < context.scrollTop) {
+          console.log("speed up!");
           yPos = yPos + 10; // speed up
 
           // if tracker outside window speed even more up
@@ -105,6 +118,7 @@ export default function ScrollSimple() {
           }
         } // SCROLLING UP
         else if (scrollPosPrev > context.scrollTop) {
+          console.log("slow down!");
           yPos = yPos + 10; // slow down
 
           // if tracker outside window slow even more down
@@ -121,6 +135,7 @@ export default function ScrollSimple() {
       ) {
         // SCROLLING DOWN
         if (scrollPosPrev < context.scrollTop) {
+          console.log("slow down!");
           yPos = yPos - 10; // slow down
 
           // if tracker outside window slow even more down
@@ -129,6 +144,7 @@ export default function ScrollSimple() {
           }
         } // SCROLLING UP
         else if (scrollPosPrev > context.scrollTop) {
+          console.log("speed up!");
           yPos = yPos - 10; // speed up
 
           // if tracker outside window speed even more up
@@ -140,14 +156,30 @@ export default function ScrollSimple() {
       return yPos;
     };
   });
+  const showCards = () => {
+    var d = currentBall.style.offsetDistance;
+    d = d.slice(0, -1);
+    d = parseFloat(d);
+
+    if (d > 50 && d < 80) {
+      setArchiveDisplay("block");
+    } else {
+      setArchiveDisplay("none");
+    }
+  };
   return (
     <div>
-      <h1 className="title">Returning to the Hold</h1>
+      <div className="title">
+        <h1>Returning to the Hold</h1>
+      </div>
+      <ArchiveCard id="archive" show={archiveDisplay} />
       <div className="block" id="container">
         <div className="ul" data-current="0">
           <div className="li">
-            <div className="trackerRef"></div>
-            <svg width="1406px" height="4618.7px" version="1.1" id="line">
+            <div id="respContainer">
+              <div className="trackerRef"></div>
+            </div>
+            <svg viewBox="0 0 1406 4618.7" version="1.1" id="line">
               <path
                 d="M756,112.9c19.5-5.8,23.5,13.1,15.7,25.4c-2.4,3.9-15,19.1-20.7,6.8c-0.3-0.5,5.9-4.9,6.6-5.6
                 c17.9-17.9,44.3-13,67.2-11.2c16.2,1.3,26.1,5.1,38.1,15.7c3.8,3.3,8.3,9.5,13.6,11c6.3,1.8,12.8,0.3,15.9-6.3
