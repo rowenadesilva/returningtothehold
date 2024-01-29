@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useRef } from "react";
 
 export default function ArchiveCard(props) {
-    console.log(props.show)
+  
   return (
-     <div className='archiveCard' style={{display: props.show}}>ArchiveCard</div>
-  )
+    <div className="archiveCard" style={{ display: props.show }}>
+      ArchiveCard
+    </div>
+  );
 }

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ArchiveCard from "../components/ArchiveCard";
 import LandingTitle from "../components/LandingTitle";
-import { ReactComponent as SVG } from '../assets/Line3text.svg';
-
+import Annotation from "../components/Annotation";
+import { ReactComponent as SVG } from "../assets/Line3text.svg";
 
 export default function ScrollSimple() {
   var yPos = 0;
@@ -11,41 +10,32 @@ export default function ScrollSimple() {
   var maxYPos = 0;
   var scrollPosPrev = 0; //  checking down or upwards scroll
   var currentBall = null;
-  const [archiveDisplay, setArchiveDisplay] = useState("none");
   var prevYPos = 0;
   var prevWidth = 0;
   var addFirst = true;
+
+  const [archiveDisplay, setArchiveDisplay] = useState();
 
   useEffect(() => {
     const divRef = document.getElementById("container");
     divRef.scrollTop = 1;
     const trackerRef = document.getElementsByClassName("trackerRef");
     currentBall = document.getElementsByClassName("trackerRef")[0];
-    // currentBall.style.display = "block"
     const container = document.getElementsByClassName("respContainer");
     const svg = document.getElementsByClassName("line")[0];
 
     // RESIZE
     const resize = () => {
       var width = parseInt(getComputedStyle(svg).width, 10);
+
       //resize all dynamically added containers
       for (var i = 0; i < container.length; i++) {
         container[i].style.transform = "scale(" + width / 1406 + ")";
       }
-      // update Y Position
 
+      // update Y Position
       divRef.scrollTop += prevWidth - width;
       prevWidth = width;
-
-      // divRef.scrollTop = 0;
-      // yPos = 0;
-      // prevYPos = 0;
-      // SVGtracker = 1;
-      // scrollPosPrev = 0;
-      // currentBall = trackerRef[0];
-      // currentBall.style.offsetDistance = "0%"
-      // console.log(trackerRef)
-      // console.log(currentBall)
     };
     window.addEventListener("resize", resize);
     resize();
@@ -55,7 +45,7 @@ export default function ScrollSimple() {
       addNewSVG(this); // dynamically adds new SVGs for infinite scroll
       updateTrackerPos(this); // updates tracker position with scroll
       checkEnd(this); // checks if tracker is at SVG end or beginning
-      //showCards();
+      showCards();
       scrollPosPrev = this.scrollTop; // reset scroll direction check
     });
 
@@ -89,7 +79,6 @@ export default function ScrollSimple() {
       // get scrolled distance and add to tracker position on path
       var differenceY = context.scrollTop - scrollPosPrev;
       yPos = yPos + differenceY;
-      console.log(yPos);
 
       // speed tracker up / slow down when getting close to screen edge
       yPos = keepInWindow(yPos, context);
@@ -182,32 +171,33 @@ export default function ScrollSimple() {
       }
       return yPos;
     };
-  });
-  // const showCards = () => {
-  //   var d = currentBall.style.offsetDistance;
-  //   d = d.slice(0, -1);
-  //   d = parseFloat(d);
 
-  //   if (d > 50 && d < 80) {
-  //     setArchiveDisplay("block");
-  //   } else {
-  //     setArchiveDisplay("none");
-  //   }
-  // };
+    function showCards() {
+      var d = currentBall.style.offsetDistance;
+      d = d.slice(0, -1);
+      d = parseFloat(d);
+
+      if (d > 50 && d < 80) {
+        console.log("Show");
+        //setArchiveDisplay("block");
+      } else {
+       // setArchiveDisplay("none");
+      }
+    }
+  });
+
   return (
     <div>
-      {/* <ArchiveCard id="archive" show={archiveDisplay} /> */}
+      <ArchiveCard id="archive" show={archiveDisplay} />
       <div className="block" id="container">
         <div className="ul" data-current="0">
-          {/* <div className="annotation">
-            its arrivals and departures carry within them
-          </div> */}
           <LandingTitle />
           <div className="li">
             <div className="respContainer">
               <div className="trackerRef"></div>
+              <Annotation />
             </div>
-            <SVG className="line"/>
+            <SVG className="line" />
           </div>
         </div>
       </div>

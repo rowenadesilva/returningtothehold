@@ -111,5 +111,6 @@ ul {
 
 .annotation {
   position: absolute;
-  top: 10vh;
+  width: 150px;
+  transform: translateX(50%);
 }
