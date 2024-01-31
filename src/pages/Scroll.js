@@ -73,6 +73,7 @@ export default function ScrollSimple() {
     };
 
     const updateTrackerPos = (context) => {
+      console.log(context.scrollTop)
       // initially get height of one SVG element and set it as total for path length calculation
       maxYPos = svg.clientHeight;
 
