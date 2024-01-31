@@ -73,7 +73,7 @@ export default function ScrollSimple() {
     };
 
     const updateTrackerPos = (context) => {
-      console.log(context.scrollTop)
+      console.log(context.scrollTop);
       // initially get height of one SVG element and set it as total for path length calculation
       maxYPos = svg.clientHeight;
 
@@ -96,7 +96,6 @@ export default function ScrollSimple() {
       var d = currentBall.style.offsetDistance;
       d = d.slice(0, -1);
       d = parseFloat(d);
-
       // check if tracker is at lower end of SVG
       if (d >= 100 && differenceY > 0) {
         yPos = 0;

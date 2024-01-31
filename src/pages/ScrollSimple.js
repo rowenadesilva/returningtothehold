@@ -8,6 +8,7 @@ export default function ScrollSimple() {
   const listElementRef = useRef();
 
   const [scrollPos, setScrollPos] = useState();
+  const [addedElement, setAddedElement] = useState(true);
 
   useEffect(() => {
     wrapperRef.current.addEventListener("scroll", function () {
@@ -26,12 +27,14 @@ export default function ScrollSimple() {
     if (current_scroll + bottom >= max_scroll) {
       var new_li = listElementRef.current.cloneNode(true);
       listRef.current.appendChild(new_li);
+      setAddedElement((addedElement) => !addedElement); // notify tracker of added element
     }
 
     // add SVG elements at top of list
     if (current_scroll - bottom <= 0) {
       new_li = listElementRef.current.cloneNode(true);
       listRef.current.insertBefore(new_li, listRef.current.firstChild);
+      //setAddedElement(addedElement => !addedElement); // notify tracker of added element
     }
   }
 
@@ -40,7 +43,11 @@ export default function ScrollSimple() {
       <div className="wrapper" ref={wrapperRef}>
         <div ref={listRef} className="list">
           <LandingTitle />
-          <ListElement ref={listElementRef} scrollPos={scrollPos} />
+          <ListElement
+            ref={listElementRef}
+            scrollPos={scrollPos}
+            addedElement={addedElement}
+          />
         </div>
       </div>
     </div>

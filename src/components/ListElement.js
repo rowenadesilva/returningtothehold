@@ -15,9 +15,13 @@ const ListElement = (props, ref) => {
   return (
     <div className="listWrapper" ref={ref}>
       <div className="listInnerContainer" ref={listInnerContainerRef}>
-        <Tracker scrollPos={props.scrollPos} svgHeight={svgHeight} />
+        <Tracker
+          scrollPos={props.scrollPos}
+          svgHeight={svgHeight}
+          addedElement={props.addedElement}
+        />
       </div>
-        <SVG ref={svgRef} className="svg" />
+      <SVG ref={svgRef} className="svg" />
     </div>
   );
 };
