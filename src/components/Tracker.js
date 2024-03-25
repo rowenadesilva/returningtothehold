@@ -10,22 +10,25 @@ export default function Tracker(props) {
     prevYPos.current = props.scrollPos;
   }, [props.addedElement]);
 
+  // on scroll update relative tracker position
   useEffect(() => {
     updatePosition();
   }, [props.scrollPos]);
-
 
   function updatePosition() {
     var pathPosition = getComputedStyle(trackerRef.current).offsetDistance;
     pathPosition = pathPosition.slice(0, -1);
     pathPosition = parseFloat(pathPosition);
+    console.log(trackerRef.current);
 
     const speed = 0.3;
 
-    if (props.scrollPos >= prevYPos.current) { // scroll down
+    if (props.scrollPos >= prevYPos.current) {
+      // scroll down
       trackerRef.current.style.offsetDistance = pathPosition + speed + "%";
     }
-    if (props.scrollPos < prevYPos.current) { // scroll up
+    if (props.scrollPos < prevYPos.current) {
+      // scroll up
       trackerRef.current.style.offsetDistance = pathPosition - speed + "%";
     }
     prevYPos.current = props.scrollPos;

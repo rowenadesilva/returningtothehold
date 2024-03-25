@@ -10,7 +10,14 @@ export default function ScrollSimple() {
 
   const [scrollPos, setScrollPos] = useState();
   const [addedElement, setAddedElement] = useState(true);
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
+
+  var elementID = 0;
+
+  // Initial Scroll to add list element at top -> to be fixed!
+  useEffect(() => {
+    wrapperRef.current.scrollTop = 1;
+  }, []);
 
   useEffect(() => {
     wrapperRef.current.addEventListener("scroll", function () {
@@ -19,6 +26,7 @@ export default function ScrollSimple() {
     });
   });
 
+  // add new list element if top or bottom is reached
   function addNewListElements() {
     const max_scroll =
       wrapperRef.current.scrollHeight - listRef.current.clientHeight;
@@ -28,20 +36,22 @@ export default function ScrollSimple() {
     // add SVG elements at bottom of list
     if (current_scroll + bottom >= max_scroll) {
       var new_li = listElementRef.current.cloneNode(true);
+
       listRef.current.appendChild(new_li);
       listRef.current.removeChild(listRef.current.firstChild);
-      setCounter(counter + 1);
+      setCounter((counter) => counter + 1);
       setAddedElement((addedElement) => !addedElement); // notify tracker of added element
     }
 
     // add SVG elements at top of list
-    if (current_scroll - bottom <= 0) {
+    if (current_scroll - bottom < 0) {
       new_li = listElementRef.current.cloneNode(true);
       listRef.current.insertBefore(new_li, listRef.current.firstChild);
       listRef.current.removeChild(listRef.current.lastChild);
-      setCounter(counter - 1);
+      setCounter((counter) => counter - 1);
       //setAddedElement(addedElement => !addedElement); // notify tracker of added element
     }
+    elementID++;
   }
 
   return (
@@ -52,6 +62,7 @@ export default function ScrollSimple() {
           {/* <TextCanvas /> */}
           <ListElement />
           <ListElement
+            id={elementID}
             ref={listElementRef}
             scrollPos={scrollPos}
             addedElement={addedElement}

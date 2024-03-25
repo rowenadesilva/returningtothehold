@@ -5,7 +5,7 @@ import { ReactComponent as SVG } from "../assets/Line3text.svg";
 const ListElement = (props, ref) => {
   const listInnerContainerRef = useRef();
   const svgRef = useRef();
-
+  
   const [svgHeight, setSvgHeight] = useState();
 
   useEffect(() => {
@@ -15,11 +15,11 @@ const ListElement = (props, ref) => {
   return (
     <div className="listWrapper" ref={ref}>
       <div className="listInnerContainer" ref={listInnerContainerRef}>
-        {/* <Tracker
+        <Tracker
           scrollPos={props.scrollPos}
           svgHeight={svgHeight}
           addedElement={props.addedElement}
-        /> */}
+        />
       </div>
       <SVG ref={svgRef} className="svg" />
     </div>
