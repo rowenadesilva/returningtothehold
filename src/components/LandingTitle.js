@@ -4,7 +4,7 @@ class LandingTitle extends React.Component {
   render() {
     return (
       <div className="titleWrapper">
-        <div className="landingTitle">Returning to the Hold</div>
+        <div className="landingTitle">RETURNING TO THE HOLD</div>
         <div className="landingCopy">
           <p>
             Bibby Stockholm is a barge berthed at Portland Harbour on the south

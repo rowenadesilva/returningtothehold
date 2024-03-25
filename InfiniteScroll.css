@@ -1,0 +1,10 @@
+.listWrapper {
+    align-content: center;
+}
+
+.listDiv {
+    width: 60%;
+    height: 100px;
+    background-color: beige;
+    border: 1px solid red;
+}
