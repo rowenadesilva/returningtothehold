@@ -30,6 +30,7 @@ export default function ScrollSimple() {
   function addNewListElements() {
     const max_scroll =
       wrapperRef.current.scrollHeight - listRef.current.clientHeight;
+      console.log(listRef.current);
     const current_scroll = wrapperRef.current.scrollTop;
     const bottom = 100;
 

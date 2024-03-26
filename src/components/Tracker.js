@@ -19,7 +19,7 @@ export default function Tracker(props) {
     var pathPosition = getComputedStyle(trackerRef.current).offsetDistance;
     pathPosition = pathPosition.slice(0, -1);
     pathPosition = parseFloat(pathPosition);
-    console.log(trackerRef.current);
+    // console.log(trackerRef.current);
 
     const speed = 0.3;
 

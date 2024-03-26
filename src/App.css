@@ -93,3 +93,10 @@ body {
   mask-image: linear-gradient(to bottom, black calc(100% - 48px), transparent 100%);
 
 }
+
+.testDiv {
+  width: 60vw;
+  height: 50vh;
+  background-color: red;
+  border: 2px solid black;
+}
