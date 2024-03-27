@@ -68,8 +68,12 @@ const App = () => {
     wrapperRef.current.scrollTop = listRef.current[0].clientHeight;
   }, []);
 
+  // q: how to make this function async?  -> use async/await
+  //
+
   const checkScrollPosition = () => {
     // check if listElement 1 is visible
+    console.log(listRef.current);
     const rect1 = listRef.current[0].getBoundingClientRect();
     const elemBottom1 = rect1.bottom;
     const isVisible1 = elemBottom1 >= 0;
@@ -78,37 +82,43 @@ const App = () => {
     const rect2 = listRef.current[1].getBoundingClientRect();
     const elemTop2 = rect2.top;
     const elemBottom2 = rect2.bottom;
-    const isVisible2 = elemTop2 <= wrapperRef.current.clientHeight && elemBottom2 >= 0;
+    const isVisible2 =
+      elemTop2 <= wrapperRef.current.clientHeight && elemBottom2 >= 0;
 
     // check if listElement 3 is visible
     const rect3 = listRef.current[2].getBoundingClientRect();
     const elemTop3 = rect3.top;
     const isVisible3 = elemTop3 <= wrapperRef.current.clientHeight;
 
-    console.log("1 is visible: ", isVisible1);
-    console.log("2 is visible: ", isVisible2);
-    console.log("3 is visible: ", isVisible3);
-    console.log(" ");
+    // console.log("1 is visible: ", isVisible1);
+    // console.log("2 is visible: ", isVisible2);
+    // console.log("3 is visible: ", isVisible3);
+    // console.log(" ");
+
+    if (isVisible1 && !isVisible2 && list.length == 3) {
+      addTop();
+    }
+    if (isVisible3 && !isVisible2 && list.length == 3) {
+      addBottom();
+    }
+  };
+
+  const addTop = () => {
+    const copy = [...list];
+    copy.unshift({
+      id: Math.random() * 1000,
+    });
+    copy.pop();
+    setList(copy);
   };
 
   const addBottom = () => {
-    const id = list.length;
-    setList((prev) => [
-      ...prev,
-      {
-        id: id,
-      },
-    ]);
-  };
-
-  const addTop = (id) => {
-    id = list.length;
-    setList((prev) => [
-      {
-        id: id,
-      },
-      ...prev,
-    ]);
+    const copy = [...list];
+    copy.push({
+      id: Math.random() * 1000,
+    });
+    copy.shift();
+    setList(copy);
   };
 
   return (
