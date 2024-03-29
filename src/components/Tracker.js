@@ -1,38 +1,28 @@
 import React, { useRef, useEffect } from "react";
+import { styled } from "styled-components";
+import { ReactComponent as SVG } from "../assets/TestLine.svg";
+
+const TrackerDot = styled.div`
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+offset-path: path('M58.33 0C26.12 0 0 26.12 0 58.33s26.12 58.33 58.33 58.33 58.33 26.12 58.33 58.33-26.12 58.33-58.33 58.33S0 259.45 0 291.67 26.12 350 58.33 350s58.33 26.12 58.33 58.33-26.12 58.33-58.33 58.33S0 492.78 0 525s26.12 58.33 58.33 58.33 58.33 26.12 58.33 58.33S90.55 700 58.33 700 0 726.12 0 758.33s26.12 58.33 58.33 58.33 58.33 26.12 58.33 58.33-26.12 58.33-58.33 58.33S0 959.45 0 991.67 26.12 1050 58.33 1050s58.33 26.12 58.33 58.33c0 32.22-26.12 58.33-58.33 58.33S0 1192.78 0 1225s26.12 58.33 58.33 58.33 58.33 26.12 58.33 58.33c0 32.22-26.12 58.33-58.33 58.33');
+  offset-distance: 0%;
+  position: absolute;
+  scale: 1.5;
+`;
 
 export default function Tracker(props) {
   const trackerRef = useRef();
-  const prevYPos = useRef(0);
-  const yPos = useRef(0);
 
   useEffect(() => {
-    console.log("new element");
-    prevYPos.current = props.scrollPos;
-  }, [props.addedElement]);
+    console.log(SVG);
+  });
 
-  // on scroll update relative tracker position
-  useEffect(() => {
-    updatePosition();
-  }, [props.scrollPos]);
-
-  function updatePosition() {
-    var pathPosition = getComputedStyle(trackerRef.current).offsetDistance;
-    pathPosition = pathPosition.slice(0, -1);
-    pathPosition = parseFloat(pathPosition);
-    // console.log(trackerRef.current);
-
-    const speed = 0.3;
-
-    if (props.scrollPos >= prevYPos.current) {
-      // scroll down
-      trackerRef.current.style.offsetDistance = pathPosition + speed + "%";
-    }
-    if (props.scrollPos < prevYPos.current) {
-      // scroll up
-      trackerRef.current.style.offsetDistance = pathPosition - speed + "%";
-    }
-    prevYPos.current = props.scrollPos;
-  }
-
-  return <div ref={trackerRef} className="tracker" />;
+  return (
+    <div>
+      <TrackerDot ref={trackerRef} />{" "}
+    </div>
+  );
 }

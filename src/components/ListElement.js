@@ -1,27 +1,25 @@
 import React, { useEffect, useState, useRef } from "react";
 import Tracker from "./Tracker";
-import { ReactComponent as SVG } from "../assets/Line3text.svg";
+import { ReactComponent as SVG } from "../assets/TestLine.svg";
+import styled from "styled-components";
+
+const ListInnerContainer = styled.div`
+  border: 1px solid yellow;
+`;
+
+const Line = styled(SVG)`
+  border: 1px solid green;
+`;
 
 const ListElement = (props, ref) => {
-  const listInnerContainerRef = useRef();
   const svgRef = useRef();
-  
-  const [svgHeight, setSvgHeight] = useState();
-
-  useEffect(() => {
-    setSvgHeight(svgRef.current.clientHeight); // get overall height of SVG to calculate relative position of tracker
-  }, [svgHeight]);
-
+  const listInnerContainerRef = useRef();
   return (
-    <div className="listWrapper" ref={ref}>
-      <div className="listInnerContainer" ref={listInnerContainerRef}>
-        <Tracker
-          scrollPos={props.scrollPos}
-          svgHeight={svgHeight}
-          addedElement={props.addedElement}
-        />
-      </div>
-      <SVG ref={svgRef} className="svg" />
+    <div>
+      <ListInnerContainer ref={listInnerContainerRef}>
+        <Tracker />
+      </ListInnerContainer>
+      <Line ref={svgRef} svg={SVG}/>
     </div>
   );
 };
