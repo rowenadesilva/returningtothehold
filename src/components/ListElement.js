@@ -11,17 +11,24 @@ const Line = styled(SVG)`
   border: 1px solid green;
 `;
 
-const ListElement = (props, ref) => {
+const ListElement = ({focus}) => {
   const svgRef = useRef();
   const listInnerContainerRef = useRef();
+
   return (
     <div>
       <ListInnerContainer ref={listInnerContainerRef}>
-        <Tracker />
+        <Tracker focus={focus}/>
       </ListInnerContainer>
-      <Line ref={svgRef} svg={SVG}/>
+      <Line
+        ref={svgRef}
+        svg={SVG}
+        style={{
+          background: focus ? "yellow" : "red",
+        }}
+      />
     </div>
   );
 };
 
-export default React.forwardRef(ListElement);
+export default ListElement;

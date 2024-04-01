@@ -11,7 +11,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   position: fixed;
   height: 80vh;
-  top: 10vh;
+  // top: 10vh;
   border: 2px solid black;
   overflow: scroll;
 `;
@@ -24,6 +24,8 @@ const LIST = styled.li`
 const App = () => {
   const listRef = useRef([]);
   const wrapperRef = useRef();
+
+  const [focus, setFocus] = useState([false, true, false]);
 
   // new list with two elements
   const [list, setList] = useState([
@@ -40,8 +42,7 @@ const App = () => {
 
   useEffect(() => {
     wrapperRef.current.addEventListener("scroll", function () {
-      //  console.log(wrapperRef.current.scrollTop);
-      checkScrollPosition();
+      checkNewElements();
     });
   });
 
@@ -49,31 +50,22 @@ const App = () => {
     wrapperRef.current.scrollTop = listRef.current[0].clientHeight;
   }, []);
 
-  const checkScrollPosition = () => {
-    // check if listElement 1 is visible
-    const rect1 = listRef.current[0].getBoundingClientRect();
-    const elemBottom1 = rect1.bottom;
-    const isVisible1 = elemBottom1 >= 0;
+  const checkNewElements = () => {
+    // check if listElement 0 comes into focus
+    const rect0 = listRef.current[0].getBoundingClientRect();
+    const inFocus0 = rect0.bottom >= wrapperRef.current.clientHeight / 2;
 
-    // check if listElement 2 is visible
-    const rect2 = listRef.current[1].getBoundingClientRect();
-    const elemTop2 = rect2.top;
-    const elemBottom2 = rect2.bottom;
-    const isVisible2 =
-      elemTop2 <= wrapperRef.current.clientHeight && elemBottom2 >= 0;
+    // check if listElement 2 comes into focus
+    const rect2 = listRef.current[2].getBoundingClientRect();
+    const inFocus2 = rect2.top <= wrapperRef.current.clientHeight / 2;
 
-    // check if listElement 3 is visible
-    const rect3 = listRef.current[2].getBoundingClientRect();
-    const elemTop3 = rect3.top;
-    const isVisible3 = elemTop3 <= wrapperRef.current.clientHeight;
-
-    // add new list element if top is reached
-    if (isVisible1 && !isVisible2 && list.length == 3) {
+    // add new list element if top is reached and delete bottom element
+    if (inFocus0 && list.length == 3) {
       addTop();
     }
 
-    // add new list element if bottom is reached
-    if (isVisible3 && !isVisible2 && list.length == 3) {
+    // add new list element if bottom is reached and delete top element
+    if (inFocus2 && list.length == 3) {
       addBottom();
     }
   };
@@ -107,7 +99,7 @@ const App = () => {
               id={item.id}
               key={item.id}
             >
-              <ListElement />
+              <ListElement focus={focus[i]} />
             </LIST>
           );
         })}
