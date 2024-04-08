@@ -1,34 +1,32 @@
 import { useState, useRef, useEffect } from "react";
+import ListElement from "../components/ListElement";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
-import ListElement from "../components/ListElement";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    // background: #001814;
-    // color: #2f63be;
+    background: #001814;
+    color: white;
   };
 `;
 
 const Container = styled.div`
-  // display: flex;
-  // align-items: center;
-  // flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const Wrapper = styled.div`
   position: fixed;
   height: 100vh;
   width: 100vw;
-  // top: 10vh;
-  border: 2px solid black;
   overflow: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const LIST = styled.li`
+const List = styled.li`
   list-style: none;
   width: 40vw;
 `;
@@ -61,7 +59,8 @@ const App = () => {
   });
 
   useEffect(() => {
-    wrapperRef.current.scrollTop = listRef.current[0].clientHeight;
+    wrapperRef.current.scrollTop =
+      listRef.current[0].clientHeight - wrapperRef.current.clientHeight / 2;
   }, []);
 
   const checkNewElements = () => {
@@ -89,7 +88,9 @@ const App = () => {
     copy.unshift({
       id: Math.random(),
     });
-    copy.pop();
+    if (copy.length > 3) {
+      copy.pop();
+    }
     setList(copy);
   };
 
@@ -103,9 +104,11 @@ const App = () => {
   };
 
   const updateTrackerPos = () => {
+    // get the absolute y-position of the middle list element and convert into positive value
     const absolutePos =
       listRef.current[1].getBoundingClientRect().top * -1 +
       wrapperRef.current.clientHeight / 2;
+    // calculate relative position of the middle list element by dividing it by the height of the middle list element
     const relativePos = (absolutePos / listRef.current[1].clientHeight) * 100;
     console.log(relativePos);
     setTrackerPos(relativePos);
@@ -114,18 +117,21 @@ const App = () => {
   return (
     <Container>
       <GlobalStyle />
-      {/* <LandingTitle scrollPos={trackerPos} /> */}
       <Wrapper ref={wrapperRef}>
         {list.map((item, i) => {
           return (
-            <LIST
+            <List
               className="listRef"
               ref={(el) => (listRef.current[i] = el)}
               id={item.id}
               key={item.id}
             >
-              <ListElement focus={focus[i]} trackerPos={trackerPos} />
-            </LIST>
+              <ListElement
+                focus={focus[i]}
+                trackerPos={trackerPos}
+                scrollRef={wrapperRef}
+              />
+            </List>
           );
         })}
       </Wrapper>
