@@ -49,7 +49,8 @@ const Content = (scrollRef) => {
         start: "top center",
         end: "200 center",
         scrub: true,
-        markers: { startColor: "white", endColor: "white" },
+        // markers: { startColor: "white", endColor: "white" },
+        markers: false
       },
     });
 
