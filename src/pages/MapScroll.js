@@ -1,24 +1,37 @@
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import ListElement from "../components/ListElement";
+import LandingTitle from "../components/LandingTitle";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    // background: #001814;
+    // color: #2f63be;
+  };
+`;
 
 const Container = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  // display: flex;
+  // align-items: center;
+  // flex-direction: column;
 `;
 
 const Wrapper = styled.div`
   position: fixed;
-  height: 80vh;
+  height: 100vh;
+  width: 100vw;
   // top: 10vh;
   border: 2px solid black;
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const LIST = styled.li`
   list-style: none;
-  width: 20vw;
+  width: 40vw;
 `;
 
 const App = () => {
@@ -101,6 +114,8 @@ const App = () => {
 
   return (
     <Container>
+      <GlobalStyle />
+      {/* <LandingTitle scrollPos={trackerPos} /> */}
       <Wrapper ref={wrapperRef}>
         {list.map((item, i) => {
           return (

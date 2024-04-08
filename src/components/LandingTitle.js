@@ -1,11 +1,38 @@
 import React from "react";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // position: absolute;
+  // width: 100vw;
+`;
+
+const Title = styled.div`
+  // font-size: 2em;
+  // font-weight: bold;
+  // // margin-top: 10vh;
+  // // margin-bottom: 5vh;
+  // width: 70vw;
+  // text-align: center;
+  // // position: relative;
+`;
+
+const Copy = styled.div`
+  font-size: 1.5em;
+  font-weight: bold;
+  width: 70vw;
+  margin-bottom: 5vh;
+  text-align: center;
+`;
 
 class LandingTitle extends React.Component {
   render() {
     return (
-      <div className="titleWrapper">
-        <div className="landingTitle">RETURNING TO THE HOLD</div>
-        <div className="landingCopy">
+      <Wrapper>
+        <Title>RETURNING TO THE HOLD</Title>
+        {/* <Copy>
           <p>
             Bibby Stockholm is a barge berthed at Portland Harbour on the south
             coast of England, where it will detain 500 migrants. The history of
@@ -21,8 +48,8 @@ class LandingTitle extends React.Component {
             politics of incarceration and border techniques situated
             within maritime space.
           </p>
-        </div>
-      </div>
+        </Copy> */}
+      </Wrapper>
     );
   }
 }
