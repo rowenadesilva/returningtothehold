@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+// import gsap from "gsap";
+// import ScrollTrigger from "gsap/ScrollTrigger";
+// import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP);
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(useGSAP);
+// gsap.registerPlugin(ScrollTrigger);
 
 const Wrapper = styled.div`
   position: absolute;
@@ -39,26 +39,26 @@ const Content = (scrollRef) => {
   const abstract = useRef();
 
   // gsap code here
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        scrollTrigger: {
-          scroller: scrollRef.current,
-          trigger: abstract.current,
-        },
-        start: "top center",
-        end: "200 center",
-        scrub: true,
-        // markers: { startColor: "white", endColor: "white" },
-        markers: false
-      },
-    });
+  // useGSAP(() => {
+    // const tl = gsap.timeline({
+      // scrollTrigger: {
+        // scrollTrigger: {
+          // scroller: scrollRef.current,
+          // trigger: abstract.current,
+        // },
+        // start: "top center",
+        // end: "200 center",
+        // scrub: true,
+       //  markers: { startColor: "white", endColor: "white" },
+        // markers: false
+      // },
+    // });
 
-    gsap.to(abstract.current, {
-      // y: 100,
+    // gsap.to(abstract.current, {
+     // y: 100,
       // duration: 6,
-    });
-  });
+    // });
+  // });
 
   return (
     <Wrapper>
