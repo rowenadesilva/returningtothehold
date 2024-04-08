@@ -26,8 +26,6 @@ const ListElement = ({ focus, trackerPos, scrollRef }) => {
 
   const list = Array.from(Array(100).keys());
 
-  const a = 10;
-
   return (
     <div>
       <Content scrollRef={scrollRef}/>
