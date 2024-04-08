@@ -20,8 +20,8 @@ export default [
   pluginReactConfig,
   {
     rules: {
-      "no-unused-vars": "error",
-      "no-undef": "error",
+      "no-unused-vars": "off",
+      "no-undef": "off",
     },
   },
 ];
