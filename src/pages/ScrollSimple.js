@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import ListElement from "../components/ListElement";
-import LandingTitle from "../components/LandingTitle";
-import TextCanvas from "../components/TextCanvas";
 
 export default function ScrollSimple() {
   const wrapperRef = useRef();

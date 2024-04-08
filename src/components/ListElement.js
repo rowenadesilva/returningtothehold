@@ -1,12 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
-import LandingTitle from "../components/LandingTitle";
-
-const LandingTitleStyled = styled("LandingTitle")`
-  width: 600px;
-  height: 10vh;
-  border: 2px solid black;
-`;
 
 const TEXT = styled.div`
   position: absolute;

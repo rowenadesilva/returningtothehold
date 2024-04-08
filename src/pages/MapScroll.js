@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import ListElement from "../components/ListElement";
-import LandingTitle from "../components/LandingTitle";
 
 const GlobalStyle = createGlobalStyle`
   body {
