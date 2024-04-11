@@ -40,16 +40,13 @@ const App = () => {
     });
   });
 
-  // scroll to the middle list element on first render
-  useEffect(() => {
-    console.log(listRef.current[0].clientHeight);
-    window.scrollTo(
-      0,
-      listRef.current[0].clientHeight -
-        document.documentElement.clientHeight / 2.1
-    );
-  }, []);
+    // scroll to the middle list element on page load
 
+  window.onbeforeunload = function () {
+    window.scrollTo(0, listRef.current[0].clientHeight -
+      document.documentElement.clientHeight / 2.1);
+  }
+  
   const checkNewElements = () => {
     // check if listElement 0 comes into focus
     const rect0 = listRef.current[0].getBoundingClientRect();
