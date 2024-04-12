@@ -97,7 +97,8 @@ const Spotlight = styled.p`
   color: #2f63be;
   font-size: 1.5em;
   text-align: left;
-  width: max-content;
+  width: 100%;
+  height: auto;
 `;
 
 const Content = (trackerPos) => {
@@ -298,10 +299,9 @@ const Content = (trackerPos) => {
         The line from Bibby Stockholm to the transatlantic slave trade is a
         direct one and its history is full of reverberations
       </Instruction>
-      <Spotlight style={{offsetPath: ""}}>
-        By negating a beginning <p style={{ textAlign: "right" }}>and an end</p>
-        the ocean appears atemporal
-      </Spotlight>
+      {/* <Spotlight style={{ offsetPath: "path('M1000,100')" }}>
+        By negating a beginning and an end the ocean appears atemporal
+      </Spotlight> */}
       <Chapter ref={introduction}>
         <span style={{ fontWeight: "800", color: "#2f63be" }}>
           INTRODUCTION

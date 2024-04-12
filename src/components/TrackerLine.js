@@ -5,7 +5,7 @@ const Line = styled.svg`
   fill: none;
   width: 100vw;
   // border: 10px solid white;
-  stroke: white;
+  stroke: #2f63be;
 `;
 
 const Tracker = styled.text`
@@ -247,7 +247,12 @@ function TrackerLine(trackerPos, focus) {
           c-29.15,20.16-55.42,36.88-60.89,75.38c-11.97,71.78,61.57,81.46,53.26,146.27"
           // style={{ stroke: "url(#spinner-gradient)" }}
         />
-        <Indicator className="text">
+        <text>
+          <p style={{ offsetPath: "path('M100,100')" }}>
+            By negating a beginning and an end the ocean appears atemporal
+          </p>
+        </text>
+        {/* <Indicator className="text">
           {list.map((item, i) => {
             return (
               <textPath startOffset={i + "%"} href="#curve" key={i}>
@@ -255,7 +260,7 @@ function TrackerLine(trackerPos, focus) {
               </textPath>
             );
           })}
-        </Indicator>
+        </Indicator> */}
         <Tracker
           className="text"
           style={

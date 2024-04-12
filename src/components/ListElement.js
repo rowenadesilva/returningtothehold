@@ -20,7 +20,7 @@ const ListElement = ({ focus, trackerPos }) => {
   return (
     <div>
       <ContentDiv focus={focus} trackerPos={trackerPos} />
-      {/* <ImageLine /> */}
+      <ImageLine />
       <TrackerLine trackerPos={trackerPos} focus={focus}/>
     </div>
   );
