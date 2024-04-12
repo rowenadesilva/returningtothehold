@@ -13,6 +13,7 @@ const Line = styled.svg`
 const Tracker = styled.text`
   fill: #2f63be;
   stroke: #2f63be;
+  font-size: 8px;
 `;
 
 // const Indicator = styled.text`
@@ -21,13 +22,13 @@ const Tracker = styled.text`
 //   font-weight: light;
 // `;
 
-function ContentDiv({ focus, scrollRef }) {
+function ContentDiv({ focus, trackerPos }) {
   if (focus) {
-    return <Content scrollRef={scrollRef} />;
+    return <Content trackerPos={trackerPos} />;
   }
 }
 
-const ListElement = ({ focus, trackerPos, scrollRef }) => {
+const ListElement = ({ focus, trackerPos }) => {
   const svgRef = useRef();
 
   // const list = Array.from(Array(100).keys());
@@ -42,7 +43,7 @@ const ListElement = ({ focus, trackerPos, scrollRef }) => {
 
   return (
     <div>
-      <ContentDiv focus={focus} scrollRef={scrollRef} />
+      <ContentDiv focus={focus} trackerPos={trackerPos} />
       <Line ref={svgRef} viewBox="0 0 130 4200">
         <defs>
           <linearGradient id="spinner-gradient" gradientTransform="rotate(90)">
@@ -77,7 +78,7 @@ const ListElement = ({ focus, trackerPos, scrollRef }) => {
             startOffset={trackerPos + "%"}
             href="#curve"
           >
-            &bull;
+            INTRODUCTION
           </textPath>
         </Tracker>
       </Line>

@@ -14,22 +14,18 @@ const List = styled.li`
 `;
 
 const App = () => {
-  const focus = [false, true, false];
-
   const listRef = useRef([]);
 
+  const [focus, setFocus] = useState([true, false]);
   const [trackerPos, setTrackerPos] = useState(0);
 
-  // start list with 3 elements
+  // start list with 2 elements
   const [list, setList] = useState([
     {
       id: 0,
     },
     {
       id: 1,
-    },
-    {
-      id: 2,
     },
   ]);
 
@@ -40,32 +36,46 @@ const App = () => {
     });
   });
 
-    // scroll to the middle list element on page load
-
+  // scroll to the middle list element on page load
   window.onbeforeunload = function () {
-    window.scrollTo(0, listRef.current[0].clientHeight -
-      document.documentElement.clientHeight / 2.1);
-  }
-  
+    window.scrollTo(0, 0);
+  };
+
   const checkNewElements = () => {
-    // check if listElement 0 comes into focus
-    const rect0 = listRef.current[0].getBoundingClientRect();
-    const inFocus0 = rect0.bottom >= document.documentElement.clientHeight / 2;
+    if (listRef.current.length === 2) {
+      // check if listElement 1 comes into focus
+      const rect1 = listRef.current[1].getBoundingClientRect();
+      const inFocus1 = rect1.top <= document.documentElement.clientHeight / 2;
+      // add new list element
+      if (inFocus1) {
+        const copy = [...list];
+        copy.push({
+          id: Math.random(),
+        });
+        setList(copy);
+        setFocus([false, true, false]);
+      }
+    } else {
+      // check if listElement 0 comes into focus
+      const rect0 = listRef.current[0].getBoundingClientRect();
+      const inFocus0 =
+        rect0.bottom >= document.documentElement.clientHeight / 2;
 
-    // check if listElement 2 comes into focus
-    const rect2 = listRef.current[2].getBoundingClientRect();
-    const inFocus2 = rect2.top <= document.documentElement.clientHeight / 2;
+      // check if listElement 2 comes into focus
+      const rect2 = listRef.current[2].getBoundingClientRect();
+      const inFocus2 = rect2.top <= document.documentElement.clientHeight / 2;
 
-    // add new list element if top is reached and delete bottom element
-    if (inFocus0 && list.length === 3) {
-      console.log("addTop");
-      addTop();
-    }
+      // add new list element if top is reached and delete bottom element
+      if (inFocus0 && list.length === 3) {
+        console.log("addTop");
+        addTop();
+      }
 
-    // add new list element if bottom is reached and delete top element
-    if (inFocus2 && list.length === 3) {
-      console.log("addBottom");
-      addBottom();
+      // add new list element if bottom is reached and delete top element
+      if (inFocus2 && list.length === 3) {
+        console.log("addBottom");
+        addBottom();
+      }
     }
   };
 
@@ -91,11 +101,15 @@ const App = () => {
 
   const updateTrackerPos = () => {
     // get the absolute y-position of the middle list element and convert into positive value
+    var i = 1;
+    if (listRef.current.length <= 2) {
+      i = 0;
+    }
     const absolutePos =
-      listRef.current[1].getBoundingClientRect().top * -1 +
+      listRef.current[i].getBoundingClientRect().top * -1 +
       document.documentElement.clientHeight / 2;
     // calculate relative position of the middle list element by dividing it by the height of the middle list element
-    const relativePos = (absolutePos / listRef.current[1].clientHeight) * 100;
+    const relativePos = (absolutePos / listRef.current[i].clientHeight) * 100;
     setTrackerPos(relativePos);
   };
 

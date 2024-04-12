@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -15,11 +15,51 @@ const Wrapper = styled.div`
   left: 0;
 `;
 
+const Highlight = styled.span`
+  color: #eef3e5;
+  &::before {
+    content: "(";
+    color: #2f63be;
+  }
+  &::after {
+    content: ")";
+    color: #2f63be;
+  }
+`;
+
+const Date = styled.div`
+  position: fixed;
+  left: 2vw;
+  top: 2vh;
+  font-size: 1.5em;
+  opacity: 1;
+  &.active {
+    transition: opacity 0.3s;
+    opacity: 0;
+  }
+`;
+
 const Title = styled.div`
-  font-size: 2em;
-  text-align: center;
+  position: absolute;
+  margin-top: 50vh;
+  margin-left: 2vw;
+  text-align: left;
+  font-size: 4em;
   color: #2f63be;
-  font-family: "Absans";
+`;
+
+const Hold = styled.div`
+  &:hover {
+    transform: scale(1.5);
+    transition-duration: 1s;
+  }
+  position: absolute;
+  font-size: 4em;
+  right: 2vw;
+  color: #eef3e5;
+  top: 50vh;
+  z-index: 100;
+  transform-origin: right;
 `;
 
 const Abstract = styled.div`
@@ -40,9 +80,10 @@ const ContentDiv = styled.div`
   font-size: 1.5em;
   text-align: left;
   padding: 20vw;
+  font-family: "ApfelGrotezk", serif;
 `;
 
-const Content = (scrollRef, focus) => {
+const Content = (trackerPos) => {
   const abstract = useRef();
   const instruction = useRef();
   const introduction = useRef();
@@ -53,9 +94,54 @@ const Content = (scrollRef, focus) => {
   const architecture1 = useRef();
   const architecture2 = useRef();
   const onThe12th = useRef();
+  const hold = useRef();
+  const dateRef = useRef();
+
+  const [scrollPos, setScrollPos] = useState(0);
+  const [date, setDate] = useState("0000");
+
+  // check if hold logo finished start sequence
+  const [holdActivated, setHoldActivated] = useState(false);
+
+  // set hold logo y-pos to scroll position
+  useEffect(() => {
+    setScrollPos(trackerPos.trackerPos);
+    if (holdActivated) {
+      hold.current.style.top = scrollPos + "vh";
+    }
+  }, [trackerPos.trackerPos]);
+
+  const activateHold = () => {
+    hold.current.style.position = "fixed";
+    hold.current.style.scale = "0.5";
+    setHoldActivated(true);
+  };
+
+  const setNewDate = (newDate) => {
+    setDate(newDate);
+    if (newDate === true || newDate === false) {
+      dateRef.current.classList.toggle("active");
+    }
+  };
 
   // gsap code here
   useGSAP(() => {
+    const holdGSAP = gsap.to(hold.current, {
+      scrollTrigger: {
+        trigger: hold.current,
+        start: "top center",
+        end: "top top",
+        //pin: hold.current,
+       // markers: true,
+        scrub: 1,
+        onLeave: () => {
+          holdGSAP.scrollTrigger.disable();
+          activateHold();
+        },
+      },
+      scale: "0.5"
+    });
+
     gsap.to(abstract.current, {
       scrollTrigger: {
         trigger: abstract.current,
@@ -64,6 +150,12 @@ const Content = (scrollRef, focus) => {
         pin: abstract.current,
         scrub: true,
         markers: false,
+        onEnter: () => {
+          setNewDate("2024");
+        },
+        onLeave: () => {
+          setNewDate(false);
+        },
       },
     });
     // gsap.to(instruction.current, {
@@ -164,12 +256,22 @@ const Content = (scrollRef, focus) => {
         markers: false,
       },
     });
-
   });
 
   return (
     <Wrapper>
-      <Title>RETURNING TO THE HOLD</Title>
+      <Date ref={dateRef}>{date}</Date>
+      <Title style={{}}>RETURNING TO THE</Title>
+      <Hold
+        ref={hold}
+        style={
+          {
+            //  top: scrollPos + "vh",
+          }
+        }
+      >
+        <Highlight>HOLD</Highlight>
+      </Hold>
       <Abstract ref={abstract}>
         Bibby Stockholm is a barge berthed at Portland Harbour on the south
         coast of England, currently detaining 135 asylum seekers. Delving into
@@ -372,9 +474,10 @@ const Content = (scrollRef, focus) => {
         detained on Bibby Stockholm. Leonard was found by his roommate Yusuf
         Deen Kargbo, in their shower room, twelve hours later. After Leonard’s
         death, Yusuf was relocated to another room, without his belongings,
-        isolated from others, and without any emotional support. <br /><br />
-        “They're saying Leonard's death is just the beginning.”  <br />Yusuf Deen
-        Kargbo --
+        isolated from others, and without any emotional support. <br />
+        <br />
+        “They're saying Leonard's death is just the beginning.” <br />
+        Yusuf Deen Kargbo --
       </ContentDiv>
     </Wrapper>
   );
