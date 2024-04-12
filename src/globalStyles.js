@@ -7,10 +7,14 @@ const GlobalStyle = createGlobalStyle`
     color: white;
     font-family: 'ApfelGrotezk', sans-serif;
   };
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
   @font-face {
     font-family: 'ApfelGrotezk';
     src: url(${ApfelGrotezk}) format('woff2'),
-
   }
 `;
 

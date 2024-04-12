@@ -8,9 +8,8 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const List = styled.li`
+const Li = styled.li`
   list-style: none;
-  width: 40vw;
 `;
 
 const App = () => {
@@ -45,6 +44,7 @@ const App = () => {
     if (listRef.current.length === 2) {
       // check if listElement 1 comes into focus
       const rect1 = listRef.current[1].getBoundingClientRect();
+      console.log(rect1.top);
       const inFocus1 = rect1.top <= document.documentElement.clientHeight / 2;
       // add new list element
       if (inFocus1) {
@@ -67,13 +67,13 @@ const App = () => {
 
       // add new list element if top is reached and delete bottom element
       if (inFocus0 && list.length === 3) {
-        console.log("addTop");
+        // console.log("addTop");
         addTop();
       }
 
       // add new list element if bottom is reached and delete top element
       if (inFocus2 && list.length === 3) {
-        console.log("addBottom");
+        // console.log("addBottom");
         addBottom();
       }
     }
@@ -105,12 +105,14 @@ const App = () => {
     if (listRef.current.length <= 2) {
       i = 0;
     }
-    const absolutePos =
-      listRef.current[i].getBoundingClientRect().top * -1 +
-      document.documentElement.clientHeight / 2;
+    const svgHeight =
+      //  listRef.current[i].children[0].children[0].children[0].clientHeight;
+      listRef.current[i].clientHeight;
+    const absolutePos = listRef.current[i].getBoundingClientRect().top * -1;
     // calculate relative position of the middle list element by dividing it by the height of the middle list element
-    const relativePos = (absolutePos / listRef.current[i].clientHeight) * 100;
+    const relativePos = (absolutePos / svgHeight) * 100;
     setTrackerPos(relativePos);
+    // console.log(listRef.current[i].getBoundingClientRect().top * -1);
   };
 
   return (
@@ -118,7 +120,7 @@ const App = () => {
       <Container>
         {list.map((item, i) => {
           return (
-            <List
+            <Li
               className="listRef"
               ref={(el) => (listRef.current[i] = el)}
               id={item.id}
@@ -127,9 +129,8 @@ const App = () => {
               <ListElement
                 focus={focus[i]}
                 trackerPos={trackerPos}
-                scrollRef={window}
               />
-            </List>
+            </Li>
           );
         })}
       </Container>

@@ -48,11 +48,10 @@ const Title = styled.div`
   color: #2f63be;
 `;
 
-const Hold = styled.div`
-  &:hover {
-    transform: scale(1.5);
-    transition-duration: 1s;
-  }
+const Hold = styled.a.attrs((props) => ({
+  className: props.className,
+}))`
+  display: block;
   position: absolute;
   font-size: 4em;
   right: 2vw;
@@ -60,12 +59,21 @@ const Hold = styled.div`
   top: 50vh;
   z-index: 100;
   transform-origin: right;
+  &.active {
+    position: fixed;
+    scale: 0.5 !important;
+    top: 0;
+    &:hover {
+      transform: scale(1.5) !important;
+      transition-duration: 1s !important;
+    }
+  }
 `;
 
 const Abstract = styled.div`
   margin-top: 100vh;
-  font-size: 1.5em;
-  text-align: center;
+  font-size: 2em;
+  text-align: left;
   padding: 20vw;
 `;
 
@@ -73,14 +81,23 @@ const Instruction = styled.div`
   font-size: 1.5em;
   text-align: center;
   padding: 20vw;
+  width: min-content;
+  word-spacing: 200px;
 `;
 
-const ContentDiv = styled.div`
+const Chapter = styled.div`
   margin-top: -20vh;
   font-size: 1.5em;
   text-align: left;
   padding: 20vw;
   font-family: "ApfelGrotezk", serif;
+`;
+
+const Spotlight = styled.p`
+  color: #2f63be;
+  font-size: 1.5em;
+  text-align: left;
+  width: max-content;
 `;
 
 const Content = (trackerPos) => {
@@ -112,8 +129,10 @@ const Content = (trackerPos) => {
   }, [trackerPos.trackerPos]);
 
   const activateHold = () => {
-    hold.current.style.position = "fixed";
-    hold.current.style.scale = "0.5";
+    // hold.current.style.position = "fixed";
+    // hold.current.style.scale = "0.5";
+    // hold.current.style.top = "0";
+    hold.current.classList.add("active");
     setHoldActivated(true);
   };
 
@@ -132,14 +151,15 @@ const Content = (trackerPos) => {
         start: "top center",
         end: "top top",
         //pin: hold.current,
-       // markers: true,
+        // markers: true,
         scrub: 1,
         onLeave: () => {
-          holdGSAP.scrollTrigger.disable();
+          holdGSAP.scrollTrigger.kill();
           activateHold();
         },
       },
-      scale: "0.5"
+      scale: "0.5",
+      ease: "expoScale(0.5,7,none)",
     });
 
     gsap.to(abstract.current, {
@@ -262,28 +282,27 @@ const Content = (trackerPos) => {
     <Wrapper>
       <Date ref={dateRef}>{date}</Date>
       <Title style={{}}>RETURNING TO THE</Title>
-      <Hold
-        ref={hold}
-        style={
-          {
-            //  top: scrollPos + "vh",
-          }
-        }
-      >
+      <Hold ref={hold}>
         <Highlight>HOLD</Highlight>
       </Hold>
       <Abstract ref={abstract}>
         Bibby Stockholm is a barge berthed at Portland Harbour on the south
-        coast of England, currently detaining 135 asylum seekers. Delving into
-        the history of Bibby Stockholm uncovers the company’s legacy in the
-        transatlantic slave trade, connecting contemporary border practices to a
-        larger narrative of colonialism and empire.
+        coast of England, currently detaining 135 asylum seekers. <br /> <br />
+        <p style={{ textAlign: "right" }}>
+          Delving into the history of Bibby Stockholm uncovers the company’s
+          legacy in the transatlantic slave trade, connecting contemporary
+          border practices to a larger narrative of colonialism and empire.
+        </p>
       </Abstract>
       <Instruction ref={instruction} style={{ marginBottom: "100vh" }}>
         The line from Bibby Stockholm to the transatlantic slave trade is a
         direct one and its history is full of reverberations
       </Instruction>
-      <ContentDiv ref={introduction}>
+      <Spotlight style={{offsetPath: ""}}>
+        By negating a beginning <p style={{ textAlign: "right" }}>and an end</p>
+        the ocean appears atemporal
+      </Spotlight>
+      <Chapter ref={introduction}>
         <span style={{ fontWeight: "800", color: "#2f63be" }}>
           INTRODUCTION
         </span>
@@ -315,8 +334,8 @@ const Content = (trackerPos) => {
         to mitigate the backlog of thousands of people awaiting decisions on
         their asylum applications, with figures doubling between 2020 to 2022.
         At capacity, the barge would only address 0.3% of this backlog.
-      </ContentDiv>
-      <ContentDiv ref={bibbyEmpire}>
+      </Chapter>
+      <Chapter ref={bibbyEmpire}>
         <span style={{ fontWeight: "800", color: "#2f63be" }}>
           BIBBY EMPIRE
         </span>
@@ -342,8 +361,8 @@ const Content = (trackerPos) => {
         Jamaica. The development of port infrastructure and maritime law was
         shaped by the logistics of the slave trade. Bibby Line exemplifies the
         complicity of maritime industries in colonial legacies.
-      </ContentDiv>
-      <ContentDiv ref={langhamIndustires1}>
+      </Chapter>
+      <Chapter ref={langhamIndustires1}>
         <span style={{ fontWeight: "800", color: "#2f63be" }}>
           LANGHAM INDUSTRIES
         </span>
@@ -370,8 +389,8 @@ const Content = (trackerPos) => {
         deliberate realisation of a space of suspension, endemic to the UK’s
         treatment of asylum seekers. <br />
         <br />
-      </ContentDiv>
-      <ContentDiv ref={langhamIndustires2} style={{ marginTop: "-60vh" }}>
+      </Chapter>
+      <Chapter ref={langhamIndustires2} style={{ marginTop: "-60vh" }}>
         From 2003 until the Brexit Referendum in 2016, Langham Industries
         donated just over £73,000 to the UK Independence Party. In 2014, the
         company donated £2000 to support the re-election of UKIP MP Douglas
@@ -392,8 +411,8 @@ const Content = (trackerPos) => {
         network of economic relations directly related to the funding of
         right-wing political parties that have a reliance on the institution of
         Bibby Stockholm as a detention prison for populous votes.
-      </ContentDiv>
-      <ContentDiv ref={theHoldRepeats}>
+      </Chapter>
+      <Chapter ref={theHoldRepeats}>
         {" "}
         <span style={{ fontWeight: "800", color: "#2f63be" }}>
           THE HOLD REPEATS
@@ -428,8 +447,8 @@ const Content = (trackerPos) => {
         shipping operations with the state, to not only enable maritime
         incarceration, but gain a vast profit from the subjugation and
         indefinite detainment of people.
-      </ContentDiv>
-      <ContentDiv ref={architecture1}>
+      </Chapter>
+      <Chapter ref={architecture1}>
         {" "}
         <span style={{ fontWeight: "800", color: "#2f63be" }}>
           ARCHITECTURE OF THE HOLD
@@ -450,8 +469,8 @@ const Content = (trackerPos) => {
         seeking asylum as having already experienced sea trauma from small boat
         crossings and have thus questioned the cruel decision to detain migrants
         on a floating vessel, which runs the high risk in retraumatising people.
-      </ContentDiv>
-      <ContentDiv ref={architecture2} style={{ marginTop: "-60vh" }}>
+      </Chapter>
+      <Chapter ref={architecture2} style={{ marginTop: "-60vh" }}>
         The detainees live in the proximity of death, with the barge flagged in
         a second report by an NGO as a “floating Grenfell”, drawing vivid
         parallels with the government’s track record of abandonment and neglect.
@@ -468,8 +487,8 @@ const Content = (trackerPos) => {
         describes, the physical limitations of the hold. Death permeates all
         scales, even the molecular. Death is prescribed from the conception of
         the vessel.
-      </ContentDiv>
-      <ContentDiv ref={onThe12th}>
+      </Chapter>
+      <Chapter ref={onThe12th}>
         On the 12th December 2023, Leonard Farruku died by suicide whilst
         detained on Bibby Stockholm. Leonard was found by his roommate Yusuf
         Deen Kargbo, in their shower room, twelve hours later. After Leonard’s
@@ -478,7 +497,7 @@ const Content = (trackerPos) => {
         <br />
         “They're saying Leonard's death is just the beginning.” <br />
         Yusuf Deen Kargbo --
-      </ContentDiv>
+      </Chapter>
     </Wrapper>
   );
 };
