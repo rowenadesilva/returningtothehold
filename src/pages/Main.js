@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import ListElement from "../components/ListElement";
 import styled from "styled-components";
+import { TrackerContext } from "../components/TrackerContext";
 
 const Container = styled.div`
   display: flex;
@@ -10,6 +11,8 @@ const Container = styled.div`
 
 const Li = styled.li`
   list-style: none;
+  width: 100vw;
+  text-align: center;
 `;
 
 const App = () => {
@@ -44,7 +47,7 @@ const App = () => {
     if (listRef.current.length === 2) {
       // check if listElement 1 comes into focus
       const rect1 = listRef.current[1].getBoundingClientRect();
-      console.log(rect1.top);
+      // console.log(rect1.top);
       const inFocus1 = rect1.top <= document.documentElement.clientHeight / 2;
       // add new list element
       if (inFocus1) {
@@ -105,35 +108,31 @@ const App = () => {
     if (listRef.current.length <= 2) {
       i = 0;
     }
-    const svgHeight =
-      //  listRef.current[i].children[0].children[0].children[0].clientHeight;
-      listRef.current[i].clientHeight;
+    const svgHeight = listRef.current[i].clientHeight;
     const absolutePos = listRef.current[i].getBoundingClientRect().top * -1;
     // calculate relative position of the middle list element by dividing it by the height of the middle list element
     const relativePos = (absolutePos / svgHeight) * 100;
     setTrackerPos(relativePos);
-    // console.log(listRef.current[i].getBoundingClientRect().top * -1);
   };
 
   return (
     <div>
-      <Container>
-        {list.map((item, i) => {
-          return (
-            <Li
-              className="listRef"
-              ref={(el) => (listRef.current[i] = el)}
-              id={item.id}
-              key={item.id}
-            >
-              <ListElement
-                focus={focus[i]}
-                trackerPos={trackerPos}
-              />
-            </Li>
-          );
-        })}
-      </Container>
+      <TrackerContext.Provider value={trackerPos}>
+        <Container>
+          {list.map((item, i) => {
+            return (
+              <Li
+                className="listRef"
+                ref={(el) => (listRef.current[i] = el)}
+                id={item.id}
+                key={item.id}
+              >
+                <ListElement focus={focus[i]} trackerPos={trackerPos} />
+              </Li>
+            );
+          })}
+        </Container>
+      </TrackerContext.Provider>
     </div>
   );
 };

@@ -4,6 +4,9 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
+import Instructions from "./Instructions";
+import Verse from "./Verse";
+
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,14 +78,7 @@ const Abstract = styled.div`
   font-size: 2em;
   text-align: left;
   padding: 20vw;
-`;
-
-const Instruction = styled.div`
-  font-size: 1.5em;
-  text-align: center;
-  padding: 20vw;
-  width: min-content;
-  word-spacing: 200px;
+  border: 1px solid yellow;
 `;
 
 const Chapter = styled.div`
@@ -101,7 +97,7 @@ const Spotlight = styled.p`
   height: auto;
 `;
 
-const Content = (trackerPos) => {
+const Content = (trackerPos, totalHeight) => {
   const abstract = useRef();
   const instruction = useRef();
   const introduction = useRef();
@@ -129,10 +125,11 @@ const Content = (trackerPos) => {
     }
   }, [trackerPos.trackerPos]);
 
+  useEffect(() => {
+    console.log(totalHeight);
+  }, [totalHeight]);
+
   const activateHold = () => {
-    // hold.current.style.position = "fixed";
-    // hold.current.style.scale = "0.5";
-    // hold.current.style.top = "0";
     hold.current.classList.add("active");
     setHoldActivated(true);
   };
@@ -151,7 +148,6 @@ const Content = (trackerPos) => {
         trigger: hold.current,
         start: "top center",
         end: "top top",
-        //pin: hold.current,
         // markers: true,
         scrub: 1,
         onLeave: () => {
@@ -295,10 +291,8 @@ const Content = (trackerPos) => {
           border practices to a larger narrative of colonialism and empire.
         </p>
       </Abstract>
-      <Instruction ref={instruction} style={{ marginBottom: "100vh" }}>
-        The line from Bibby Stockholm to the transatlantic slave trade is a
-        direct one and its history is full of reverberations
-      </Instruction>
+      <Instructions />
+      <Verse index="1"/>
       {/* <Spotlight style={{ offsetPath: "path('M1000,100')" }}>
         By negating a beginning and an end the ocean appears atemporal
       </Spotlight> */}
