@@ -107,7 +107,6 @@ export default function Verse(index) {
           appears atemporal
         </No1>
       );
-      break;
     case 2:
       return (
         <No2>
@@ -116,7 +115,6 @@ export default function Verse(index) {
           which place us in time
         </No2>
       );
-      break;
     case 3:
       return (
         <No3>
@@ -127,7 +125,6 @@ export default function Verse(index) {
           the sea,
         </No3>
       );
-      break;
     case 4:
       return (
         <No4>
@@ -137,7 +134,6 @@ export default function Verse(index) {
           the sand
         </No4>
       );
-      break;
     case 5:
       return (
         <No5>
@@ -145,7 +141,6 @@ export default function Verse(index) {
           imprints on the shore
         </No5>
       );
-      break;
     case 6:
       return (
         <No6>
@@ -153,7 +148,6 @@ export default function Verse(index) {
           <br /> the ocean renews itself
         </No6>
       );
-      break;
     case 7:
       return (
         <No7>
@@ -161,13 +155,10 @@ export default function Verse(index) {
           reaffirming itself
         </No7>
       );
-      break;
     case 8:
       return <No8>This is what Édouard Glissant calls </No8>;
-      break;
     case 9:
       return <No9>a tautology</No9>;
-      break;
     case 10:
       return (
         <No10>
@@ -175,14 +166,11 @@ export default function Verse(index) {
           cyclical in its nature,
         </No10>
       );
-      break;
     case 11:
       return <No11>is void of an end</No11>;
-      break;
 
     case 12:
       return <No12>The waves continue to meet the shore</No12>;
-      break;
 
     case 13:
       return (
@@ -193,10 +181,8 @@ export default function Verse(index) {
           passed
         </No13>
       );
-      break;
     case 14:
       return <No14>In attempts to remap slave voyages,</No14>;
-      break;
     case 15:
       return (
         <No15>
@@ -214,7 +200,6 @@ export default function Verse(index) {
           ditto marks
         </No15>
       );
-      break;
     case 16:
       return (
         <No16>
@@ -238,9 +223,7 @@ export default function Verse(index) {
           ditto <br />
         </No16>
       );
-      break;
       
     default:
-      break;
   }
 }

@@ -20,17 +20,17 @@ const Tracker = styled.text`
 //   font-weight: light;
 // `;
 
-function TrackerLine(focus) {
+function TrackerLine() {
   // const list = Array.from(Array(100).keys());
   const trackerPos = useContext(TrackerContext);
 
-  function calcOpacity() {
-    if (trackerPos.trackerPos < 13.3) {
-      return 0;
-    } else {
-      return (trackerPos.trackerPos - 13.3) / 10;
-    }
-  }
+  // function calcOpacity() {
+  //   if (trackerPos.trackerPos < 13.3) {
+  //     return 0;
+  //   } else {
+  //     return (trackerPos.trackerPos - 13.3) / 10;
+  //   }
+  // }
 
   return (
     <div>
