@@ -1,6 +1,6 @@
 import react, { useRef, useEffect } from "react";
 import styled from "styled-components";
-import ImageContent from "./ImageContent";
+import Content from "./Content";
 
 const Wrapper = styled.div`
   position: relative;
@@ -15,10 +15,11 @@ const Line = styled.svg`
   stroke-width: 2px;
 `;
 
-const Content = styled(ImageContent)`
+const ContentStyled = styled(Content)`
   position: absolute;
   font-size: 2em;
   color: white;
+	border: 1px solid red;
 `;
 
 const ImageLine = () => {
@@ -1667,7 +1668,7 @@ const ImageLine = () => {
 	c6.27-37.1,15.44-81.77-3.27-111.05c-18.71-29.29-26.87-17.58,1.9-121.18s168.73-142.73,120.62-214.1S174.91,81.84,177.91,0"
         />
       </Line>
-      <Content />
+      <ContentStyled />
     </Wrapper>
   );
 };

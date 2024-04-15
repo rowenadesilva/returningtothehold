@@ -29,7 +29,7 @@ const No2 = styled(VerseWrapper)`
 
 const No3 = styled(VerseWrapper)`
   top: calc(var(--list-element-height) * 0.108);
-  left: calc(var(--list-element-width) * 0.12);
+  left: calc(var(--list-element-width) * 0.08);
 `;
 
 const No4 = styled(VerseWrapper)`
@@ -54,7 +54,7 @@ const No7 = styled(VerseWrapper)`
 
 const No8 = styled(VerseWrapper)`
   top: calc(var(--list-element-height) * 0.168);
-  left: calc(var(--list-element-width) * 0.3);
+  left: calc(var(--list-element-width) * 0.2);
 `;
 
 const No9 = styled(VerseWrapper)`
@@ -80,6 +80,22 @@ const No12 = styled(VerseWrapper)`
 const No13 = styled(VerseWrapper)`
   top: calc(var(--list-element-height) * 0.26);
   left: calc(var(--list-element-width) * 0.73);
+`;
+
+const No14 = styled(VerseWrapper)`
+  top: calc(var(--list-element-height) * 0.425);
+  left: calc(var(--list-element-width) * 0.1);
+`;
+
+const No15 = styled(VerseWrapper)`
+  top: calc(var(--list-element-height) * 0.431);
+  left: calc(var(--list-element-width) * 0.205);
+  text-align: right;
+`;
+
+const No16 = styled(VerseWrapper)`
+  top: calc(var(--list-element-height) * 0.432);
+  left: calc(var(--list-element-width) * 0.5);
 `;
 
 export default function Verse(index) {
@@ -180,6 +196,51 @@ export default function Verse(index) {
           betray the time that has <br />
           passed
         </No13>
+      );
+      break;
+    case 14:
+      return <No14>In attempts to remap slave voyages,</No14>;
+      break;
+    case 15:
+      return (
+        <No15>
+          patterns are solidified and &nbsp; &nbsp; &nbsp; ditto
+          <br />
+          {Array(30)
+            .fill()
+            .map((item, i) => {
+              return (
+                <a>
+                  ditto <br />
+                </a>
+              );
+            })}
+          ditto marks
+        </No15>
+      );
+      break;
+    case 16:
+      return (
+        <No16>
+          ditto <br />
+          <br />
+          <br />
+          <br />
+          {Array(10)
+            .fill()
+            .map((item, i) => {
+              return (
+                <a>
+                  ditto <br />
+                </a>
+              );
+            })}
+          <br /> <br /> <br /> <br /> <br />
+          ditto <br />
+          ditto <br />
+          ditto <br />
+          ditto <br />
+        </No16>
       );
       break;
 

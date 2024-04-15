@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
-import Content from "../components/Content";
 import styled from "styled-components";
 import ImageLine from "../components/ImageLine";
 import TrackerLine from "../components/TrackerLine";
+import Content from "../components/Content";
+import ImageContent from "./Content";
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,13 +11,20 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-function ContentDiv({ focus, trackerPos }) {
+const ContentStyled = styled(ImageContent)`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+`;
+
+function ContentDiv({ focus }) {
   if (focus) {
-    return <Content trackerPos={trackerPos} />;
+    return <ContentStyled />;
   }
 }
 
-const ListElement = ({ focus, trackerPos }) => {
+const ListElement = ({ focus }) => {
   const svgRef = useRef();
   const ListElementRef = useRef();
 
@@ -30,9 +38,8 @@ const ListElement = ({ focus, trackerPos }) => {
     <Wrapper ref={ListElementRef}>
       {/* <ContentDiv
         focus={focus}
-        trackerPos={trackerPos}
-        totalHeight={totalHeight}
       /> */}
+      {/* <ContentDiv focus={focus}/> */}
       <ImageLine />
       <TrackerLine focus={focus} />
     </Wrapper>
