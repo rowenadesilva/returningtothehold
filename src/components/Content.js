@@ -34,8 +34,6 @@ const Chapter = styled.div`
   padding-right: 30vw;
   padding-left: 10vw;
   margin-left: calc(((100vw - var(--list-element-width)) / 2) * -1);
-  // font-family: "ApfelGrotezk", serif;
-  font-family: Arial;
   font-size: 1.5em;
   // border: 1px solid yellow;
 `;
@@ -139,7 +137,7 @@ export default function Content() {
     if (holdActivated) {
       hold.current.style.top = trackerPos + "vh";
     }
-  }, [trackerPos]);
+  }, [trackerPos, holdActivated]);
 
   // all GSAP text animations
   useGSAP(() => {
@@ -312,7 +310,7 @@ export default function Content() {
         cargo of sugar from Rio de Janeiro, Brazil to Rotterdam, the biggest
         port in Europe.
       </BibbyEmpire1>
-      <BibbyEmpire2 
+      <BibbyEmpire2
         ref={bibbyEmpire2}
         style={{ top: "calc(var(--list-element-height) * 0.3752)" }}
       >
