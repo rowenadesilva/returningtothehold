@@ -22,7 +22,7 @@ const ContentDiv = styled.div`
   height: 100vh;
   width: 59vw;
   padding: 0 20vw;
-  margin-left: calc(((100vw - var(--list-element-width)) / 2) * -1);
+  margin-left: calc(((100vw - 900px) / 2) * -1);
   font-size: 2em;
   text-align: left;
 `;
@@ -33,7 +33,7 @@ const Chapter = styled.div`
   text-align: left;
   padding-right: 30vw;
   padding-left: 10vw;
-  margin-left: calc(((100vw - var(--list-element-width)) / 2) * -1);
+  margin-left: calc(((100vw - 900px) / 2) * -1);
   font-size: 1.5em;
   // border: 1px solid yellow;
 `;
@@ -99,11 +99,11 @@ const Hold = styled.a.attrs((props) => ({
 `;
 
 const Abstract = styled(ContentDiv)`
-  top: calc(var(--list-element-height) * 0.03);
+  top: calc(30979px * 0.03);
 `;
 
 const Instructions = styled(ContentDiv)`
-  top: calc(var(--list-element-height) * 0.06);
+  top: calc(30979px * 0.06);
 `;
 
 const BibbyEmpire1 = styled(Chapter)`
@@ -119,6 +119,7 @@ const BibbyEmpire2 = styled(Chapter)`
 `;
 
 export default function Content() {
+  const wrapperRef = useRef();
   const abstract = useRef();
   const hold = useRef();
   const introduction1 = useRef();
@@ -139,90 +140,99 @@ export default function Content() {
     }
   }, [trackerPos, holdActivated]);
 
-  // all GSAP text animations
-  useGSAP(() => {
-    const holdGSAP = gsap.to(hold.current, {
-      scrollTrigger: {
-        trigger: hold.current,
-        start: "top center",
-        end: "top top",
-        // markers: true,
-        scrub: 1,
-        onLeave: () => {
-          holdGSAP.scrollTrigger.kill();
-          hold.current.classList.add("active");
-          setHoldActivated(true);
-        },
-      },
-      scale: "0.5",
-      ease: "expoScale(0.5,7,none)",
-    });
-
-    gsap.to(abstract.current, {
-      scrollTrigger: {
-        trigger: abstract.current,
-        start: "top top",
-        end: "400 top",
-        pin: abstract.current,
-        markers: false,
-      },
-    });
-
-    gsap.to(introduction1.current, {
-      scrollTrigger: {
-        trigger: introduction1.current,
-        start: "-50 top",
-        end: "800 top",
-        pin: introduction1.current,
-        scrub: true,
-        markers: false,
-      },
-    });
-    gsap.to(introduction2.current, {
-      scrollTrigger: {
-        trigger: introduction2.current,
-        start: "-280 top",
-        end: "180 top",
-        pin: introduction2.current,
-        scrub: true,
-        markers: false,
-      },
-    });
-    gsap.to(introduction3.current, {
-      scrollTrigger: {
-        trigger: introduction3.current,
-        start: "-540 top",
-        end: "-440 top",
-        pin: introduction3.current,
-        scrub: true,
-        markers: false,
-      },
-    });
-
-    gsap.to(bibbyEmpire1.current, {
-      scrollTrigger: {
-        trigger: bibbyEmpire1.current,
-        start: "-50 top",
-        end: "600 top",
-        pin: bibbyEmpire1.current,
-        scrub: true,
-        markers: false,
-      },
-    });
-    gsap.to(bibbyEmpire2.current, {
-      scrollTrigger: {
-        trigger: bibbyEmpire2.current,
-        start: "-420 top",
-        end: "-240 top",
-        pin: bibbyEmpire2.current,
-        scrub: true,
-        markers: false,
-      },
-    });
+  useEffect(() => {
+    var style = getComputedStyle(document.body);
+    console.log(style.getPropertyValue("--list-element-height"));
+    console.log(style.getPropertyValue("--list-element-width"));
   });
 
+  // all GSAP text animations
+  useGSAP(
+    () => {
+      const holdGSAP = gsap.to(hold.current, {
+        scrollTrigger: {
+          trigger: hold.current,
+          start: "top center",
+          end: "top top",
+          // markers: true,
+          scrub: 1,
+          onLeave: () => {
+            holdGSAP.scrollTrigger.kill();
+            hold.current.classList.add("active");
+            setHoldActivated(true);
+          },
+        },
+        scale: "0.5",
+        ease: "expoScale(0.5,7,none)",
+      });
+
+      gsap.to(abstract.current, {
+        scrollTrigger: {
+          trigger: abstract.current,
+          start: "top top",
+          end: "400 top",
+          pin: abstract.current,
+          markers: true,
+        },
+      });
+
+      gsap.to(introduction1.current, {
+        scrollTrigger: {
+          trigger: introduction1.current,
+          start: "-50 top",
+          end: "800 top",
+          pin: introduction1.current,
+          scrub: true,
+          markers: false,
+        },
+      });
+      gsap.to(introduction2.current, {
+        scrollTrigger: {
+          trigger: introduction2.current,
+          start: "-280 top",
+          end: "180 top",
+          pin: introduction2.current,
+          scrub: true,
+          markers: false,
+        },
+      });
+      gsap.to(introduction3.current, {
+        scrollTrigger: {
+          trigger: introduction3.current,
+          start: "-540 top",
+          end: "-440 top",
+          pin: introduction3.current,
+          scrub: true,
+          markers: false,
+        },
+      });
+
+      gsap.to(bibbyEmpire1.current, {
+        scrollTrigger: {
+          trigger: bibbyEmpire1.current,
+          start: "-50 top",
+          end: "600 top",
+          pin: bibbyEmpire1.current,
+          scrub: true,
+          markers: false,
+        },
+      });
+      gsap.to(bibbyEmpire2.current, {
+        scrollTrigger: {
+          trigger: bibbyEmpire2.current,
+          start: "-420 top",
+          end: "-240 top",
+          pin: bibbyEmpire2.current,
+          scrub: true,
+          markers: false,
+        },
+      });
+    },
+    { scope: wrapperRef }
+  );
+
   return (
-    <Wrapper>
+    <Wrapper ref={wrapperRef}>
       <Title>RETURNING TO THE</Title>
       <Hold ref={hold}>
         <Highlight>HOLD</Highlight>
@@ -242,13 +252,9 @@ export default function Content() {
       {Array(9)
         .fill()
         .map((item, i) => {
-          console.log(i);
           return <VerseStyle index={i + 1} />;
         })}
-      <Chapter
-        ref={introduction1}
-        style={{ top: "calc(var(--list-element-height) * 0.175)" }}
-      >
+      <Chapter ref={introduction1} style={{ top: "calc(30979px * 0.175)" }}>
         <ChapterTitle>INTRODUCTION</ChapterTitle>
         <br />
         Built in 1976, Bibby Stockholm’s original use was to house construction
@@ -259,10 +265,7 @@ export default function Content() {
         death due to a healthcare response failure. And yet, Bibby Stockholm
         again became a detention prison, this time, in the UK.
       </Chapter>
-      <Chapter
-        ref={introduction2}
-        style={{ top: "calc(var(--list-element-height) * 0.195)" }}
-      >
+      <Chapter ref={introduction2} style={{ top: "calc(30979px * 0.195)" }}>
         With no engine, the barge was towed from Genoa to Falmouth, where it was
         refitted to increase its capacity from 223 to 500 people, arriving in
         Portland in July 2023. This operation plays an intrinsic role in the
@@ -273,10 +276,7 @@ export default function Content() {
         hotels for asylum seekers (estimated at £6 million daily) and a desire
         for a sustainable and cost-effective solution.
       </Chapter>
-      <Chapter
-        ref={introduction3}
-        style={{ top: "calc(var(--list-element-height) * 0.215)" }}
-      >
+      <Chapter ref={introduction3} style={{ top: "calc(30979px * 0.215)" }}>
         This strategy of "offshore detention" (albeit moored to the land) was
         presented alongside the Illegal Migration Act, which is to “prevent and
         deter unlawful migration” as a means to cease small boat crossings. The
@@ -290,12 +290,11 @@ export default function Content() {
       {Array(4)
         .fill()
         .map((item, i) => {
-          console.log(i);
           return <VerseStyle index={i + 10} />;
         })}
       <BibbyEmpire1
         ref={bibbyEmpire1}
-        style={{ top: "calc(var(--list-element-height) * 0.348)" }}
+        style={{ top: "calc(30979px * 0.348)" }}
       >
         <ChapterTitle>BIBBY EMPIRE</ChapterTitle>
         <br />
@@ -312,7 +311,7 @@ export default function Content() {
       </BibbyEmpire1>
       <BibbyEmpire2
         ref={bibbyEmpire2}
-        style={{ top: "calc(var(--list-element-height) * 0.3752)" }}
+        style={{ top: "calc(30979px * 0.3752)" }}
       >
         Looking deeper into this time period reveals John Bibby’s involvement in
         the transatlantic slave trade. Between 1805 and 1806, just before
@@ -327,7 +326,6 @@ export default function Content() {
       {Array(6)
         .fill()
         .map((item, i) => {
-          console.log(i);
           return <VerseStyle index={i + 14} />;
         })}
     </Wrapper>

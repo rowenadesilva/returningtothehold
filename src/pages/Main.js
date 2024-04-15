@@ -47,7 +47,6 @@ const App = () => {
     if (listRef.current.length === 2) {
       // check if listElement 1 comes into focus
       const rect1 = listRef.current[1].getBoundingClientRect();
-      // console.log(rect1.top);
       const inFocus1 = rect1.top <= document.documentElement.clientHeight / 2;
       // add new list element
       if (inFocus1) {
