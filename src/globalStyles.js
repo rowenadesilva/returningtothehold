@@ -11,17 +11,14 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: #001814;
     color: white;
-    font-family: 'ApfelGrotezk', sans-serif;
+    font-family: Arial, sans-serif;
   };
 
   ::-webkit-scrollbar {
     display: none;
   }
   
-  @font-face {
-    font-family: 'ApfelGrotezk';
-    src: url(${ApfelGrotezk}) format('woff2'),
-  }
+
 
 `;
 
