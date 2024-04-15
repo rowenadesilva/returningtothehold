@@ -1,4 +1,4 @@
-import react, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import Content from "./Content";
 

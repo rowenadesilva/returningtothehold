@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import ImageLine from "../components/ImageLine";
 import TrackerLine from "../components/TrackerLine";
-import Content from "../components/Content";
 import ImageContent from "./Content";
 
 const Wrapper = styled.div`
@@ -25,14 +24,7 @@ function ContentDiv({ focus }) {
 }
 
 const ListElement = ({ focus }) => {
-  const svgRef = useRef();
   const ListElementRef = useRef();
-
-  const [totalHeight, setTotalHeight] = useState(0);
-
-  useEffect(() => {
-    setTotalHeight(ListElementRef.current.clientHeight);
-  });
 
   return (
     <Wrapper ref={ListElementRef}>

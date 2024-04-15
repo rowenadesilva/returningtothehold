@@ -1,4 +1,4 @@
-import react, { useEffect, useContext } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { TrackerContext } from "./TrackerContext";
 
@@ -14,14 +14,14 @@ const Tracker = styled.text`
   stroke: #2f63be;
   font-size: 40px;
 `;
-const Indicator = styled.text`
-  stroke: white;
-  font-size: 10px;
-  font-weight: light;
-`;
+// const Indicator = styled.text`
+//   stroke: white;
+//   font-size: 10px;
+//   font-weight: light;
+// `;
 
 function TrackerLine(focus) {
-  const list = Array.from(Array(100).keys());
+  // const list = Array.from(Array(100).keys());
   const trackerPos = useContext(TrackerContext);
 
   function calcOpacity() {
