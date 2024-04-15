@@ -175,7 +175,7 @@ export default function Content() {
         end: "800 top",
         pin: introduction1.current,
         scrub: true,
-        markers: true,
+        markers: false,
       },
     });
     gsap.to(introduction2.current, {
@@ -185,7 +185,7 @@ export default function Content() {
         end: "180 top",
         pin: introduction2.current,
         scrub: true,
-        markers: true,
+        markers: false,
       },
     });
     gsap.to(introduction3.current, {
@@ -195,7 +195,7 @@ export default function Content() {
         end: "-440 top",
         pin: introduction3.current,
         scrub: true,
-        markers: true,
+        markers: false,
       },
     });
 
@@ -206,7 +206,7 @@ export default function Content() {
         end: "600 top",
         pin: bibbyEmpire1.current,
         scrub: true,
-        markers: true,
+        markers: false,
       },
     });
     gsap.to(bibbyEmpire2.current, {
@@ -216,7 +216,7 @@ export default function Content() {
         end: "-240 top",
         pin: bibbyEmpire2.current,
         scrub: true,
-        markers: true,
+        markers: false,
       },
     });
   });

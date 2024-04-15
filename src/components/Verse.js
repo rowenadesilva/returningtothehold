@@ -107,6 +107,7 @@ export default function Verse(index) {
           appears atemporal
         </No1>
       );
+
     case 2:
       return (
         <No2>
@@ -115,6 +116,7 @@ export default function Verse(index) {
           which place us in time
         </No2>
       );
+
     case 3:
       return (
         <No3>
@@ -125,6 +127,7 @@ export default function Verse(index) {
           the sea,
         </No3>
       );
+
     case 4:
       return (
         <No4>
@@ -134,6 +137,7 @@ export default function Verse(index) {
           the sand
         </No4>
       );
+
     case 5:
       return (
         <No5>
@@ -141,6 +145,7 @@ export default function Verse(index) {
           imprints on the shore
         </No5>
       );
+
     case 6:
       return (
         <No6>
@@ -148,6 +153,7 @@ export default function Verse(index) {
           <br /> the ocean renews itself
         </No6>
       );
+
     case 7:
       return (
         <No7>
@@ -157,8 +163,10 @@ export default function Verse(index) {
       );
     case 8:
       return <No8>This is what Édouard Glissant calls </No8>;
+
     case 9:
       return <No9>a tautology</No9>;
+
     case 10:
       return (
         <No10>
@@ -166,6 +174,7 @@ export default function Verse(index) {
           cyclical in its nature,
         </No10>
       );
+
     case 11:
       return <No11>is void of an end</No11>;
 
@@ -181,8 +190,10 @@ export default function Verse(index) {
           passed
         </No13>
       );
+
     case 14:
       return <No14>In attempts to remap slave voyages,</No14>;
+
     case 15:
       return (
         <No15>
@@ -200,6 +211,7 @@ export default function Verse(index) {
           ditto marks
         </No15>
       );
+      
     case 16:
       return (
         <No16>
@@ -223,7 +235,8 @@ export default function Verse(index) {
           ditto <br />
         </No16>
       );
-      
+
     default:
+      <p>THIS IS A VERSE</p>
   }
 }
