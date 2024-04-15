@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import ApfelGrotezk from "./assets/fonts/ApfelGrotezk-Mittel.woff2";
 
 const GlobalStyle = createGlobalStyle`
 
