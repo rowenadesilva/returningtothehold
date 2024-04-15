@@ -95,148 +95,173 @@ const No16 = styled(VerseWrapper)`
 `;
 
 export default function Verse(index) {
-  console.log(index.index);
-  switch (index.index) {
-    case 1:
-      return (
-        <No1>
-          By negating a beginning
-          <br />
-          and an end the ocean
-          <br />
-          appears atemporal
-        </No1>
-      );
+  const renderSwitch = (index) => {
+    switch (index.index) {
+      case 1:
+        return (
+          <No1>
+            By negating a beginning
+            <br />
+            and an end the ocean
+            <br />
+            appears atemporal
+          </No1>
+        );
 
-    case 2:
-      return (
-        <No2>
-          concealing the markers
-          <br />
-          which place us in time
-        </No2>
-      );
+      case 2:
+        return (
+          <No2>
+            concealing the markers
+            <br />
+            which place us in time
+          </No2>
+        );
 
-    case 3:
-      return (
-        <No3>
-          The approach
-          <br />
-          and retreat of
-          <br />
-          the sea,
-        </No3>
-      );
+      case 3:
+        return (
+          <No3>
+            The approach
+            <br />
+            and retreat of
+            <br />
+            the sea,
+          </No3>
+        );
 
-    case 4:
-      return (
-        <No4>
-          where the ‘gentle’ tide <br />
-          becomes eveloped into
-          <br />
-          the sand
-        </No4>
-      );
+      case 4:
+        return (
+          <No4>
+            where the ‘gentle’ tide <br />
+            becomes eveloped into
+            <br />
+            the sand
+          </No4>
+        );
 
-    case 5:
-      return (
-        <No5>
-          washes away the <br />
-          imprints on the shore
-        </No5>
-      );
+      case 5:
+        return (
+          <No5>
+            washes away the <br />
+            imprints on the shore
+          </No5>
+        );
 
-    case 6:
-      return (
-        <No6>
-          In its ebb and flow,
-          <br /> the ocean renews itself
-        </No6>
-      );
+      case 6:
+        return (
+          <No6>
+            In its ebb and flow,
+            <br /> the ocean renews itself
+          </No6>
+        );
 
-    case 7:
-      return (
-        <No7>
-          the water folds inwards, <br />
-          reaffirming itself
-        </No7>
-      );
-    case 8:
-      return <No8>This is what Édouard Glissant calls </No8>;
+      case 7:
+        return (
+          <No7>
+            the water folds inwards, <br />
+            reaffirming itself
+          </No7>
+        );
+      case 8:
+        return <No8>This is what Édouard Glissant calls </No8>;
 
-    case 9:
-      return <No9>a tautology</No9>;
+      case 9:
+        return <No9>a tautology</No9>;
 
-    case 10:
-      return (
-        <No10>
-          This uninterrupted event, <br />
-          cyclical in its nature,
-        </No10>
-      );
+      case 10:
+        return (
+          <No10>
+            This uninterrupted event, <br />
+            cyclical in its nature,
+          </No10>
+        );
 
-    case 11:
-      return <No11>is void of an end</No11>;
+      case 11:
+        return <No11>is void of an end</No11>;
 
-    case 12:
-      return <No12>The waves continue to meet the shore</No12>;
+      case 12:
+        return <No12>The waves continue to meet the shore</No12>;
 
-    case 13:
-      return (
-        <No13>
-          but the balls and chains <br />
-          which rust at the bed <br />
-          betray the time that has <br />
-          passed
-        </No13>
-      );
+      case 13:
+        return (
+          <No13>
+            but the balls and chains <br />
+            which rust at the bed <br />
+            betray the time that has <br />
+            passed
+          </No13>
+        );
 
-    case 14:
-      return <No14>In attempts to remap slave voyages,</No14>;
+      case 14:
+        return <No14>In attempts to remap slave voyages,</No14>;
 
-    case 15:
-      return (
-        <No15>
-          patterns are solidified and &nbsp; &nbsp; &nbsp; ditto
-          <br />
-          {Array(30)
-            .fill()
-            .map((item, i) => {
-              return (
-                <a>
-                  ditto <br />
-                </a>
-              );
-            })}
-          ditto marks
-        </No15>
-      );
-      
-    case 16:
-      return (
-        <No16>
-          ditto <br />
-          <br />
-          <br />
-          <br />
-          {Array(10)
-            .fill()
-            .map((item, i) => {
-              return (
-                <a>
-                  ditto <br />
-                </a>
-              );
-            })}
-          <br /> <br /> <br /> <br /> <br />
-          ditto <br />
-          ditto <br />
-          ditto <br />
-          ditto <br />
-        </No16>
-      );
+      case 15:
+        return (
+          <No15>
+            patterns are solidified and &nbsp; &nbsp; &nbsp; ditto
+            <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto marks
+          </No15>
+        );
 
-    default:
-      <p>THIS IS A VERSE</p>
-  }
+      case 16:
+        return (
+          <No16>
+            ditto <br />
+            <br />
+            <br />
+            <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            <br /> <br /> <br /> <br /> <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+            ditto <br />
+          </No16>
+        );
+
+      default:
+        <p>THIS IS A VERSE</p>;
+    }
+  };
+
+  return <div>{renderSwitch(index)}</div>;
 }
