@@ -34,7 +34,8 @@ const Chapter = styled.div`
   padding-right: 30vw;
   padding-left: 10vw;
   margin-left: calc(((100vw - var(--list-element-width)) / 2) * -1);
-  font-family: "ApfelGrotezk", serif;
+  // font-family: "ApfelGrotezk", serif;
+  font-family: Arial;
   font-size: 1.5em;
   // border: 1px solid yellow;
 `;

@@ -1,10 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-  position: absolute;
-`;
-
 const VerseWrapper = styled.div`
   position: absolute;
   display: block;
@@ -243,7 +239,7 @@ export default function Verse(index) {
         </No16>
       );
       break;
-
+      
     default:
       break;
   }
