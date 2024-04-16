@@ -19,7 +19,7 @@ const ListElement = ({ focus }) => {
       /> */}
       {/* <ContentDiv focus={focus}/> */}
       <ImageLine />
-      <TrackerLine focus={focus} />
+      {/* <TrackerLine focus={focus} /> */}
     </Wrapper>
   );
 };
