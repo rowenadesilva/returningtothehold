@@ -8,6 +8,7 @@ const Wrapper = styled.div`
 
 const Line = styled.svg`
   width: 900px;
+  max-width: 100vw;
   text-align: center;
   fill: none;
   stroke: white;
@@ -29,15 +30,15 @@ const Line = styled.svg`
 const ImageLine = () => {
   const wrapperRef = useRef();
 
-  const ContentFocus = (focus) => {
-    if (focus) {
-      return <Content style={{ position: "absolute" }} />;
-    }
-  };
-
   return (
     <Wrapper ref={wrapperRef}>
       <Line viewBox="0 0 355.82 15369.28">
+        <defs>
+          <linearGradient id="line-gradient" gradientTransform="rotate(90)">
+            <stop offset="7%" stopOpacity="0" stopColor="white" />
+            <stop offset="9%" stopOpacity="1" stopColor="white" />
+          </linearGradient>
+        </defs>
         <path
           d="M236.06,4726.6c2.37-1.03,2.93,2.3,3.52,2.14s1.15-0.5,1.76-0.43c0.43,0.04,0.82,0.29,1.16,0.56
 	c2.26,1.81,3.07,4.86,4.92,7.09c0.25,0.31,0.56,0.61,0.95,0.68c0.5,0.08,0.98-0.26,1.23-0.7c0.25-0.44,0.31-0.95,0.38-1.45
@@ -1664,9 +1665,10 @@ const ImageLine = () => {
 	c-3.14,20.83-21.44,38.03-25.77,57.61c25.86,58.54,84.87-26.46,108.13-49.35c25.25-31.13,88.61-45.67,107.59-3.46
 	c20.22,88.44-61.97,64.93-43.31,105.33c18.66,40.4-9.33,109.96-5.26,119.47c4.08,9.51-12.81,24.87-4.94,34.9
 	c2.49,4.09,0.09,5.77,2.23,13.41c2.14,7.64,19.81,17.59,6.52,22.83c-26.35,12.68-43.73,130.51-46.15,160.33"
+          style={{ stroke: "url(#line-gradient)" }}
         />
       </Line>
-      <ContentFocus />
+      <Content   />
     </Wrapper>
   );
 };
