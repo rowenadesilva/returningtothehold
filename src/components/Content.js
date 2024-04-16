@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
-import { TrackerContext } from "./TrackerContext";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import Verses from "./Verses";
 import Chapters from "./Chapters";

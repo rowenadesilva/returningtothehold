@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import ApfelGrotezk from "./assets/fonts/ApfelGrotezk-Mittel.woff2";
+// import ApfelGrotezk from "./assets/fonts/ApfelGrotezk-Mittel.woff2";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: #001814;
     color: white;
-    font-family: 'ApfelGrotezk', sans-serif;
+    font-family: Arial, sans-serif;
     overflow-x: hidden;
   };
 
@@ -35,10 +35,7 @@ const GlobalStyle = createGlobalStyle`
      display: none;
   }
   
-  @font-face {
-    font-family: 'ApfelGrotezk';
-    src: url(${ApfelGrotezk}) format('woff2'),
-  }
+
 
 `;
 
