@@ -170,9 +170,9 @@ export default function Verses() {
         <br />
         {Array(80)
           .fill()
-          .map((item, i) => {
+          .map((i) => {
             return (
-              <a key={i}>
+              <a key={i} id={i}>
                 ditto
                 <br />
               </a>
