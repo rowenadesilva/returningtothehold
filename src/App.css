@@ -1,4 +1,5 @@
-::-webkit-scrollbar {
-  display: none;
-}
 
+@font-face {
+  font-family: 'ApfelGrotezk';
+  src: url("./fonts/apfelGrotezkMittel.woff2") format('woff2'),
+}
