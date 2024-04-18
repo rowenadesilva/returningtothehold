@@ -13,7 +13,6 @@ const Line = styled.svg`
   fill: none;
   stroke: white;
   stroke-width: 0.1px;
-  border: 1px solid red;
 
   @media (max-width: 1000px) {
     width: 700px;

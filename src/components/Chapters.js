@@ -12,12 +12,13 @@ const ChapterWrapper = styled.div`
   position: absolute;
   display: flex;
   width: 60vw;
-  // border: 3px solid green;
+  left: calc((100vw - var(--width)) / -2);
+  margin-left: 20vw;
+  border: 10px solid green;
 `;
 
 const ChapterCopy = styled.div`
   width: 75%;
-  // border: 1px solid yellow;
   > * {
     margin-top: 800px;
   }
@@ -30,9 +31,14 @@ const ChapterCopy = styled.div`
 const PinnedChapter = styled.div`
   font-size: 1.3em;
   text-align: left;
+  border: 2px solid blue;
 
   @media (max-width: 1000px) {
-    font-size: 1.2em;
+    font-size: 1.1em;
+  }
+
+  @media (min-width: 1000px && max-height: 900px) {
+    font-size: 1em;
   }
 
   @media (max-width: 768px) {
@@ -79,6 +85,9 @@ const PinnedReference = styled.div`
 `;
 
 export default function Chapters() {
+  const abstract1 = useRef();
+  const abstractTrigger = useRef();
+
   const introTrigger = useRef();
   const introduction1 = useRef();
   const introduction2 = useRef();
@@ -101,9 +110,9 @@ export default function Chapters() {
   const langhamIndustriesTrigger2 = useRef();
   const langhamIndustriesReference3 = useRef();
 
-const holdRepeatsTrigger = useRef();
-const holdRepeats1 = useRef();
-const holdRepeatsReference1 = useRef();
+  const holdRepeatsTrigger = useRef();
+  const holdRepeats1 = useRef();
+  const holdRepeatsReference1 = useRef();
 
   // all GSAP text animations
   useGSAP(() => {
@@ -152,6 +161,13 @@ const holdRepeatsReference1 = useRef();
       });
     }
 
+    // PIN ABSTRACT CHAPTER
+    pinningChapters(
+      [abstract1.current],
+      [],
+      abstractTrigger
+    );
+
     // PIN INTRODUCTION CHAPTER
     pinningChapters(
       [introduction1.current, introduction2.current, introduction3.current],
@@ -183,8 +199,8 @@ const holdRepeatsReference1 = useRef();
       langhamIndustriesTrigger2
     );
 
-     // PIN THE HOLD REPEATS CHAPTER
-     pinningChapters(
+    // PIN THE HOLD REPEATS CHAPTER
+    pinningChapters(
       [holdRepeats1.current],
       [holdRepeatsReference1.current],
       holdRepeatsTrigger
@@ -193,6 +209,18 @@ const holdRepeatsReference1 = useRef();
 
   return (
     <div>
+      {/* ABSTRACT CHAPTER */}
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.01)" }}>
+        <ChapterCopy ref={abstractTrigger}>
+          <PinnedChapter ref={abstract1} style={{ width: "100%", textAlign: "center"}}>
+            Bibby Stockholm is a barge berthed at Portland Harbour on the south
+        coast of England, currently detaining 135 asylum seekers. <br /> <br />
+        Delving into the history of Bibby Stockholm uncovers the company’s
+        legacy in the transatlantic slave trade, connecting contemporary border
+        practices to a larger narrative of colonialism and empire.
+          </PinnedChapter>
+        </ChapterCopy>
+      </ChapterWrapper>
       {/* INTRO CHAPTER */}
       <ChapterWrapper style={{ top: "calc(var(--height) * 0.155)" }}>
         <ChapterCopy ref={introTrigger}>
@@ -234,6 +262,7 @@ const holdRepeatsReference1 = useRef();
         </ChapterCopy>
         <ChapterReference>
           <PinnedReference ref={introReference1}>
+            <br />
             “Liverpool and the transatlantic slave trade,” Archives Centre,
             Maritime Museum, National Museums of Liverpool
           </PinnedReference>
