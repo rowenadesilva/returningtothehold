@@ -172,10 +172,10 @@ export default function Verses() {
           .fill()
           .map((i) => {
             return (
-              <a key={i} id={i}>
+              <span key={i} id={i}>
                 ditto
                 <br />
-              </a>
+              </span>
             );
           })}
         ditto marks
