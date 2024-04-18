@@ -6,7 +6,6 @@ const Line = styled.svg`
   width: 1200px;
   fill: none;
   stroke: none;
-  border: 1px solid red;
 `;
 
 const Tracker = styled.text`

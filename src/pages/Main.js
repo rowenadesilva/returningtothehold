@@ -9,9 +9,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  // border: 5px solid red;
   width: 100vw;
-
 `;
 
 const Li = styled.li`
@@ -22,9 +20,9 @@ const Li = styled.li`
 
 const App = () => {
   const listRef = useRef([]);
-
-  const [focus, setFocus] = useState([true, false]);
   const [trackerPos, setTrackerPos] = useState(0);
+  var focus = [true, false];
+  // var title = true;
 
   // start list with 2 elements
   const [list, setList] = useState([
@@ -55,12 +53,20 @@ const App = () => {
       const inFocus1 = rect1.top <= document.documentElement.clientHeight / 2;
       // add new list element
       if (inFocus1) {
-        const copy = [...list];
-        copy.push({
-          id: Math.random(),
-        });
+        const copy = [
+          {
+            id: Math.random(),
+          },
+          {
+            id: Math.random(),
+          },
+          {
+            id: Math.random(),
+          },
+        ];
+
         setList(copy);
-        setFocus([false, true, false]);
+        focus = [false, true, false];
       }
     } else {
       // check if listElement 0 comes into focus
@@ -131,7 +137,11 @@ const App = () => {
                 id={item.id}
                 key={item.id}
               >
-                <ListElement focus={focus[i]} trackerPos={trackerPos} />
+                <ListElement
+                  focus={focus[i]}
+                  trackerPos={trackerPos}
+                  id={item.id}
+                />
               </Li>
             );
           })}

@@ -11,7 +11,6 @@ gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 const Wrapper = styled.div`
-  border: 10px solid red;
   text-align: center;
 `;
 
@@ -34,30 +33,8 @@ const Intro = styled.div`
 `;
 
 export default function Content() {
-  const wrapperRef = useRef();
-  const abstract = useRef();
-
-  // all GSAP text animations
-  useGSAP(
-    () => {
-      gsap.to(abstract.current, {
-        scrollTrigger: {
-          trigger: abstract.current,
-          start: "bottom center",
-          end: 800 + " center",
-          pin: abstract.current,
-        },
-      });
-    },
-    { scope: wrapperRef }
-  );
-
   return (
-    <Wrapper ref={wrapperRef}>
-      <Intro style={{ top: "calc(var(--height) * 0.05)" }}>
-        The line from Bibby Stockholm to the transatlantic slave trade is a
-        direct one and its history is full of reverberations
-      </Intro>
+    <Wrapper>
       <Chapters />
       <Verses />
     </Wrapper>

@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TitleWrapper = styled.div`
   position: relative;
-  height: 100vh;
+  height: 200vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@ const TitleWrapper = styled.div`
 const TitleLeft = styled.div`
   position: absolute;
   top: 50vh;
-left: 2vw;
+  left: 2vw;
 
   @media (max-width: 480px) {
     width: min-content;
@@ -66,6 +66,20 @@ const TitleRight = styled.a.attrs((props) => ({
       transition-duration: 1s !important;
     }
   }
+`;
+
+const Abstract = styled.div`
+  position: absolute;
+  top: 150vh;
+  text-align: center;
+  font-size: 0.5em;
+  color: #eef3e5;
+  padding: 0 20vw;
+`;
+
+const Abstract2 = styled.div`
+  font-size: 0.8em;
+  margin-top: 80vh;
 `;
 
 const Highlight = styled.span`
@@ -119,6 +133,22 @@ export default function Title() {
         <TitleRight ref={hold}>
           <Highlight>HOLD</Highlight>
         </TitleRight>
+        {/* ABSTRACT CHAPTER */}
+        <Abstract>
+          Bibby Stockholm is a barge berthed at Portland Harbour on the south
+          coast of England, currently detaining 135 asylum seekers. <br />{" "}
+          <br />
+          Delving into the history of Bibby Stockholm uncovers the company’s
+          legacy in the transatlantic slave trade, connecting contemporary
+          border practices to a larger narrative of colonialism and empire.
+          <br />
+          <br />
+          <br />
+          <Abstract2>
+            The line from Bibby Stockholm to the transatlantic slave trade is a
+            direct one and its history is full of reverberations
+          </Abstract2>
+        </Abstract>
       </TitleWrapper>
     </div>
   );

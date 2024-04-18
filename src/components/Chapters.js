@@ -165,13 +165,6 @@ export default function Chapters() {
       });
     }
 
-    // PIN ABSTRACT CHAPTER
-    pinningChapters(
-      [abstract1.current],
-      [],
-      abstractTrigger
-    );
-
     // PIN INTRODUCTION CHAPTER
     pinningChapters(
       [introduction1.current, introduction2.current, introduction3.current],
@@ -213,18 +206,6 @@ export default function Chapters() {
 
   return (
     <div>
-      {/* ABSTRACT CHAPTER */}
-      <ChapterWrapper style={{ top: "calc(var(--height) * 0.01)" }}>
-        <ChapterCopy ref={abstractTrigger}>
-          <PinnedChapter ref={abstract1} style={{ width: "100%", textAlign: "center"}}>
-            Bibby Stockholm is a barge berthed at Portland Harbour on the south
-        coast of England, currently detaining 135 asylum seekers. <br /> <br />
-        Delving into the history of Bibby Stockholm uncovers the company’s
-        legacy in the transatlantic slave trade, connecting contemporary border
-        practices to a larger narrative of colonialism and empire.
-          </PinnedChapter>
-        </ChapterCopy>
-      </ChapterWrapper>
       {/* INTRO CHAPTER */}
       <ChapterWrapper style={{ top: "calc(var(--height) * 0.155)" }}>
         <ChapterCopy ref={introTrigger}>
@@ -394,7 +375,8 @@ export default function Chapters() {
       <ChapterWrapper style={{ top: "calc(var(--height) * 0.7)" }}>
         <ChapterCopy ref={holdRepeatsTrigger}>
           <PinnedChapter ref={holdRepeats1}>
-            <ChapterTitle>THE HOLD REPEATS</ChapterTitle><br />
+            <ChapterTitle>THE HOLD REPEATS</ChapterTitle>
+            <br />
             Bibby Stockholm is not the first time a detainment vessel has been
             used in Portland. In June 1997, the prison ship HM Weare, was moved
             to Portland as a solution to the overcrowding of HMP the Verne.
