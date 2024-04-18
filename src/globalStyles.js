@@ -1,24 +1,24 @@
 import { createGlobalStyle } from "styled-components";
-// import ApfelGrotezk from "./assets/fonts/ApfelGrotezk-Mittel.woff2";
+import ApfelGrotezk from "./assets/fonts/ApfelGrotezk-Mittel.woff2";
 
 const GlobalStyle = createGlobalStyle`
 
   :root {  
-    --height: 38874.2px;
+    --height: 49510.2px;
     --width: 900px;
   
     @media (max-width: 1000px) {
-      --height: 30235.5px;
+      --height: 38508px;
       --width: 700px;
     }
   
     @media (max-width: 768px) {
-      --height: 23756.4px;
+      --height: 30256.2px;
       --width: 600px;
     }
   
     @media (max-width: 480px) {
-      --height: 12958.1px;
+      --height: 16503.4px;
       --width: 300px;
     }
 
@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: #001814;
     color: white;
-    font-family: Arial, sans-serif;
+    font-family: 'ApfelGrotezk', sans-serif;
     overflow-x: hidden;
   };
 
@@ -35,7 +35,10 @@ const GlobalStyle = createGlobalStyle`
      display: none;
   }
   
-
+  @font-face {
+    font-family: 'ApfelGrotezk';
+    src: url(${ApfelGrotezk}) format('woff2'),
+  }
 
 `;
 

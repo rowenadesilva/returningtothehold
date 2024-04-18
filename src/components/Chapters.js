@@ -95,9 +95,15 @@ export default function Chapters() {
   const langhamIndustriesTrigger = useRef();
   const langhamIndustries1 = useRef();
   const langhamIndustries2 = useRef();
-  const langhamIndustries3 = useRef();
   const langhamIndustriesReference1 = useRef();
   const langhamIndustriesReference2 = useRef();
+  const langhamIndustries3 = useRef();
+  const langhamIndustriesTrigger2 = useRef();
+  const langhamIndustriesReference3 = useRef();
+
+const holdRepeatsTrigger = useRef();
+const holdRepeats1 = useRef();
+const holdRepeatsReference1 = useRef();
 
   // all GSAP text animations
   useGSAP(() => {
@@ -160,21 +166,35 @@ export default function Chapters() {
       bibbyEmpireTrigger
     );
 
-    // PIN LANGHAM INDUSTRIES CHAPTER
+    // PIN LANGHAM INDUSTRIES CHAPTER 1
     pinningChapters(
-      [langhamIndustries1.current, langhamIndustries2.current, langhamIndustries3.current],
+      [langhamIndustries1.current, langhamIndustries2.current],
       [
         langhamIndustriesReference1.current,
         langhamIndustriesReference2.current,
       ],
       langhamIndustriesTrigger
     );
+
+    // PIN LANGHAM INDUSTRIES CHAPTER 2
+    pinningChapters(
+      [langhamIndustries3.current],
+      [langhamIndustriesReference3.current],
+      langhamIndustriesTrigger2
+    );
+
+     // PIN THE HOLD REPEATS CHAPTER
+     pinningChapters(
+      [holdRepeats1.current],
+      [holdRepeatsReference1.current],
+      holdRepeatsTrigger
+    );
   });
 
   return (
     <div>
       {/* INTRO CHAPTER */}
-      <ChapterWrapper style={{ top: "calc(var(--height) * 0.19)" }}>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.155)" }}>
         <ChapterCopy ref={introTrigger}>
           <PinnedChapter ref={introduction1}>
             <ChapterTitle>INTRODUCTION</ChapterTitle>
@@ -224,7 +244,7 @@ export default function Chapters() {
         </ChapterReference>
       </ChapterWrapper>
       {/* BIBBY EMPIRE CHAPTER */}
-      <ChapterWrapper style={{ top: "calc(var(--height) * 0.348)" }}>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.34)" }}>
         <ChapterCopy ref={bibbyEmpireTrigger}>
           <PinnedChapter ref={bibbyEmpire1}>
             <ChapterTitle>BIBBY EMPIRE</ChapterTitle>
@@ -265,10 +285,9 @@ export default function Chapters() {
         </ChapterReference>
       </ChapterWrapper>
       {/* LANGHAM INDUSTRIES CHAPTER */}
-      <ChapterWrapper style={{ top: "calc(var(--height) * 0.53)" }}>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.51)" }}>
         <ChapterCopy ref={langhamIndustriesTrigger}>
           <PinnedChapter ref={langhamIndustries1}>
-            <ChapterTitle>LANGHAM INDUSTRIES</ChapterTitle>
             <br />
             Founded by John Langham in 1980, Langham Industries is a
             Dorset-based engineering company working in defence and marine
@@ -293,6 +312,20 @@ export default function Chapters() {
             austerity of the hold and the deliberate realisation of a space of
             suspension, endemic to the UK’s treatment of asylum seekers.
           </PinnedChapter>
+        </ChapterCopy>
+        <ChapterReference>
+          <PinnedReference ref={langhamIndustriesReference1}>
+            “Liverpool and the transatlantic slave trade,” Archives Centre,
+            Maritime Museum, National Museums of Liverpool
+          </PinnedReference>
+          <PinnedReference ref={langhamIndustriesReference2}>
+            “Liverpool and the transatlantic slave trade,” Archives Centre,
+            Maritime Museum, National Museums of Liverpool
+          </PinnedReference>
+        </ChapterReference>
+      </ChapterWrapper>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.56)" }}>
+        <ChapterCopy ref={langhamIndustriesTrigger2}>
           <PinnedChapter ref={langhamIndustries3}>
             From 2003 until the Brexit Referendum in 2016, Langham Industries
             donated just over £73,000 to the UK Independence Party. In 2014, the
@@ -319,11 +352,49 @@ export default function Chapters() {
           </PinnedChapter>
         </ChapterCopy>
         <ChapterReference>
-          <PinnedReference ref={langhamIndustriesReference1}>
+          <PinnedReference ref={langhamIndustriesReference3}>
             “Liverpool and the transatlantic slave trade,” Archives Centre,
             Maritime Museum, National Museums of Liverpool
           </PinnedReference>
-          <PinnedReference ref={langhamIndustriesReference2}>
+        </ChapterReference>
+      </ChapterWrapper>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.7)" }}>
+        <ChapterCopy ref={holdRepeatsTrigger}>
+          <PinnedChapter ref={holdRepeats1}>
+            <ChapterTitle>THE HOLD REPEATS</ChapterTitle>
+            Bibby Stockholm is not the first time a detainment vessel has been
+            used in Portland. In June 1997, the prison ship HM Weare, was moved
+            to Portland as a solution to the overcrowding of HMP the Verne.
+            Lasting until 2005, it is the UK’s most recent use of a prison ship.
+            Similarly to Bibby Stockholm, the ship was built to house offshore
+            workers in gas and oil. In 1982, it was then acquired by Bibby Line
+            who renamed the vessel Bibby Resolution, which was then bought by
+            the New York City Department of Correction in 1988 to function as a
+            prison ship. After a report was conducted in 2004 of HM Weare which
+            detailed the “unacceptably cramp and claustrophobic” conditions
+            onboard, where prisoners had no access to fresh air, the prison was
+            closed in 2005, eventually leaving Portland in December 2009. It was
+            also mentioned that operational costs were too expensive, despite
+            providing minimal standards for those detained onboard. The parallel
+            histories between Bibby Resolution and Bibby Stockholm highlight how
+            HM Weare acts as a precursor to Bibby Stockholm, and the pattern of
+            incarceration that Portland is steeped in. The resemblance of
+            histories between HMP Weare and Bibby Stockholm is further
+            emphasised by the fact that Bibby Stockholm is docked at the Royal
+            Navy dockyard, in the exact position where HMP Weare was moored. The
+            same corporate actors reappear in HMP Weare’s history, Langham
+            Industries and Bibby Line, who are largely responsible for the
+            utilisation of Bibby Stockholm as a detention prison. The profit
+            gained from the supplying of the port and vessel infrastructure,
+            points towards the collusion between maritime companies involved in
+            ship repair, engineering services, vessel logistics and shipping
+            operations with the state, to not only enable maritime
+            incarceration, but gain a vast profit from the subjugation and
+            indefinite detainment of people.
+          </PinnedChapter>
+        </ChapterCopy>
+        <ChapterReference>
+          <PinnedReference ref={holdRepeatsReference1}>
             “Liverpool and the transatlantic slave trade,” Archives Centre,
             Maritime Museum, National Museums of Liverpool
           </PinnedReference>

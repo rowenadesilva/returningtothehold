@@ -24,186 +24,168 @@ const VerseWrapper = styled.div`
   }
 `;
 
-const No1 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.12);
-  // left: calc(var(--width) * 0.3);
-  left: 0;
-`;
-
-const No2 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.125);
-  left: calc(var(--width) * 0.8);
-`;
-
-const No3 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.13);
-  left: calc(var(--width) * 0.06);
-`;
-
-const No4 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.137);
-  left: calc(var(--width) * 0.3);
-`;
-
-const No5 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.146);
-  left: calc(var(--width) * 0.9);
-`;
-
-const No6 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.16);
-  left: calc(var(--width) * 0.3);
-`;
-
-const No7 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.168);
-  left: calc(var(--width) * 0.73);
-`;
-
-const No8 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.178);
-  left: calc(var(--width) * 0.2);
-`;
-
-const No9 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.178);
-  left: calc(var(--width) * 0.92);
-`;
-
-const No10 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.275);
-  left: calc(var(--width) * 0.2);
-`;
-
-const No11 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.28);
-  left: calc(var(--width) * 0.6);
-`;
-
-const No12 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.2882);
-  left: calc(var(--width) * 0.01);
-`;
-
-const No13 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.294);
-  left: calc(var(--width) * 0.73);
-`;
-
-const No14 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.42);
-  left: calc(var(--width) * 0.1);
-`;
-
-const No15 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.431);
-  left: calc(var(--width) * 0.181);
-  text-align: right;
-`;
-
-const No16 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.432);
-  left: calc(var(--width) * 0.5);
-`;
-
-const No17 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.47);
-  left: calc(var(--width) * 0.5);
-`;
-
-const No18 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.478);
-  left: calc(var(--width) * 0.36);
-`;
-
-const No19 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.487);
-  left: calc(var(--width) * 0.3);
-`;
-
-const No20 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.498);
-  left: calc(var(--width) * 1);
-`;
-
-const No21 = styled(VerseWrapper)`
-  top: calc(var(--height) * 0.518);
-  left: calc(var(--width) * 0.8);
-`;
-
 export default function Verses() {
   return (
     <div>
-      <No1>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.092)",
+          left: "calc(var(--width) * 0.4)",
+        }}
+      >
         By negating a beginning
         <br />
         and an end the ocean
         <br />
         appears atemporal
-      </No1>
-      <No2>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.097)",
+          left: "calc(var(--width) * 0.8)",
+        }}
+      >
         concealing the markers
         <br />
         which place us in time
-      </No2>
-      <No3>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.101)",
+          left: "calc(var(--width) * 0.06)",
+        }}
+      >
         The approach
         <br />
         and retreat of
         <br />
         the sea,
-      </No3>
-      <No4>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.105)",
+          left: "calc(var(--width) * 0.3)",
+        }}
+      >
         where the ‘gentle’ tide <br />
         becomes eveloped into
         <br />
         the sand
-      </No4>
-      <No5>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.115)",
+          left: "calc(var(--width) * 0.85)",
+        }}
+      >
         washes away the <br />
         imprints on the shore
-      </No5>
-      <No6>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.127)",
+          left: "calc(var(--width) * 0.3)",
+        }}
+      >
         In its ebb and flow,
         <br /> the ocean renews itself
-      </No6>
-      <No7>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.132)",
+          left: "calc(var(--width) * 0.73)",
+        }}
+      >
         the water folds inwards, <br />
         reaffirming itself
-      </No7>
-      <No8>This is what Édouard Glissant calls </No8>
-      <No9>a tautology</No9>
-      <No10>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.14)",
+          left: "calc(var(--width) * 0.2)",
+        }}
+      >
+        This is what Édouard Glissant calls
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.14)",
+          left: "calc(var(--width) * 0.92)",
+        }}
+      >
+        a tautology
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.25)",
+          left: "calc(var(--width) * 0.1)",
+        }}
+      >
         This uninterrupted event, <br />
         cyclical in its nature,
-      </No10>
-
-      <No11>is void of an end</No11>
-      <No12>The waves continue to meet the shore</No12>
-      <No13>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.253)",
+          left: "calc(var(--width) * 0.6)",
+        }}
+      >
+        is void of an end
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.2625)",
+          left: "calc(var(--width) * 0.01)",
+        }}
+      >
+        The waves continue to meet the shore
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.2697)",
+          left: "calc(var(--width) * 0.95)",
+        }}
+      >
         but the balls and chains <br />
         which rust at the bed <br />
         betray the time that has <br />
         passed
-      </No13>
-
-      <No14>In attempts to remap slave voyages,</No14>
-      <No15>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.41)",
+          left: "calc(var(--width) * 0.03)",
+        }}
+      >
+        In attempts to remap slave voyages,
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.415)",
+          left: "calc(var(--width) * 0.181)",
+          textAlign: "right",
+        }}
+      >
         patterns are solidified and &nbsp; &nbsp; &nbsp; ditto
         <br />
-        {/* {Array(60)
-              .fill()
-              .map((item, i) => {
-                          <a key={i}>
-                    ditto
-                    <br />
-                  </a>
-                );
-              })} */}
+        {Array(80)
+          .fill()
+          .map((item, i) => {
+            return (
+              <a key={i}>
+                ditto
+                <br />
+              </a>
+            );
+          })}
         ditto marks
-      </No15>
-
-      <No16>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.42)",
+          left: "calc(var(--width) * 0.46)",
+        }}
+      >
         ditto <br />
         <br />
         <br />
@@ -223,37 +205,151 @@ export default function Verses() {
         ditto <br />
         ditto <br />
         ditto <br />
-      </No16>
-
-      <No17>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.4551)",
+          left: "calc(var(--width) * 0.5)",
+        }}
+      >
         could fill whole pages <br />
         of the archives
-      </No17>
-
-      <No18>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.46)",
+          left: "calc(var(--width) * 0.3)",
+        }}
+      >
         Whilst they diffuse <br />
         across the ocean,
-      </No18>
-
-      <No19>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.471)",
+          left: "calc(var(--width) * 0.25)",
+        }}
+      >
         ports are where <br />
         the multitude of <br />
         journeys converge
-      </No19>
-
-      <No20>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.48)",
+          left: "calc(var(--width) * 1)",
+        }}
+      >
         The routes forged <br />
         through reiteration <br />
         gather definitively <br />
         at these points
-      </No20>
-
-      <No21>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.495)",
+          left: "calc(var(--width) * 0.8)",
+        }}
+      >
         evidence a concentration <br />
         and accumulation of
         <br />
         histories of brutality
-      </No21>
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.615)",
+          left: "calc(var(--width) * 0.4)",
+        }}
+      >
+        “The boats set out <br />
+        one after another.
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.619)",
+          left: "calc(var(--width) * 0.62)",
+        }}
+      >
+        And when the migrants <br />
+        reach the shore
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.62)",
+          left: "calc(var(--width) * 0.4)",
+        }}
+      >
+        they are often <br />
+        returned to the <br />
+        hold in the form of
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.625)",
+          left: "calc(var(--width) * 0.25)",
+        }}
+      >
+        the camp,
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.627)",
+          left: "calc(var(--width) * 0.35)",
+        }}
+      >
+        the Lager,
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.629)",
+          left: "calc(var(--width) * 0.15)",
+        }}
+      >
+        the detention <br />
+        center,
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.631)",
+          left: "calc(var(--width) * 0.4)",
+        }}
+      >
+        and so on,
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.635)",
+          left: "calc(var(--width) * 0.5)",
+        }}
+      >
+        and they may be <br />
+        returned to the ship
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.6425)",
+          left: "calc(var(--width) * 0.05)",
+        }}
+      >
+        Cast behind,
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.65)",
+          left: "calc(var(--width) * 0.8)",
+        }}
+      >
+        set adrift,
+      </VerseWrapper>
+      <VerseWrapper
+        style={{
+          top: "calc(var(--height) * 0.66)",
+          left: "calc(var(--width) * 0.9)",
+        }}
+      >
+        once again.”.
+      </VerseWrapper>
     </div>
   );
 }

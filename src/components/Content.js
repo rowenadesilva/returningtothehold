@@ -53,19 +53,19 @@ export default function Content() {
 
   return (
     <Wrapper ref={wrapperRef}>
-      <Chapters />
-      <Verses />
-      <Intro ref={abstract} style={{ top: "calc(var(--height) * 0.03)" }}>
+      <Intro ref={abstract} style={{ top: "calc(var(--height) * 0.01)" }}>
         Bibby Stockholm is a barge berthed at Portland Harbour on the south
         coast of England, currently detaining 135 asylum seekers. <br /> <br />
         Delving into the history of Bibby Stockholm uncovers the company’s
         legacy in the transatlantic slave trade, connecting contemporary border
         practices to a larger narrative of colonialism and empire.
       </Intro>
-      <Intro style={{ top: "calc(var(--height) * 0.07)" }}>
+      <Intro style={{ top: "calc(var(--height) * 0.05)" }}>
         The line from Bibby Stockholm to the transatlantic slave trade is a
         direct one and its history is full of reverberations
       </Intro>
+      <Chapters />
+      <Verses />
     </Wrapper>
   );
 }
