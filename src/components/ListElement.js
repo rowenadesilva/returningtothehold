@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import ImageLine from "../components/ImageLine";
 import Title from "../components/Title";
-import Hold from "../components/Hold";
 
 const Wrapper = styled.div`
   display: flex;
