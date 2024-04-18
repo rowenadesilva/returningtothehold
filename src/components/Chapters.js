@@ -20,6 +20,10 @@ const ChapterWrapper = styled.div`
     width: 70vw;
     margin-left: 10vw;
   }
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const ChapterCopy = styled.div`
