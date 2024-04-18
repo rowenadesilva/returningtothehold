@@ -89,9 +89,6 @@ const PinnedReference = styled.div`
 `;
 
 export default function Chapters() {
-  const abstract1 = useRef();
-  const abstractTrigger = useRef();
-
   const introTrigger = useRef();
   const introduction1 = useRef();
   const introduction2 = useRef();

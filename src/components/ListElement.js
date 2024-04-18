@@ -18,12 +18,6 @@ function CheckFocus(id) {
 const ListElement = ({ focus, id }) => {
   const ListElementRef = useRef();
 
-  const checkFocus = () => {
-    if (focus) {
-      return <Title />;
-    }
-  };
-
   return (
     <Wrapper ref={ListElementRef}>
       <CheckFocus id={id} />
