@@ -14,7 +14,12 @@ const ChapterWrapper = styled.div`
   width: 60vw;
   left: calc((100vw - var(--width)) / -2);
   margin-left: 20vw;
-  border: 10px solid green;
+  // border: 10px solid green;
+
+  @media (max-height: 900px) {
+    width: 70vw;
+    margin-left: 10vw;
+  }
 `;
 
 const ChapterCopy = styled.div`
@@ -31,7 +36,6 @@ const ChapterCopy = styled.div`
 const PinnedChapter = styled.div`
   font-size: 1.3em;
   text-align: left;
-  border: 2px solid blue;
 
   @media (max-width: 1000px) {
     font-size: 1.1em;
@@ -390,7 +394,7 @@ export default function Chapters() {
       <ChapterWrapper style={{ top: "calc(var(--height) * 0.7)" }}>
         <ChapterCopy ref={holdRepeatsTrigger}>
           <PinnedChapter ref={holdRepeats1}>
-            <ChapterTitle>THE HOLD REPEATS</ChapterTitle>
+            <ChapterTitle>THE HOLD REPEATS</ChapterTitle><br />
             Bibby Stockholm is not the first time a detainment vessel has been
             used in Portland. In June 1997, the prison ship HM Weare, was moved
             to Portland as a solution to the overcrowding of HMP the Verne.
