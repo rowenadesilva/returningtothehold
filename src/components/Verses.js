@@ -336,7 +336,7 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         style={{
-          top: "calc(var(--height) * 0.6)",
+          top: "calc(var(--height) * 0.65)",
           left: "calc(var(--width) * 0.8)",
         }}
       >

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import ListElement from "../components/ListElement";
 import styled from "styled-components";
 import { TrackerContext } from "../components/TrackerContext";
+import Hold from "../components/Hold";
 
 const Container = styled.div`
   display: flex;
@@ -145,6 +146,7 @@ const App = () => {
               </Li>
             );
           })}
+          <Hold />
         </Container>
       </TrackerContext.Provider>
     </div>
