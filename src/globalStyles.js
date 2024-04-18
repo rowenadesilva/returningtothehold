@@ -28,7 +28,6 @@ const GlobalStyle = createGlobalStyle`
     background: #001814;
     color: white;
     font-family: 'ApfelGrotezk', sans-serif;
-    overflow-x: hidden;
   };
 
   ::-webkit-scrollbar {

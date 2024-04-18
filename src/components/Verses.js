@@ -20,7 +20,7 @@ const VerseWrapper = styled.div`
   }
 
   @media (max-width: 480px) {
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
 `;
 
@@ -41,8 +41,8 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         style={{
-          top: "calc(var(--height) * 0.097)",
-          left: "calc(var(--width) * 0.8)",
+          top: "calc(var(--height) * 0.096)",
+          left: "calc(var(--width) * 0.6)",
         }}
       >
         concealing the markers
@@ -74,8 +74,8 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         style={{
-          top: "calc(var(--height) * 0.115)",
-          left: "calc(var(--width) * 0.85)",
+          top: "calc(var(--height) * 0.122)",
+          left: "calc(var(--width) * 0.62)",
         }}
       >
         washes away the <br />
@@ -84,7 +84,7 @@ export default function Verses() {
       <VerseWrapper
         style={{
           top: "calc(var(--height) * 0.127)",
-          left: "calc(var(--width) * 0.3)",
+          left: "calc(var(--width) * 0.2)",
         }}
       >
         In its ebb and flow,
@@ -142,8 +142,8 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         style={{
-          top: "calc(var(--height) * 0.2697)",
-          left: "calc(var(--width) * 0.95)",
+          top: "calc(var(--height) * 0.2738)",
+          left: "calc(var(--width) * 0.65)",
         }}
       >
         but the balls and chains <br />
@@ -236,8 +236,8 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         style={{
-          top: "calc(var(--height) * 0.48)",
-          left: "calc(var(--width) * 1)",
+          top: "calc(var(--height) * 0.4825)",
+          left: "calc(var(--width) * 0.69)",
         }}
       >
         The routes forged <br />
@@ -247,8 +247,8 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         style={{
-          top: "calc(var(--height) * 0.495)",
-          left: "calc(var(--width) * 0.8)",
+          top: "calc(var(--height) * 0.498)",
+          left: "calc(var(--width) * 0.6)",
         }}
       >
         evidence a concentration <br />
@@ -336,7 +336,7 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         style={{
-          top: "calc(var(--height) * 0.65)",
+          top: "calc(var(--height) * 0.6)",
           left: "calc(var(--width) * 0.8)",
         }}
       >
@@ -344,8 +344,8 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         style={{
-          top: "calc(var(--height) * 0.66)",
-          left: "calc(var(--width) * 0.9)",
+          top: "calc(var(--height) * 0.662)",
+          left: "calc(var(--width) * 0.3)",
         }}
       >
         once again.”.

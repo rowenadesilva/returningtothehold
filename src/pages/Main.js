@@ -5,8 +5,13 @@ import { TrackerContext } from "../components/TrackerContext";
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  // border: 5px solid red;
+  width: 100vw;
+
 `;
 
 const Li = styled.li`

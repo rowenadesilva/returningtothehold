@@ -19,6 +19,7 @@ const TitleWrapper = styled.div`
   text-align: left;
   font-size: 4em;
   color: #2f63be;
+  // border: 5px solid yellow;
 
   @media (max-width: 1000px) {
     font-size: 3em;
@@ -29,21 +30,28 @@ const TitleWrapper = styled.div`
   }
 
   @media (max-width: 480px) {
-    font-size: 40px;
+    font-size: 2em;
   }
 `;
 
 const TitleLeft = styled.div`
-position: absolute;
-top: 50vh;`;
+  position: absolute;
+  top: 50vh;
+left: 2vw;
+
+  @media (max-width: 480px) {
+    width: min-content;
+    transform: translateY(-25%);
+  }
+`;
 
 const TitleRight = styled.a.attrs((props) => ({
   className: props.className,
 }))`
   position: absolute;
   top: 50vh;
-  right: 2vw;
   z-index: 100;
+  right: 2vw;
   transform-origin: right;
   font-size: 1em;
   color: #eef3e5;
