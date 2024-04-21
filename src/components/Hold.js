@@ -12,6 +12,7 @@ const HoldOne = styled.a.attrs((props) => ({
   top: 50vh;
   z-index: 100;
   right: 2vw;
+  // border: 5px solid yellow;
   transform-origin: right;
   font-size: 4em;
   color: #eef3e5;
@@ -21,10 +22,24 @@ const HoldOne = styled.a.attrs((props) => ({
     scale: 0.5 !important;
     top: 0;
     margin: 0;
-    &:hover {
-      transform: scale(1.5) !important;
-      transition-duration: 1s !important;
-    }
+    // &:hover {
+    //   transform: scale(1.5) !important;
+    //   transition-duration: 1s !important;
+    // }
+  }
+
+  @media (max-width: 1000px) {
+    font-size: 3em;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2em;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2em;
+    width: min-content;
+    transform: translateY(-25%);
   }
 `;
 
@@ -34,6 +49,20 @@ const HoldTwo = styled.a.attrs((props) => ({}))`
   font-size: 2em;
   height: min-content;
   color: red;
+
+  @media (max-width: 1000px) {
+    font-size: 3em;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2em;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2em;
+    width: min-content;
+    transform: translateY(-25%);
+  }
 `;
 
 const Highlight = styled.span`
@@ -49,22 +78,23 @@ const Highlight = styled.span`
 `;
 
 function Hold2Div(trackerPos) {
-  console.log(trackerPos.trackerPos);
   const hold2 = useRef();
 
   if (hold2.current) {
-    console.log(window.innerHeight);
-    hold2.current.style.top = (window.innerHeight * trackerPos.trackerPos / 100) - window.innerHeight + 20 + "px";
-    console.log(0 - hold2.current.clientHeight + trackerPos.trackerPos);
+    hold2.current.style.top =
+      (window.innerHeight * trackerPos.trackerPos) / 100 -
+      window.innerHeight +
+      20 +
+      "px";
   }
 
-  if (trackerPos.trackerPos) {
-    return (
-      <HoldTwo ref={hold2}>
-        <Highlight>HOLD</Highlight>
-      </HoldTwo>
-    );
-  }
+  // if (trackerPos.trackerPos) {
+  return (
+    <HoldTwo ref={hold2}>
+      <Highlight>HOLD</Highlight>
+    </HoldTwo>
+  );
+  // }
 }
 
 export default function Hold() {

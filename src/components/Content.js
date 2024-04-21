@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Verses from "./Verses";
 import Chapters from "./Chapters";
+import ArchiveTable from "./ArchiveTable";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -19,6 +20,7 @@ export default function Content() {
     <Wrapper>
       <Chapters />
       <Verses />
+      <ArchiveTable />
     </Wrapper>
   );
 }

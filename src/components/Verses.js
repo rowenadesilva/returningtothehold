@@ -162,7 +162,7 @@ export default function Verses() {
       <VerseWrapper
         style={{
           top: "calc(var(--height) * 0.415)",
-          left: "calc(var(--width) * 0.181)",
+          left: "calc(var(--width) * -0.2)",
           textAlign: "right",
         }}
       >
@@ -170,7 +170,7 @@ export default function Verses() {
         <br />
         {Array(80)
           .fill()
-          .map((i) => {
+          .map((index, i) => {
             return (
               <span key={i} id={i}>
                 ditto
@@ -182,8 +182,8 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         style={{
-          top: "calc(var(--height) * 0.42)",
-          left: "calc(var(--width) * 0.46)",
+          top: "calc(var(--height) * 0.421)",
+          left: "calc(var(--width) * 0.08)",
         }}
       >
         ditto <br />
@@ -209,7 +209,7 @@ export default function Verses() {
       <VerseWrapper
         style={{
           top: "calc(var(--height) * 0.4551)",
-          left: "calc(var(--width) * 0.5)",
+          left: "calc(var(--width) * 0.2)",
         }}
       >
         could fill whole pages <br />
@@ -217,8 +217,8 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         style={{
-          top: "calc(var(--height) * 0.46)",
-          left: "calc(var(--width) * 0.3)",
+          top: "calc(var(--height) * 0.465)",
+          left: "calc(var(--width) * 0.6)",
         }}
       >
         Whilst they diffuse <br />

@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 function CheckFocus(id) {
-  console.log(id);
   if (id.id === 0) {
     return <Title />;
   }

@@ -4,13 +4,20 @@ import styled from "styled-components";
 const TitleWrapper = styled.div`
   position: relative;
   height: 200vh;
-  width: 100vw;
+  width: 90vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: left;
   color: #2f63be;
   // border: 5px solid yellow;
+`;
+
+const TitleRight = styled.div`
+  position: absolute;
+  top: 50vh;
+  left: 2vw;
+  font-size: 4em;
 
   @media (max-width: 1000px) {
     font-size: 3em;
@@ -22,16 +29,6 @@ const TitleWrapper = styled.div`
 
   @media (max-width: 480px) {
     font-size: 2em;
-  }
-`;
-
-const TitleRight = styled.div`
-  position: absolute;
-  top: 50vh;
-  left: 2vw;
-  font-size: 4em;
-
-  @media (max-width: 480px) {
     width: min-content;
     transform: translateY(-25%);
   }

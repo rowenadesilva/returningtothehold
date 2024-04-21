@@ -91,20 +91,30 @@ const PinnedReference = styled.div`
     font-size: 1em;
   }
 `;
+const RefNumberCopy = styled.sup`
+  color: #2f63be;
+`;
+
+const RefNumber = styled.span`
+  color: #2f63be;
+`;
+
+const Link = styled.a`
+  color: #2f63be;
+`;
 
 export default function Chapters() {
   const introTrigger = useRef();
   const introduction1 = useRef();
   const introduction2 = useRef();
   const introduction3 = useRef();
-  const introReference1 = useRef();
-  const introReference2 = useRef();
 
   const bibbyEmpireTrigger = useRef();
   const bibbyEmpire1 = useRef();
   const bibbyEmpire2 = useRef();
   const bibbyEmpireReference1 = useRef();
   const bibbyEmpireReference2 = useRef();
+  const bibbyEmpireReference3 = useRef();
 
   const langhamIndustriesTrigger = useRef();
   const langhamIndustries1 = useRef();
@@ -112,8 +122,13 @@ export default function Chapters() {
   const langhamIndustriesReference1 = useRef();
   const langhamIndustriesReference2 = useRef();
   const langhamIndustries3 = useRef();
+  const langhamIndustries4 = useRef();
   const langhamIndustriesTrigger2 = useRef();
   const langhamIndustriesReference3 = useRef();
+  const langhamIndustriesReference4 = useRef();
+  const langhamIndustriesReference5 = useRef();
+  const langhamIndustriesReference6 = useRef();
+  const langhamIndustriesReference7 = useRef();
 
   const holdRepeatsTrigger = useRef();
   const holdRepeats1 = useRef();
@@ -128,6 +143,8 @@ export default function Chapters() {
     ) {
       let offsets; // an Array with each title's offset
       let totalOffset; // adds up all the heights of the titles
+      let referenceOffsets;
+      let totalReferenceOffset;
 
       // to make it responsive, we put the calculations into a function that we call on window resize (and initially)
       function calculateOffsets() {
@@ -138,8 +155,20 @@ export default function Chapters() {
           return prev;
         });
       }
+
+      function calculateReferenceOffsets() {
+        totalReferenceOffset = 0;
+        referenceOffsets = chapterReferenceRefs.map((title) => {
+          let prev = totalReferenceOffset;
+          totalReferenceOffset += title.offsetHeight + 30;
+          return prev;
+        });
+      }
+
       calculateOffsets();
+      calculateReferenceOffsets();
       window.addEventListener("resize", calculateOffsets);
+      window.addEventListener("resize", calculateReferenceOffsets);
 
       chapterRefs.forEach((title, i) => {
         let heading = chapterRefs[i];
@@ -150,6 +179,7 @@ export default function Chapters() {
           end: () => "bottom " + totalOffset - 0,
           pin: heading,
           pinSpacing: false,
+          anticipatePin: 1,
         });
       });
 
@@ -158,10 +188,11 @@ export default function Chapters() {
         ScrollTrigger.create({
           trigger: heading,
           endTrigger: chapterTrigger.current,
-          start: () => "top " + (offsets[i] + 70),
-          end: () => "bottom " + totalOffset - 0,
+          start: () => "top " + (referenceOffsets[i] + 70),
+          end: () => "bottom " + totalReferenceOffset - 0,
           pin: heading,
           pinSpacing: false,
+          anticipatePin: 1,
         });
       });
     }
@@ -169,14 +200,18 @@ export default function Chapters() {
     // PIN INTRODUCTION CHAPTER
     pinningChapters(
       [introduction1.current, introduction2.current, introduction3.current],
-      [introReference1.current, introReference2.current],
+      [],
       introTrigger
     );
 
     // PIN BIBBY EMPIRE CHAPTER
     pinningChapters(
       [bibbyEmpire1.current, bibbyEmpire2.current],
-      [bibbyEmpireReference1.current, bibbyEmpireReference2.current],
+      [
+        bibbyEmpireReference1.current,
+        bibbyEmpireReference2.current,
+        bibbyEmpireReference3.current,
+      ],
       bibbyEmpireTrigger
     );
 
@@ -192,8 +227,14 @@ export default function Chapters() {
 
     // PIN LANGHAM INDUSTRIES CHAPTER 2
     pinningChapters(
-      [langhamIndustries3.current],
-      [langhamIndustriesReference3.current],
+      [langhamIndustries3.current, langhamIndustries4.current],
+      [
+        langhamIndustriesReference3.current,
+        langhamIndustriesReference4.current,
+        langhamIndustriesReference5.current,
+        langhamIndustriesReference6.current,
+        langhamIndustriesReference7.current,
+      ],
       langhamIndustriesTrigger2
     );
 
@@ -246,17 +287,6 @@ export default function Chapters() {
             capacity, the barge would only address 0.3% of this backlog.
           </PinnedChapter>
         </ChapterCopy>
-        <ChapterReference>
-          <PinnedReference ref={introReference1}>
-            <br />
-            “Liverpool and the transatlantic slave trade,” Archives Centre,
-            Maritime Museum, National Museums of Liverpool
-          </PinnedReference>
-          <PinnedReference ref={introReference2}>
-            “Liverpool and the transatlantic slave trade,” Archives Centre,
-            Maritime Museum, National Museums of Liverpool
-          </PinnedReference>
-        </ChapterReference>
       </ChapterWrapper>
       {/* BIBBY EMPIRE CHAPTER */}
       <ChapterWrapper style={{ top: "calc(var(--height) * 0.34)" }}>
@@ -267,35 +297,57 @@ export default function Chapters() {
             The vessel’s parent company, Bibby Line, was founded by John Bibby
             in 1807 in Liverpool, a city which was fundamental to the
             transatlantic slave trade, where 1.5 million captured Africans were
-            taken from ships which departed from the port. The earliest records
-            of Bibby Line show vessels travelling between Europe and South
-            America with cargo that would have been produced on plantations
-            using the labour of enslaved Africans and slave based economies. An
-            example of this is noted in their collection, which logs the Mary
-            Bibby's voyage in 1825-1826 carrying a cargo of sugar from Rio de
-            Janeiro, Brazil to Rotterdam, the biggest port in Europe.
+            taken from ships which departed from the port.
+            <RefNumberCopy>3</RefNumberCopy> The earliest records of Bibby Line
+            show vessels travelling between Europe and South America with cargo
+            that would have been produced on plantations using the labour of
+            enslaved Africans and slave based economies. An example of this is
+            noted in their collection, which logs the Mary Bibby's voyage in
+            1825-1826 carrying a cargo of sugar from Rio de Janeiro, Brazil to
+            Rotterdam, the biggest port in Europe.{" "}
+            <RefNumberCopy>4</RefNumberCopy>
           </PinnedChapter>
           <PinnedChapter ref={bibbyEmpire2}>
             Looking deeper into this time period reveals John Bibby’s
             involvement in the transatlantic slave trade. Between 1805 and 1806,
             just before founding Bibby Line, John Bibby co-owned three slave
             ships, the Harmonie, the Eagle and the Sally, that carried 737
-            forcefully displaced Africans. The voyages carried slaves from West
-            Central Africa to Georgetown in Guyana, Bassa to Barbados and
-            Cameroon to Kingston, Jamaica. The development of port
-            infrastructure and maritime law was shaped by the logistics of the
-            slave trade. Bibby Line exemplifies the complicity of maritime
-            industries in colonial legacies.
+            forcefully displaced Africans.<RefNumberCopy>5</RefNumberCopy> The
+            voyages carried slaves from West Central Africa to Georgetown in
+            Guyana, Bassa to Barbados and Cameroon to Kingston, Jamaica. The
+            development of port infrastructure and maritime law was shaped by
+            the logistics of the slave trade. Bibby Line exemplifies the
+            complicity of maritime industries in colonial legacies.
           </PinnedChapter>
         </ChapterCopy>
         <ChapterReference>
           <PinnedReference ref={bibbyEmpireReference1}>
+            <RefNumber>3</RefNumber>
+            <br />
             “Liverpool and the transatlantic slave trade,” Archives Centre,
             Maritime Museum, National Museums of Liverpool
           </PinnedReference>
           <PinnedReference ref={bibbyEmpireReference2}>
-            “Liverpool and the transatlantic slave trade,” Archives Centre,
-            Maritime Museum, National Museums of Liverpool
+            <RefNumber>4</RefNumber>
+            <br />
+            “Bibby Line, Shipowners” Maritime Museum, <br />
+            <Link
+              href="https://www.liverpoolmuseums.org.uk/artifact/bibby-line-shipowners"
+              target="_blank"
+            >
+              National Museums of Liverpool
+            </Link>
+          </PinnedReference>
+          <PinnedReference ref={bibbyEmpireReference3}>
+            <RefNumber>5</RefNumber>
+            <br />
+            <Link
+              href="https://www.slavevoyages.org/voyage/database"
+              target="_blank"
+            >
+              "Trans-atlantic Slave Database,” Slave Voyages <br />
+            </Link>
+            accessed 03 September 2023
           </PinnedReference>
         </ChapterReference>
       </ChapterWrapper>
@@ -303,6 +355,7 @@ export default function Chapters() {
       <ChapterWrapper style={{ top: "calc(var(--height) * 0.51)" }}>
         <ChapterCopy ref={langhamIndustriesTrigger}>
           <PinnedChapter ref={langhamIndustries1}>
+            <ChapterTitle>LANGHAM INDUSTRIES</ChapterTitle>
             <br />
             Founded by John Langham in 1980, Langham Industries is a
             Dorset-based engineering company working in defence and marine
@@ -311,31 +364,48 @@ export default function Chapters() {
             of the first contracts officiated by the company. Four other ports
             were approached by the Home Office as potential sites for the
             institution of Bibby Stockholm as a detention centre, all of which
-            declined. As the port is privately owned, Langham Industries’
-            acceptance to the Home Office’s offer was crucial in securing the
-            implementation of the barge as a carceral site. The economic and
-            political motives in hosting Bibby Stockholm are necessary to
-            understand what is at stake, and who stands to gain profit.
+            declined. <RefNumberCopy>6</RefNumberCopy> As the port is privately
+            owned, Langham Industries’ acceptance to the Home Office’s offer was
+            crucial in securing the implementation of the barge as a carceral
+            site. The economic and political motives in hosting Bibby Stockholm
+            are necessary to understand what is at stake, and who stands to gain
+            profit.
           </PinnedChapter>
           <PinnedChapter ref={langhamIndustries2}>
             Bibby Stockholm is berthed below the mean low water mark, meaning
             that the privately owned Portland Harbour was not legally required
-            to consult the council for building permission. This strategic
-            placement of the barge allowed them to manoeuvre into a legal
-            grey-zone, benefitting from laxed rules regarding conditions on the
-            barge. The “legal ambiguity” mentioned is used to determine the
-            austerity of the hold and the deliberate realisation of a space of
-            suspension, endemic to the UK’s treatment of asylum seekers.
+            to consult the council for building permission.
+            <RefNumberCopy>7</RefNumberCopy> This strategic placement of the
+            barge allowed them to manoeuvre into a legal grey-zone, benefitting
+            from laxed rules regarding conditions on the barge. The “legal
+            ambiguity” mentioned is used to determine the austerity of the hold
+            and the deliberate realisation of a space of suspension, endemic to
+            the UK’s treatment of asylum seekers.
           </PinnedChapter>
         </ChapterCopy>
         <ChapterReference>
           <PinnedReference ref={langhamIndustriesReference1}>
-            “Liverpool and the transatlantic slave trade,” Archives Centre,
-            Maritime Museum, National Museums of Liverpool
+            <RefNumber>6</RefNumber>
+            <br />
+            Marcus White, “Bibby Stockholm barge: Why is asylum housing plan so
+            controversial?” <br />
+            <Link
+              href="https://www.bbc.co.uk/news/uk-england-dorset-66189989"
+              target="_blank"
+            >
+              BBC News, 17 July 2023
+            </Link>
           </PinnedReference>
           <PinnedReference ref={langhamIndustriesReference2}>
-            “Liverpool and the transatlantic slave trade,” Archives Centre,
-            Maritime Museum, National Museums of Liverpool
+            <RefNumber>7</RefNumber>
+            <br />
+            “Leader’s comments on the Home Office barge” <br />
+            <Link
+              href="https://moderngov.dorsetcouncil.gov.uk/documents/s10407/Leaders%20comments%20on%20the%20Home%20Office%20barge.pdf"
+              target="_blank"
+            >
+              Dorset Council, 18 July 2023
+            </Link>
           </PinnedReference>
         </ChapterReference>
       </ChapterWrapper>
@@ -343,33 +413,100 @@ export default function Chapters() {
         <ChapterCopy ref={langhamIndustriesTrigger2}>
           <PinnedChapter ref={langhamIndustries3}>
             From 2003 until the Brexit Referendum in 2016, Langham Industries
-            donated just over £73,000 to the UK Independence Party. In 2014, the
-            company donated £2000 to support the re-election of UKIP MP Douglas
-            Carswell, having left the Conservative party to join UKIP. Carswell
-            was a staunch advocate for Brexit, having founded the Vote Leave
-            campaign organisation. Catherine Langham, a shareholder and director
-            of Langham Family Holdings and self-described Director of Langham
-            Industries, is a Conservative parish councillor for Hilton in
-            Dorset. In 2016, she was an active member in local campaigns to
-            leave the European Union. Brexit is an essential political move for
-            Langham Industries. The alignment on aggressive anti-immigration
-            politics that fuelled Brexit campaigns and the economic bolstering
-            of the UK Independence Party, speaks to Langham Industries’
-            co-alliance with the Home Office’s decision to detain migrants on
-            Bibby Stockholm. With Langham Industries making £2.5 million from
-            its 18-month contract, the profit anticipated by Bibby Stockholm
-            will only incentivise private ports to invest in the use of
-            detainment vessels. The immense profit gained by Langham Industries
-            reveals a network of economic relations directly related to the
-            funding of right-wing political parties that have a reliance on the
-            institution of Bibby Stockholm as a detention prison for populous
-            votes.
+            donated just over £73,000 to the UK Independence Party.
+            <RefNumberCopy>8</RefNumberCopy> In 2014, the company donated £2000
+            to support the re-election of UKIP MP Douglas Carswell, having left
+            the Conservative party to join UKIP. Carswell was a staunch advocate
+            for Brexit, having founded the Vote Leave campaign organisation.
+            <RefNumberCopy>9</RefNumberCopy> Catherine Langham, a shareholder
+            and director of Langham Family Holdings and self-described Director
+            of Langham Industries, is a Conservative parish councillor for
+            Hilton in Dorset.<RefNumberCopy>10</RefNumberCopy> In 2016, she was
+            an active member in local campaigns to leave the European Union.
+            <RefNumberCopy>11</RefNumberCopy>
+          </PinnedChapter>
+          <PinnedChapter ref={langhamIndustries4}>
+            Brexit is an essential political move for Langham Industries. The
+            alignment on aggressive anti-immigration politics that fuelled
+            Brexit campaigns and the economic bolstering of the UK Independence
+            Party, speaks to Langham Industries’ co-alliance with the Home
+            Office’s decision to detain migrants on Bibby Stockholm. With
+            Langham Industries making £2.5 million from its 18-month contract,
+            the profit anticipated by Bibby Stockholm will only incentivise
+            private ports to invest in the use of detainment vessels.
+            <RefNumberCopy>12</RefNumberCopy> The immense profit gained by
+            Langham Industries reveals a network of economic relations directly
+            related to the funding of right-wing political parties that have a
+            reliance on the institution of Bibby Stockholm as a detention prison
+            for populous votes.
           </PinnedChapter>
         </ChapterCopy>
         <ChapterReference>
           <PinnedReference ref={langhamIndustriesReference3}>
-            “Liverpool and the transatlantic slave trade,” Archives Centre,
-            Maritime Museum, National Museums of Liverpool
+            <RefNumber>8</RefNumber>
+            <br />
+            “Langham Industries” <br />
+            <Link
+              href="https://search.electoralcommission.org.uk/?currentPage=2&rows=10&query=%22Langham%20Industries%22&sort=AcceptedDate&order=desc&tab=2&open=filter&et=pp&et=ppm&et=tp&et=perpar&et=rd&isIrishSourceYes=true&isIrishSourceNo=true&date=Reported&from=&to=&quarters=2023q1234&quarters=2022q1234&quarters=2021q1234&quarters=2020q1234&quarters=2019q1234&quarters=2018q1234&quarters=2017q1234&quarters=2016q1234&quarters=2015q1234&quarters=2014q1234&quarters=2013q1234&quarters=2012q1234&quarters=2011q1234&quarters=2010q1234&quarters=2009q1234&quarters=2008q1234&quarters=2007q1234&quarters=2006q1234&quarters=2005q1234&quarters=2004q1234&quarters=2003q1234&quarters=2002q1234&quarters=2001q1234&prePoll=true&postPoll=true&donorStatus=individual&donorStatus=tradeunion&donorStatus=company&donorStatus=unincorporatedassociation&donorStatus=publicfund&donorStatus=other&donorStatus=registeredpoliticalparty&donorStatus=friendlysociety&donorStatus=trust&donorStatus=limitedliabilitypartnership&donorStatus=impermissibledonor&donorStatus=na&donorStatus=unidentifiabledonor&donorStatus=buildingsociety&register=gb&register=ni&register=none&optCols=Register&optCols=CampaigningName&optCols=AccountingUnitsAsCentralParty&optCols=IsSponsorship&optCols=IsIrishSource&optCols=RegulatedDoneeType&optCols=CompanyRegistrationNumber&optCols=Postcode&optCols=NatureOfDonation&optCols=PurposeOfVisit&optCols=DonationAction&optCols=ReportedDate&optCols=IsReportedPrePoll&optCols=ReportingPeriodName&optCols=IsBequest&optCols=IsAggregation"
+              target="_blank"
+            >
+              The Electoral Commission
+            </Link>
+            , accessed 03 September 2023
+          </PinnedReference>
+          <PinnedReference ref={langhamIndustriesReference4}>
+            <RefNumber>9</RefNumber>
+            <br />
+            “The Register of Members' Financial Interests: Part 1”
+            <br />
+            <Link
+              href="https://publications.parliament.uk/pa/cm/cmregmem/150223/carswell_douglas.htm"
+              target="_blank"
+            >
+              House of Commons, UK Parliament
+            </Link>
+            , 2 March 2015
+          </PinnedReference>
+          <PinnedReference ref={langhamIndustriesReference5}>
+            <RefNumber>10</RefNumber>
+            <br />
+            “Councillor Catherine Langham, Hilton Parish Council - Register of
+            Members' Interests”
+            <br />
+            <Link
+              href="https://www.dorsetcouncil.gov.uk/-/councillor-catherine-langham-hilton-parish-council"
+              target="_blank"
+            >
+              Dorset Council
+            </Link>
+            , 5 July 2023
+          </PinnedReference>
+          <PinnedReference ref={langhamIndustriesReference6}>
+            <RefNumber>11</RefNumber>
+            <br />
+            “Application Appendix B5 - Councillors”
+            <br />
+            <Link
+              href="https://www.electoralcommission.org.uk/sites/default/files/pdf_file/Vote-Leave-Ltd-designation-application-Appendix-B5.pdf"
+              target="_blank"
+            >
+              Electoral Commission, 43
+            </Link>
+            , accessed 03 September 2023
+          </PinnedReference>
+          <PinnedReference ref={langhamIndustriesReference7}>
+            <RefNumber>12</RefNumber>
+            <br />
+            Mike Taylor, “Protest planned as refugees are welcome but not on a
+            'prison barge' at Portland Port”
+            <br />
+            <Link
+              href="https://www.dorset.live/news/dorset-news/protest-planned-refugees-welcome-not-8431335"
+              target="_blank"
+            >
+              Dorset Live
+            </Link>
+            , 11 May 2023
           </PinnedReference>
         </ChapterReference>
       </ChapterWrapper>
@@ -379,40 +516,51 @@ export default function Chapters() {
             <ChapterTitle>THE HOLD REPEATS</ChapterTitle>
             <br />
             Bibby Stockholm is not the first time a detainment vessel has been
-            used in Portland. In June 1997, the prison ship HM Weare, was moved
-            to Portland as a solution to the overcrowding of HMP the Verne.
-            Lasting until 2005, it is the UK’s most recent use of a prison ship.
-            Similarly to Bibby Stockholm, the ship was built to house offshore
-            workers in gas and oil. In 1982, it was then acquired by Bibby Line
-            who renamed the vessel Bibby Resolution, which was then bought by
-            the New York City Department of Correction in 1988 to function as a
-            prison ship. After a report was conducted in 2004 of HM Weare which
-            detailed the “unacceptably cramp and claustrophobic” conditions
-            onboard, where prisoners had no access to fresh air, the prison was
-            closed in 2005, eventually leaving Portland in December 2009. It was
-            also mentioned that operational costs were too expensive, despite
-            providing minimal standards for those detained onboard. The parallel
-            histories between Bibby Resolution and Bibby Stockholm highlight how
-            HM Weare acts as a precursor to Bibby Stockholm, and the pattern of
-            incarceration that Portland is steeped in. The resemblance of
-            histories between HMP Weare and Bibby Stockholm is further
-            emphasised by the fact that Bibby Stockholm is docked at the Royal
-            Navy dockyard, in the exact position where HMP Weare was moored. The
-            same corporate actors reappear in HMP Weare’s history, Langham
-            Industries and Bibby Line, who are largely responsible for the
-            utilisation of Bibby Stockholm as a detention prison. The profit
-            gained from the supplying of the port and vessel infrastructure,
-            points towards the collusion between maritime companies involved in
-            ship repair, engineering services, vessel logistics and shipping
-            operations with the state, to not only enable maritime
-            incarceration, but gain a vast profit from the subjugation and
-            indefinite detainment of people.
+            used in Portland. <br />
+            In June 1997, the prison ship HMP Weare, was moved to Portland as a
+            solution to the overcrowding of the largest prison in Portland, HMP
+            the Verne. Lasting until 2005, it is the UK’s most recent use of a
+            prison ship. <br /> Similarly to Bibby Stockholm, the ship was built
+            to house offshore workers in gas and oil. In 1982, it was then
+            acquired by Bibby Line who renamed the vessel Bibby Resolution,
+            which was then bought by the New York City Department of Correction
+            in 1988 to function as a prison ship. <br /> After a report was
+            conducted in 2004 of HM Weare which detailed the “unacceptably cramp
+            and claustrophobic” conditions onboard, where prisoners had no
+            access to fresh air, the prison was closed in 2005, eventually
+            leaving Portland in December 2009.<RefNumberCopy>13</RefNumberCopy>
+            It was also mentioned that operational costs were too expensive,
+            despite providing minimal standards for those detained onboard.
+            <br /> The parallel histories between Bibby Resolution and Bibby
+            Stockholm highlight how HM Weare acts as a precursor to Bibby
+            Stockholm, and the pattern of incarceration that Portland is steeped
+            in. The resemblance of histories between HMP Weare and Bibby
+            Stockholm is further emphasised by the fact that Bibby Stockholm is
+            docked at the Royal Navy dockyard, in the exact position where HMP
+            Weare was moored. The same corporate actors reappear in HMP Weare’s
+            history, Langham Industries and Bibby Line, who are largely
+            responsible for the utilisation of Bibby Stockholm as a detention
+            prison. The profit gained from the supplying of the port and vessel
+            infrastructure, points towards the collusion between maritime
+            companies involved in ship repair, engineering services, vessel
+            logistics and shipping operations with the state, to not only enable
+            maritime incarceration, but gain a vast profit from the subjugation
+            and indefinite detainment of people.
           </PinnedChapter>
         </ChapterCopy>
         <ChapterReference>
           <PinnedReference ref={holdRepeatsReference1}>
-            “Liverpool and the transatlantic slave trade,” Archives Centre,
-            Maritime Museum, National Museums of Liverpool
+            <RefNumber>13</RefNumber>
+            <br />
+            “HM Prison Weare”
+            <br />
+            <Link
+              href="https://www.portlandhistory.co.uk/hm-prison-weare.html"
+              target="_blank"
+            >
+              The Encyclopedia of Portland History
+            </Link>
+            , accessed 03 September 2023
           </PinnedReference>
         </ChapterReference>
       </ChapterWrapper>
