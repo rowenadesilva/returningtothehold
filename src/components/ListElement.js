@@ -19,7 +19,7 @@ const ListElement = ({ focus, id }) => {
 
   return (
     <Wrapper ref={ListElementRef}>
-      <CheckFocus id={id} />
+      {/* <CheckFocus id={id} /> */}
       <ImageLine />
     </Wrapper>
   );

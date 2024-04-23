@@ -14,8 +14,7 @@ const ChapterWrapper = styled.div`
   width: 60vw;
   left: calc((100vw - var(--width)) / -2);
   margin-left: 20vw;
-  // border: 10px solid green;
-
+  font-family: Arial, sans-serif;
   @media (max-height: 900px) {
     width: 70vw;
     margin-left: 10vw;
@@ -40,6 +39,7 @@ const ChapterCopy = styled.div`
 const PinnedChapter = styled.div`
   font-size: 1.3em;
   text-align: left;
+  border: 2px solid #2f63be;
 
   @media (max-width: 1000px) {
     font-size: 1.1em;
@@ -78,6 +78,7 @@ const ChapterReference = styled.div`
 
 const PinnedReference = styled.div`
   font-size: 1em;
+  border: 2px solid #2f63be;
 
   @media (max-width: 1000px) {
     font-size: 1em;
@@ -151,7 +152,7 @@ export default function Chapters() {
         totalOffset = 0;
         offsets = chapterRefs.map((title) => {
           let prev = totalOffset;
-          totalOffset += title.offsetHeight + 50;
+          totalOffset += title.offsetHeight + 20;
           return prev;
         });
       }
@@ -160,7 +161,7 @@ export default function Chapters() {
         totalReferenceOffset = 0;
         referenceOffsets = chapterReferenceRefs.map((title) => {
           let prev = totalReferenceOffset;
-          totalReferenceOffset += title.offsetHeight + 30;
+          totalReferenceOffset += title.offsetHeight + 20;
           return prev;
         });
       }
@@ -175,11 +176,12 @@ export default function Chapters() {
         ScrollTrigger.create({
           trigger: heading,
           endTrigger: chapterTrigger.current,
-          start: () => "top " + (offsets[i] + 70),
-          end: () => "bottom " + totalOffset - 0,
+          start: () => "top " + (offsets[i] + 50),
+          end: () => "bottom " + (totalOffset - 50),
           pin: heading,
           pinSpacing: false,
-          anticipatePin: 1,
+          anticipatePin: 0.5,
+          markers: false,
         });
       });
 
@@ -188,11 +190,11 @@ export default function Chapters() {
         ScrollTrigger.create({
           trigger: heading,
           endTrigger: chapterTrigger.current,
-          start: () => "top " + (referenceOffsets[i] + 70),
-          end: () => "bottom " + totalReferenceOffset - 0,
+          start: () => "top " + (referenceOffsets[i] + 100),
+          end: () => "bottom " + (totalReferenceOffset - 50),
           pin: heading,
           pinSpacing: false,
-          anticipatePin: 1,
+          anticipatePin: 0.5,
         });
       });
     }
@@ -244,7 +246,7 @@ export default function Chapters() {
       [holdRepeatsReference1.current],
       holdRepeatsTrigger
     );
-  });
+   });
 
   return (
     <div>

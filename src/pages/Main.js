@@ -3,6 +3,7 @@ import ListElement from "../components/ListElement";
 import styled from "styled-components";
 import { TrackerContext } from "../components/TrackerContext";
 import Hold from "../components/Hold";
+import Title from "../components/Title";
 
 const Container = styled.div`
   display: flex;
@@ -19,11 +20,17 @@ const Li = styled.li`
   text-align: center;
 `;
 
+const CheckTitle = (props) => {
+  console.log(props.id);
+  if (props.id === 0) {
+    return <Title />;
+  }
+};
+
 const App = () => {
   const listRef = useRef([]);
   const [trackerPos, setTrackerPos] = useState(0);
   var focus = [true, false];
-  // var title = true;
 
   // start list with 2 elements
   const [list, setList] = useState([
@@ -56,10 +63,10 @@ const App = () => {
       if (inFocus1) {
         const copy = [
           {
-            id: Math.random(),
+            id: 0,
           },
           {
-            id: Math.random(),
+            id: 1,
           },
           {
             id: Math.random(),
@@ -129,6 +136,7 @@ const App = () => {
   return (
     <div>
       <TrackerContext.Provider value={trackerPos}>
+        <Hold />
         <Container>
           {list.map((item, i) => {
             return (
@@ -138,6 +146,7 @@ const App = () => {
                 id={item.id}
                 key={item.id}
               >
+                <CheckTitle id={item.id} />
                 <ListElement
                   focus={focus[i]}
                   trackerPos={trackerPos}
@@ -146,7 +155,6 @@ const App = () => {
               </Li>
             );
           })}
-          <Hold />
         </Container>
       </TrackerContext.Provider>
     </div>
