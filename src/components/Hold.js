@@ -22,10 +22,10 @@ const HoldOne = styled.a.attrs((props) => ({
     scale: 0.5 !important;
     top: 0;
     margin: 0;
-    // &:hover {
-    //   transform: scale(1.5) !important;
-    //   transition-duration: 1s !important;
-    // }
+    &:hover {
+      transform: scale(1.5) !important;
+      transition-duration: 1s !important;
+    }
   }
 
   @media (max-width: 1000px) {

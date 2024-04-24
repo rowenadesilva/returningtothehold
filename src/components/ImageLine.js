@@ -12,8 +12,8 @@ const Line = styled.svg`
   text-align: center;
   fill: none;
   stroke: white;
-  stroke-width: 0.1px;
-	// border: 10px solid white;
+  stroke-width: 1.2px;
+  // border: 10px solid white;
 
   @media (max-width: 1000px) {
     width: 700px;
@@ -28,12 +28,19 @@ const Line = styled.svg`
   }
 `;
 
-const ImageLine = () => {
+const ImageLine = (props) => {
   const wrapperRef = useRef();
+  const lineRef = useRef();
+
+  console.log("props.id", props.id);
+
+  if (lineRef.current && props.id === 0) {
+    lineRef.current.style.stroke = "url(#line-gradient)";
+  }
 
   return (
     <Wrapper ref={wrapperRef}>
-      <Line viewBox="0 0 35.6 1958.4">
+      <Line viewBox="0 0 35.6 2058.8" ref={lineRef}>
         <defs>
           <linearGradient id="line-gradient" gradientTransform="rotate(90)">
             <stop offset="0%" stopOpacity="0" stopColor="white" />
@@ -1207,7 +1214,6 @@ const ImageLine = () => {
 	s-1.8,3.6-3.3,4.9c-0.4,0.3-1.2,1-1.6,0.4c0.2-1.5,1.9-0.1,1.4,0.9c-0.3,2.1-2.1,3.8-2.6,5.8c2.6,5.9,8.5-2.6,10.8-4.9
 	c2.5-3.1,8.9-4.6,10.8-0.3c2,8.8-6.2,6.5-4.3,10.5s-0.9,11-0.5,11.9s-1.3,2.5-0.5,3.5c0.2,0.4,0,0.6,0.2,1.3s2,1.8,0.7,2.3
 	c-2.6,1.3-4.4,13.1-4.6,16"
-          style={{ stroke: "url(#line-gradient)" }}
         />
       </Line>
       <Content />

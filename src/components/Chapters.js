@@ -14,7 +14,11 @@ const ChapterWrapper = styled.div`
   width: 60vw;
   left: calc((100vw - var(--width)) / -2);
   margin-left: 20vw;
-  font-family: Arial, sans-serif;
+  mix-blend-mode: difference;
+  font-family: Times New Roman, serif;
+
+  --pin-margin: 20;
+  --end-offset: 80;
   @media (max-height: 900px) {
     width: 70vw;
     margin-left: 10vw;
@@ -39,7 +43,6 @@ const ChapterCopy = styled.div`
 const PinnedChapter = styled.div`
   font-size: 1.3em;
   text-align: left;
-  border: 2px solid #2f63be;
 
   @media (max-width: 1000px) {
     font-size: 1.1em;
@@ -50,7 +53,7 @@ const PinnedChapter = styled.div`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   @media (max-width: 480px) {
@@ -68,7 +71,7 @@ const ChapterReference = styled.div`
   text-align: left;
   margin-left: 7%;
   > * {
-    margin-top: 800px;
+    margin-top: 200px;
   }
 
   > *:first-child {
@@ -78,18 +81,17 @@ const ChapterReference = styled.div`
 
 const PinnedReference = styled.div`
   font-size: 1em;
-  border: 2px solid #2f63be;
 
   @media (max-width: 1000px) {
-    font-size: 1em;
+    font-size: 0.8em;
   }
 
   @media (max-width: 768px) {
-    font-size: 1em;
+    font-size: 0.8em;
   }
 
   @media (max-width: 480px) {
-    font-size: 1em;
+    font-size: 0.6em;
   }
 `;
 const RefNumberCopy = styled.sup`
@@ -104,7 +106,25 @@ const Link = styled.a`
   color: #2f63be;
 `;
 
+const Spotlight = styled.div`
+  font-size: 2em;
+  text-align: left;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+`;
+
+const QuoteRef = styled.div`
+  font-size: 0.5em;
+  text-align: left;
+  width: 100%;
+`;
+
 export default function Chapters() {
+  const wrapperRef = useRef();
+
   const introTrigger = useRef();
   const introduction1 = useRef();
   const introduction2 = useRef();
@@ -135,6 +155,14 @@ export default function Chapters() {
   const holdRepeats1 = useRef();
   const holdRepeatsReference1 = useRef();
 
+  const architectureTrigger = useRef();
+  const architecture1 = useRef();
+  const architecture2 = useRef();
+  const architecture3 = useRef();
+  const architectureReference1 = useRef();
+  const architectureReference2 = useRef();
+  const architectureReference3 = useRef();
+
   // all GSAP text animations
   useGSAP(() => {
     function pinningChapters(
@@ -150,20 +178,37 @@ export default function Chapters() {
       // to make it responsive, we put the calculations into a function that we call on window resize (and initially)
       function calculateOffsets() {
         totalOffset = 0;
+        console.log(pinMargin);
         offsets = chapterRefs.map((title) => {
           let prev = totalOffset;
-          totalOffset += title.offsetHeight + 20;
+          totalOffset += title.offsetHeight + pinMargin;
           return prev;
         });
       }
 
       function calculateReferenceOffsets() {
         totalReferenceOffset = 0;
+        console.log(pinMargin);
         referenceOffsets = chapterReferenceRefs.map((title) => {
           let prev = totalReferenceOffset;
-          totalReferenceOffset += title.offsetHeight + 20;
+          totalReferenceOffset += title.offsetHeight + pinMargin;
           return prev;
         });
+      }
+      const pinMargin = parseFloat(
+        window
+          .getComputedStyle(wrapperRef.current)
+          .getPropertyValue("--pin-margin")
+      );
+      var endOffset = parseFloat(
+        window
+          .getComputedStyle(wrapperRef.current)
+          .getPropertyValue("--end-offset")
+      );
+      var startOffset = endOffset;
+      if (chapterRefs.length < 2) {
+        endOffset = endOffset * 4;
+      } else {
       }
 
       calculateOffsets();
@@ -176,12 +221,12 @@ export default function Chapters() {
         ScrollTrigger.create({
           trigger: heading,
           endTrigger: chapterTrigger.current,
-          start: () => "top " + (offsets[i] + 50),
-          end: () => "bottom " + (totalOffset - 50),
+          start: () => "top " + (offsets[i] + startOffset),
+          end: () => "bottom " + (totalOffset - endOffset),
           pin: heading,
           pinSpacing: false,
           anticipatePin: 0.5,
-          markers: false,
+          // markers: true,
         });
       });
 
@@ -190,8 +235,8 @@ export default function Chapters() {
         ScrollTrigger.create({
           trigger: heading,
           endTrigger: chapterTrigger.current,
-          start: () => "top " + (referenceOffsets[i] + 100),
-          end: () => "bottom " + (totalReferenceOffset - 50),
+          start: () => "top " + (referenceOffsets[i] + startOffset),
+          end: () => "bottom " + (totalOffset - endOffset),
           pin: heading,
           pinSpacing: false,
           anticipatePin: 0.5,
@@ -246,12 +291,26 @@ export default function Chapters() {
       [holdRepeatsReference1.current],
       holdRepeatsTrigger
     );
-   });
+
+    // PIN ARCHITECTURE CHAPTER
+    pinningChapters(
+      [architecture1.current, architecture2.current, architecture3.current],
+      [
+        architectureReference1.current,
+        architectureReference2.current,
+        architectureReference3.current,
+      ],
+      architectureTrigger
+    );
+  });
 
   return (
     <div>
       {/* INTRO CHAPTER */}
-      <ChapterWrapper style={{ top: "calc(var(--height) * 0.155)" }}>
+      <ChapterWrapper
+        style={{ top: "calc(var(--height) * 0.155)" }}
+        ref={wrapperRef}
+      >
         <ChapterCopy ref={introTrigger}>
           <PinnedChapter ref={introduction1}>
             <ChapterTitle>INTRODUCTION</ChapterTitle>
@@ -563,6 +622,95 @@ export default function Chapters() {
               The Encyclopedia of Portland History
             </Link>
             , accessed 03 September 2023
+          </PinnedReference>
+        </ChapterReference>
+      </ChapterWrapper>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.05)" }}>
+        <ChapterCopy>
+          <Spotlight>
+            “As the only professional voice, firefighters believe the Bibby
+            Stockholm to be a potential deathtrap.” <br /><br /><QuoteRef>Ben Selby, Assistant
+            General Secretary of the Fire Brigades Union, in a letter to the
+            Home Office before asylum seekers were detained</QuoteRef>
+          </Spotlight>
+        </ChapterCopy>
+      </ChapterWrapper>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.91)" }}>
+        <ChapterCopy ref={architectureTrigger}>
+          <PinnedChapter ref={architecture1}>
+            <ChapterTitle>ARCHITECTURE</ChapterTitle>
+            <br />
+            The architectural overhaul of Bibby Stockholm optimised its use as a
+            carceral zone to hold and detain. Single-use bedrooms were refitted
+            with bunk beds, which gained considerable media attention for being
+            only “slightly larger in size than a prison cell”.
+            <RefNumberCopy>15</RefNumberCopy> The barge features both a gym with
+            two working treadmills and an education room with eight seats. The
+            lack of communal space speaks to how the design of the barge fails
+            to meet the demands of such a high population, illustrating the
+            purposeful overcrowding and falsity of its social spaces in
+            providing support and fostering community. Corridors are narrow and
+            windowless, presenting issues around fire safety and evacuation
+            routes. Organisations such as Reclaim the Sea have voiced concerns
+            around those seeking asylum as having already experienced sea trauma
+            from small boat crossings and have thus questioned the cruel
+            decision to detain migrants on a floating vessel, which runs the
+            high risk in retraumatising people.<RefNumberCopy>16</RefNumberCopy>
+          </PinnedChapter>
+          <PinnedChapter ref={architecture2}>
+            The detainees live in the proximity of death, with the barge flagged
+            in a second report by an NGO as a “floating Grenfell”, drawing vivid
+            parallels with the government’s track record of abandonment and
+            neglect.<RefNumberCopy>17</RefNumberCopy> This proximity is
+            manufactured through the spatial conditions of the hold.
+          </PinnedChapter>
+          <PinnedChapter ref={architecture3}>
+            Within days of being detained on Bibby Stockholm, all 39 asylum
+            seekers were evacuated after reports of Legionella being found in
+            the water system onboard. Not only the spatial conditions, but also
+            the internal architecture work to immobilise those within. We again
+            see Glissant’s tautology in the fact that the water containing
+            Legionella folds back into itself, reaffirming the hold through its
+            poisoned infrastructure. Through the ageing pipes that encircle the
+            structure of the barge reach into every corner, the contaminated
+            water transcends, even as it describes, the physical limitations of
+            the hold. Death permeates all scales, even the molecular. Death is
+            prescribed from the conception of the vessel.
+          </PinnedChapter>
+        </ChapterCopy>
+        <ChapterReference>
+          <PinnedReference ref={architectureReference1}>
+            <RefNumber>15</RefNumber>
+            <br />
+            Amelia Gentleman, “‘Cabins slightly larger than a prison cell’: Life
+            aboard the UK’s barge for asylum seekers”
+            <br />
+            <Link
+              href="https://www.theguardian.com/uk-news/2023/jul/21/life-aboard-bibby-stockholm-asylum-seeker-barge-home-office-tour"
+              target="_blank"
+            >
+              The Guardian
+            </Link>
+            , 21 July 2023,
+          </PinnedReference>
+          <PinnedReference ref={architectureReference2}>
+            <RefNumber>16</RefNumber>
+            <br />
+            “An Open Letter to Bibby Marine”
+            <br />
+            <Link
+              href="https://www.refugeecouncil.org.uk/latest/news/an-open-letter-to-bibby-marine/"
+              target="_blank"
+            >
+              Refugee Council
+            </Link>
+            , 4 July 2023
+          </PinnedReference>
+          <PinnedReference ref={architectureReference3}>
+            <RefNumber>16</RefNumber>
+            <br />
+            Syal and Taylor, “Bibby Stockholm asylum barge is ‘potential
+            deathtrap’, say firefighters”.
           </PinnedReference>
         </ChapterReference>
       </ChapterWrapper>

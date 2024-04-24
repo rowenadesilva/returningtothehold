@@ -60,9 +60,9 @@ class Table extends Component {
   }
 
   componentDidUpdate() {
-    console.log("scroll: " + this.tableRef.current.scrollTop);
-    console.log("tracker: " + this.props.context);
-    console.log("clientHeight: " + this.tableRef.current.scrollHeight);
+    // console.log("scroll: " + this.tableRef.current.scrollTop);
+    // console.log("tracker: " + this.props.context);
+    // console.log("clientHeight: " + this.tableRef.current.scrollHeight);
 
     this.tableRef.current.scrollTop = (this.props.context - 41) * 400;
   }

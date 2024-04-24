@@ -10,6 +10,7 @@ const VerseWrapper = styled.div`
   color: #eef3e5;
   width: max-content;
   height: max-content;
+  mix-blend-mode: difference;
 
   @media (max-width: 1000px) {
     font-size: 1em;

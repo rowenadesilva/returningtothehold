@@ -20,8 +20,19 @@ const Li = styled.li`
   text-align: center;
 `;
 
+const Gradient = styled.div`
+  position: fixed;
+  width: 100vw;
+  height: 10vh;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: 1;
+`;
+
 const CheckTitle = (props) => {
-  console.log(props.id);
   if (props.id === 0) {
     return <Title />;
   }
@@ -136,6 +147,7 @@ const App = () => {
   return (
     <div>
       <TrackerContext.Provider value={trackerPos}>
+        <Gradient />
         <Hold />
         <Container>
           {list.map((item, i) => {
