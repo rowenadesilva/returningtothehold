@@ -1,6 +1,7 @@
 import React, { useRef, useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { TrackerContext } from "./TrackerContext";
+import About from "./About";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -9,21 +10,22 @@ const HoldOne = styled.a.attrs((props) => ({
   className: props.className,
 }))`
   position: absolute;
-  top: 50vh;
+  top: 75vh;
   z-index: 100;
   right: 2vw;
   // border: 5px solid yellow;
   transform-origin: right;
-  font-size: 4em;
+  font-size: 12em;
   color: #eef3e5;
+  font-family: "Lyno";
 
   &.active {
     position: fixed;
-    scale: 0.5 !important;
+    scale: 0.2 !important;
     top: 0;
     margin: 0;
     &:hover {
-      transform: scale(1.5) !important;
+      transform: scale(1.2) !important;
       transition-duration: 1s !important;
     }
   }
@@ -77,29 +79,29 @@ const Highlight = styled.span`
   }
 `;
 
-function Hold2Div(trackerPos) {
+function Hold2Div(props) {
   const hold2 = useRef();
 
   if (hold2.current) {
+    console.log(props.trackerPos);
     hold2.current.style.top =
-      (window.innerHeight * trackerPos.trackerPos) / 100 -
+      (window.innerHeight * props.trackerPos) / 100 -
       window.innerHeight +
       20 +
       "px";
   }
 
-  // if (trackerPos.trackerPos) {
   return (
     <HoldTwo ref={hold2}>
-      <Highlight>HOLD</Highlight>
+      {/* <Highlight onClick={() => setShowAbout(true)}>HOLD</Highlight> */}
     </HoldTwo>
   );
-  // }
 }
 
 export default function Hold() {
   const hold1 = useRef();
   const trackerPos = useContext(TrackerContext);
+  const [showAbout, setShowAbout] = useState(false);
 
   // check if hold logo finished start sequence
   const [holdActivated, setHoldActivated] = useState(false);
@@ -111,31 +113,36 @@ export default function Hold() {
     }
   });
 
+  function notifyMe() {
+    setShowAbout(false);
+    console.log(showAbout);
+  }
+
   // all GSAP text animations
   useGSAP(() => {
     const holdGSAP = gsap.to(hold1.current, {
       scrollTrigger: {
         trigger: hold1.current,
-        start: "top center",
+        start: "bottom bottom",
         end: "top top",
-        // markers: true,
-        scrub: 1,
+        scrub: true,
+        markers: true,
         onLeave: () => {
           holdGSAP.scrollTrigger.kill();
           hold1.current.classList.add("active");
           setHoldActivated(true);
         },
       },
-      scale: "0.5",
-      ease: "expoScale(0.5,7,none)",
+      scale: "0.2",
     });
   });
   return (
     <div>
+      <About about={showAbout} notifyParent={notifyMe} />
       <HoldOne ref={hold1}>
-        <Highlight>HOLD</Highlight>
+        <Highlight onClick={() => setShowAbout(true)}>HOLD</Highlight>
       </HoldOne>
-      <Hold2Div trackerPos={trackerPos} />
+      <Hold2Div trackerPos={trackerPos} showAbout={showAbout} />
     </div>
   );
 }

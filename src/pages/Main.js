@@ -146,8 +146,7 @@ const App = () => {
 
   return (
     <div>
-      <TrackerContext.Provider value={trackerPos}>
-        <Gradient />
+      <TrackerContext.Provider value={trackerPos}>        <Gradient />
         <Hold />
         <Container>
           {list.map((item, i) => {

@@ -13,11 +13,14 @@ const TitleWrapper = styled.div`
   // border: 5px solid yellow;
 `;
 
-const TitleRight = styled.div`
+const TitleLeft = styled.div`
   position: absolute;
-  top: 50vh;
+  top: 10vh;
   left: 2vw;
-  font-size: 4em;
+  font-size: 8em;
+  font-family: "LucidBook";
+  // font-feature-settings: "ss01" 1;
+  color: white;
 
   @media (max-width: 1000px) {
     font-size: 3em;
@@ -53,7 +56,7 @@ export default function Title() {
   return (
     <div>
       <TitleWrapper>
-        <TitleRight>RETURNING TO THE </TitleRight>
+        <TitleLeft>RETURNING<br />TO THE </TitleLeft>
         <Abstract>
           Bibby Stockholm is a barge berthed at Portland Harbour on the south
           coast of England, currently detaining 135 asylum seekers. <br />{" "}

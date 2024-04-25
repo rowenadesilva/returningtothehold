@@ -30,17 +30,15 @@ const Line = styled.svg`
 
 const ImageLine = (props) => {
   const wrapperRef = useRef();
-  const lineRef = useRef();
+  const mainPathRef = useRef();
 
-  console.log("props.id", props.id);
-
-  if (lineRef.current && props.id === 0) {
-    lineRef.current.style.stroke = "url(#line-gradient)";
+  if (mainPathRef.current && props.id === 0) {
+    mainPathRef.current.style.stroke = "url(#line-gradient)";
   }
 
   return (
     <Wrapper ref={wrapperRef}>
-      <Line viewBox="0 0 35.6 2058.8" ref={lineRef}>
+      <Line viewBox="0 0 35.6 2058.8">
         <defs>
           <linearGradient id="line-gradient" gradientTransform="rotate(90)">
             <stop offset="0%" stopOpacity="0" stopColor="white" />
@@ -1115,7 +1113,7 @@ const ImageLine = (props) => {
 	c0.1,0,0.2-0.1,0.1-0.2c0-0.1-0.1-0.1-0.2-0.2"
         />
         <path d="M33.2,1674.9" />
-        <path
+        <path ref={mainPathRef}
           d="M17.2,0c-0.5,14.7,3.9,13.6,4.6,35c0.7,21.5-18,18.1-10.8,25.1C28.3,77,10,72.8,14.8,80s6,13,3.1,23.4
 	s-2.1,9.2-0.2,12.1s1,7.4,0.3,11.1c-0.2,2.8-1.2,5.4,0.5,8.3c1,1.7-0.5,7.8-0.8,11.2c-1.5,15.2,10,13.1,7.2,26.4
 	c-0.7,3.5,1,7,2.9,8.7s-19.3,6.5-13.1,11.8c2,1.7,13.9,6.8,10.7,3.4s-2.5,2.1-2.5,2.6c-0.2,1-2.6,0.6-2.3,1.9

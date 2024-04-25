@@ -1,9 +1,10 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { useDeferredValue } from "react";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -41,8 +42,10 @@ const ChapterCopy = styled.div`
 `;
 
 const PinnedChapter = styled.div`
-  font-size: 1.3em;
+  font-size: 20px;
   text-align: left;
+  font-family: LucidBook;
+  vertical-align: text-top;
 
   @media (max-width: 1000px) {
     font-size: 1.1em;
@@ -178,7 +181,6 @@ export default function Chapters() {
       // to make it responsive, we put the calculations into a function that we call on window resize (and initially)
       function calculateOffsets() {
         totalOffset = 0;
-        console.log(pinMargin);
         offsets = chapterRefs.map((title) => {
           let prev = totalOffset;
           totalOffset += title.offsetHeight + pinMargin;
@@ -188,7 +190,6 @@ export default function Chapters() {
 
       function calculateReferenceOffsets() {
         totalReferenceOffset = 0;
-        console.log(pinMargin);
         referenceOffsets = chapterReferenceRefs.map((title) => {
           let prev = totalReferenceOffset;
           totalReferenceOffset += title.offsetHeight + pinMargin;
@@ -213,6 +214,7 @@ export default function Chapters() {
 
       calculateOffsets();
       calculateReferenceOffsets();
+
       window.addEventListener("resize", calculateOffsets);
       window.addEventListener("resize", calculateReferenceOffsets);
 
@@ -244,64 +246,68 @@ export default function Chapters() {
       });
     }
 
-    // PIN INTRODUCTION CHAPTER
-    pinningChapters(
-      [introduction1.current, introduction2.current, introduction3.current],
-      [],
-      introTrigger
-    );
+    document.fonts.ready.then(function () {
+      ScrollTrigger.refresh();
 
-    // PIN BIBBY EMPIRE CHAPTER
-    pinningChapters(
-      [bibbyEmpire1.current, bibbyEmpire2.current],
-      [
-        bibbyEmpireReference1.current,
-        bibbyEmpireReference2.current,
-        bibbyEmpireReference3.current,
-      ],
-      bibbyEmpireTrigger
-    );
+      // PIN INTRODUCTION CHAPTER
+      pinningChapters(
+        [introduction1.current, introduction2.current, introduction3.current],
+        [],
+        introTrigger
+      );
 
-    // PIN LANGHAM INDUSTRIES CHAPTER 1
-    pinningChapters(
-      [langhamIndustries1.current, langhamIndustries2.current],
-      [
-        langhamIndustriesReference1.current,
-        langhamIndustriesReference2.current,
-      ],
-      langhamIndustriesTrigger
-    );
+      // PIN BIBBY EMPIRE CHAPTER
+      pinningChapters(
+        [bibbyEmpire1.current, bibbyEmpire2.current],
+        [
+          bibbyEmpireReference1.current,
+          bibbyEmpireReference2.current,
+          bibbyEmpireReference3.current,
+        ],
+        bibbyEmpireTrigger
+      );
 
-    // PIN LANGHAM INDUSTRIES CHAPTER 2
-    pinningChapters(
-      [langhamIndustries3.current, langhamIndustries4.current],
-      [
-        langhamIndustriesReference3.current,
-        langhamIndustriesReference4.current,
-        langhamIndustriesReference5.current,
-        langhamIndustriesReference6.current,
-        langhamIndustriesReference7.current,
-      ],
-      langhamIndustriesTrigger2
-    );
+      // PIN LANGHAM INDUSTRIES CHAPTER 1
+      pinningChapters(
+        [langhamIndustries1.current, langhamIndustries2.current],
+        [
+          langhamIndustriesReference1.current,
+          langhamIndustriesReference2.current,
+        ],
+        langhamIndustriesTrigger
+      );
 
-    // PIN THE HOLD REPEATS CHAPTER
-    pinningChapters(
-      [holdRepeats1.current],
-      [holdRepeatsReference1.current],
-      holdRepeatsTrigger
-    );
+      // PIN LANGHAM INDUSTRIES CHAPTER 2
+      pinningChapters(
+        [langhamIndustries3.current, langhamIndustries4.current],
+        [
+          langhamIndustriesReference3.current,
+          langhamIndustriesReference4.current,
+          langhamIndustriesReference5.current,
+          langhamIndustriesReference6.current,
+          langhamIndustriesReference7.current,
+        ],
+        langhamIndustriesTrigger2
+      );
 
-    // PIN ARCHITECTURE CHAPTER
-    pinningChapters(
-      [architecture1.current, architecture2.current, architecture3.current],
-      [
-        architectureReference1.current,
-        architectureReference2.current,
-        architectureReference3.current,
-      ],
-      architectureTrigger
-    );
+      // PIN THE HOLD REPEATS CHAPTER
+      pinningChapters(
+        [holdRepeats1.current],
+        [holdRepeatsReference1.current],
+        holdRepeatsTrigger
+      );
+
+      // PIN ARCHITECTURE CHAPTER
+      pinningChapters(
+        [architecture1.current, architecture2.current, architecture3.current],
+        [
+          architectureReference1.current,
+          architectureReference2.current,
+          architectureReference3.current,
+        ],
+        architectureTrigger
+      );
+    });
   });
 
   return (
@@ -625,13 +631,16 @@ export default function Chapters() {
           </PinnedReference>
         </ChapterReference>
       </ChapterWrapper>
-      <ChapterWrapper style={{ top: "calc(var(--height) * 0.05)" }}>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.9)" }}>
         <ChapterCopy>
           <Spotlight>
             “As the only professional voice, firefighters believe the Bibby
-            Stockholm to be a potential deathtrap.” <br /><br /><QuoteRef>Ben Selby, Assistant
-            General Secretary of the Fire Brigades Union, in a letter to the
-            Home Office before asylum seekers were detained</QuoteRef>
+            Stockholm to be a potential deathtrap.” <br />
+            <br />
+            <QuoteRef>
+              Ben Selby, Assistant General Secretary of the Fire Brigades Union,
+              in a letter to the Home Office before asylum seekers were detained
+            </QuoteRef>
           </Spotlight>
         </ChapterCopy>
       </ChapterWrapper>

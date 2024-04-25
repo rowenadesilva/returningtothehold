@@ -1,5 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 import ApfelGrotezk from "./fonts/apfelGrotezkMittel.woff2";
+import GTAlpina from "./fonts/gtAlpinaCondensedMediumTrial.woff2";
+import LucidBook from "./fonts/LucidBook.otf";
+import Lyno from "./fonts/LynoWalt.otf";
+import SurtRegular from "./fonts/SurtRegular.woff";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -36,9 +40,28 @@ const GlobalStyle = createGlobalStyle`
   
   @font-face {
     font-family: 'ApfelGrotezk';
-    src: url(${ApfelGrotezk}) format('woff2'),
+    src: url(${ApfelGrotezk}) ƒformat('woff2'),
   }
 
+  @font-face {
+    font-family: 'GTAlpina';
+    src: url(${GTAlpina}) format('woff2'),
+  }
+
+  @font-face {
+    font-family: 'LucidBook';
+    src: url(${LucidBook}) format('woff2'),
+  }
+
+  @font-face {
+    font-family: 'Lyno';
+    src: url(${Lyno}) format('woff2'),
+  }
+
+  @font-face {
+    font-family: 'SurtRegular';
+    src: url(${SurtRegular}) format('woff2'),
+  }
 `;
 
 export default GlobalStyle;
