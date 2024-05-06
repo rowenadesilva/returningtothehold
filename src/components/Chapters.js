@@ -42,17 +42,18 @@ const ChapterCopy = styled.div`
 `;
 
 const PinnedChapter = styled.div`
-  font-size: 20px;
+  font-size: 17px;
   text-align: left;
-  font-family: LucidBook;
+  font-family: LucidBook; 
   vertical-align: text-top;
 
   @media (max-width: 1000px) {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   @media (min-width: 1000px && max-height: 900px) {
     font-size: 1em;
+
   }
 
   @media (max-width: 768px) {
@@ -83,7 +84,8 @@ const ChapterReference = styled.div`
 `;
 
 const PinnedReference = styled.div`
-  font-size: 1em;
+  font-size: 0.9em;
+  font-family: LucidBook;
 
   @media (max-width: 1000px) {
     font-size: 0.8em;
@@ -110,19 +112,26 @@ const Link = styled.a`
 `;
 
 const Spotlight = styled.div`
+  font-family: LucidBook;
+
   font-size: 2em;
   text-align: left;
-  background-color: white;
-  color: black;
+  // background-color: white;
+  color: white;
+  // border: 3px solid white;
   padding: 20px;
   border-radius: 10px;
-  width: 100%;
+  width: 60%;
 `;
 
 const QuoteRef = styled.div`
   font-size: 0.5em;
   text-align: left;
   width: 100%;
+`;
+
+const Year = styled.span`
+  color: #2f63be;
 `;
 
 export default function Chapters() {
@@ -156,6 +165,10 @@ export default function Chapters() {
 
   const holdRepeatsTrigger = useRef();
   const holdRepeats1 = useRef();
+  const holdRepeats2 = useRef();
+  const holdRepeats3 = useRef();
+  const holdRepeats4 = useRef();
+  const holdRepeats5 = useRef();
   const holdRepeatsReference1 = useRef();
 
   const architectureTrigger = useRef();
@@ -292,7 +305,13 @@ export default function Chapters() {
 
       // PIN THE HOLD REPEATS CHAPTER
       pinningChapters(
-        [holdRepeats1.current],
+        [
+          holdRepeats1.current,
+          holdRepeats2.current,
+          holdRepeats3.current,
+          holdRepeats4.current,
+          holdRepeats5.current,
+        ],
         [holdRepeatsReference1.current],
         holdRepeatsTrigger
       );
@@ -319,7 +338,7 @@ export default function Chapters() {
       >
         <ChapterCopy ref={introTrigger}>
           <PinnedChapter ref={introduction1}>
-            <ChapterTitle>INTRODUCTION</ChapterTitle>
+            {/* <ChapterTitle>INTRODUCTION</ChapterTitle> */}
             <br />
             Built in 1976, Bibby Stockholm’s original use was to house
             construction workers employed in offshore gas and wind, but in 2005
@@ -577,42 +596,84 @@ export default function Chapters() {
           </PinnedReference>
         </ChapterReference>
       </ChapterWrapper>
+      <ChapterWrapper
+        style={{
+          top: "calc(var(--height) * 0.661  )",
+          left: "calc(var(--width) * 0.3)",
+        }}
+      >
+        <ChapterCopy>
+          <br />
+          <PinnedChapter style={{ fontSize: "1.5em" }}>
+            Bibby Stockholm is not the first time <br />a detainment vessel has
+            been used in Portland. <br />
+            <br />
+          </PinnedChapter>
+        </ChapterCopy>
+      </ChapterWrapper>
       <ChapterWrapper style={{ top: "calc(var(--height) * 0.7)" }}>
         <ChapterCopy ref={holdRepeatsTrigger}>
-          <PinnedChapter ref={holdRepeats1}>
+          <PinnedChapter
+            ref={holdRepeats1}
+            style={{ width: "90%", left: "calc(var(--width) * 0.01)" }}
+          >
             <ChapterTitle>THE HOLD REPEATS</ChapterTitle>
             <br />
-            Bibby Stockholm is not the first time a detainment vessel has been
-            used in Portland. <br />
-            In June 1997, the prison ship HMP Weare, was moved to Portland as a
-            solution to the overcrowding of the largest prison in Portland, HMP
-            the Verne. Lasting until 2005, it is the UK’s most recent use of a
-            prison ship. <br /> Similarly to Bibby Stockholm, the ship was built
-            to house offshore workers in gas and oil. In 1982, it was then
-            acquired by Bibby Line who renamed the vessel Bibby Resolution,
-            which was then bought by the New York City Department of Correction
-            in 1988 to function as a prison ship. <br /> After a report was
-            conducted in 2004 of HM Weare which detailed the “unacceptably cramp
-            and claustrophobic” conditions onboard, where prisoners had no
-            access to fresh air, the prison was closed in 2005, eventually
-            leaving Portland in December 2009.<RefNumberCopy>13</RefNumberCopy>
-            It was also mentioned that operational costs were too expensive,
-            despite providing minimal standards for those detained onboard.
-            <br /> The parallel histories between Bibby Resolution and Bibby
-            Stockholm highlight how HM Weare acts as a precursor to Bibby
-            Stockholm, and the pattern of incarceration that Portland is steeped
-            in. The resemblance of histories between HMP Weare and Bibby
-            Stockholm is further emphasised by the fact that Bibby Stockholm is
-            docked at the Royal Navy dockyard, in the exact position where HMP
-            Weare was moored. The same corporate actors reappear in HMP Weare’s
-            history, Langham Industries and Bibby Line, who are largely
-            responsible for the utilisation of Bibby Stockholm as a detention
-            prison. The profit gained from the supplying of the port and vessel
-            infrastructure, points towards the collusion between maritime
-            companies involved in ship repair, engineering services, vessel
-            logistics and shipping operations with the state, to not only enable
-            maritime incarceration, but gain a vast profit from the subjugation
-            and indefinite detainment of people.
+            In June <Year>1997</Year>, the prison ship HMP Weare, was moved to
+            Portland as a solution to the overcrowding of the largest prison in
+            Portland, HMP the Verne. Lasting until <Year>2005</Year>, it is the
+            UK’s most recent use of a prison ship.
+          </PinnedChapter>
+          <PinnedChapter
+            ref={holdRepeats2}
+            style={{ width: "90%", left: "calc(var(--width) * 0.6" }}
+          >
+            Similarly to Bibby Stockholm, the ship was built to house offshore
+            workers in gas and oil. In <Year>1982</Year> it was then acquired by
+            Bibby Line who renamed the vessel Bibby Resolution, which was then
+            bought by the New York City Department of Correction in{" "}
+            <Year>1988</Year> to function as a prison ship.
+          </PinnedChapter>
+          <PinnedChapter
+            ref={holdRepeats3}
+            style={{ width: "90%", left: "calc(var(--width) * 0.01)" }}
+          >
+            After a report was conducted in <Year>2004</Year> of HM Weare which
+            detailed the “unacceptably cramp and claustrophobic” conditions
+            onboard, where prisoners had no access to fresh air, the prison was
+            closed in <Year>2005</Year>, eventually leaving Portland in December{" "}
+            <Year>2009</Year>. It was also mentioned that operational costs were
+            too expensive, despite providing minimal standards for those
+            detained onboard.
+          </PinnedChapter>
+          <PinnedChapter
+            ref={holdRepeats4}
+            style={{ width: "90%", left: "calc(var(--width) * 0.5)" }}
+          >
+            The parallel histories between Bibby Resolution and Bibby Stockholm
+            highlight how HM Weare acts as a precursor to Bibby Stockholm, and
+            the pattern of incarceration that Portland is steeped in.
+            <br /> <br />
+            The resemblance of histories between HMP Weare and Bibby Stockholm
+            is further emphasised by the fact that Bibby Stockholm is docked at
+            the Royal Navy dockyard, in the exact position where HMP Weare was
+            moored.
+          </PinnedChapter>
+          <PinnedChapter
+            ref={holdRepeats5}
+            style={{ width: "90%", left: "calc(var(--width) * -0.1)" }}
+          >
+            The same corporate actors reappear in HMP Weare’s history - Langham
+            Industries and Bibby Line - who are crucially responsible for the
+            utilisation of Bibby Stockholm as a detention prison. The history of
+            Bibby Resolution evidences the historical relationship between Bibby
+            Line and Langham Industries in profiting from Portland’s
+            military-prison nexus. In supplying port infrastructure and refir
+            profit gained from supplying the port infrastructure and , points
+            towards the collusion between maritime companies with a larger
+            military-prison nexus, to not only enable maritime incarceration,
+            but gain a vast profit from the subjugation and indefinite
+            detainment of people.
           </PinnedChapter>
         </ChapterCopy>
         <ChapterReference>
@@ -631,7 +692,7 @@ export default function Chapters() {
           </PinnedReference>
         </ChapterReference>
       </ChapterWrapper>
-      <ChapterWrapper style={{ top: "calc(var(--height) * 0.9)" }}>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.902)" }}>
         <ChapterCopy>
           <Spotlight>
             “As the only professional voice, firefighters believe the Bibby
@@ -644,7 +705,7 @@ export default function Chapters() {
           </Spotlight>
         </ChapterCopy>
       </ChapterWrapper>
-      <ChapterWrapper style={{ top: "calc(var(--height) * 0.91)" }}>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.92)" }}>
         <ChapterCopy ref={architectureTrigger}>
           <PinnedChapter ref={architecture1}>
             <ChapterTitle>ARCHITECTURE</ChapterTitle>
@@ -722,6 +783,33 @@ export default function Chapters() {
             deathtrap’, say firefighters”.
           </PinnedReference>
         </ChapterReference>
+      </ChapterWrapper>
+      <ChapterWrapper
+        style={{
+          width: "80%",
+          top: "calc(var(--height) * 0.965 )",
+        }}
+      >
+        <ChapterCopy>
+          <br />
+          <PinnedChapter style={{ fontSize: "1.5em" }}>
+            On the 12th December 2023, Leonard Farruku died by suicide whilst
+            detained on Bibby Stockholm. Leonard was found by his roommate Yusuf
+            Deen Kargbo, in their shower room, twelve hours later. After
+            Leonard’s death, Yusuf was relocated to another room, without his
+            belongings, isolated from others, and without any emotional support.
+            <br />
+          </PinnedChapter>
+        </ChapterCopy>
+      </ChapterWrapper>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 1.01)", left: "0" }}>
+        <ChapterCopy>
+          <Spotlight>
+            “They're saying Leonard's death is just the beginning.”
+            <br />
+            <QuoteRef>Yusuf Deen Kargbo</QuoteRef>
+          </Spotlight>
+        </ChapterCopy>
       </ChapterWrapper>
     </div>
   );

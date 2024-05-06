@@ -12,7 +12,7 @@ const Line = styled.svg`
   text-align: center;
   fill: none;
   stroke: white;
-  stroke-width: 1.2px;
+  stroke-width: 0.2px;
   // border: 10px solid white;
 
   @media (max-width: 1000px) {
@@ -41,8 +41,8 @@ const ImageLine = (props) => {
       <Line viewBox="0 0 35.6 2058.8">
         <defs>
           <linearGradient id="line-gradient" gradientTransform="rotate(90)">
-            <stop offset="0%" stopOpacity="0" stopColor="white" />
-            <stop offset="3%" stopOpacity="1" stopColor="white" />
+            <stop offset="2%" stopOpacity="0" stopColor="white" />
+            <stop offset="8%" stopOpacity="1" stopColor="white" />
           </linearGradient>
         </defs>
 

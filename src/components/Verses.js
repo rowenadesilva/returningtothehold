@@ -109,7 +109,7 @@ export default function Verses() {
         }}
       >
         where the ‘gentle’ tide <br />
-        becomes eveloped into
+        becomes enveloped into
         <br />
         the sand
       </VerseWrapper>
@@ -151,7 +151,7 @@ export default function Verses() {
         data-speed="2"
         style={{
           top: "calc(var(--height) * 0.14)",
-          left: "calc(var(--width) * 0.2)",
+          left: "calc(var(--width) * 0.1)",
         }}
       >
         This is what Édouard Glissant calls
@@ -416,30 +416,126 @@ export default function Verses() {
         data-speed="3"
         style={{
           top: "calc(var(--height) * 0.6425)",
-          left: "calc(var(--width) * 0.05)",
+          left: "calc(var(--width) * -0.1)",
         }}
       >
         Cast behind,
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="4"
+        data-speed="10"
         style={{
           top: "calc(var(--height) * 0.65)",
-          left: "calc(var(--width) * 0.8)",
+          left: "calc(var(--width) * 0.25)",
         }}
       >
         set adrift,
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="2"
+        data-speed="6"
         style={{
-          top: "calc(var(--height) * 0.662)",
-          left: "calc(var(--width) * 0.3)",
+          top: "calc(var(--height) * 0.663)",
+          left: "calc(var(--width) * 0.8)",
         }}
       >
-        once again.”.
+        once again.”
+      </VerseWrapper>
+      <VerseWrapper
+        className="verse"
+        data-speed="0.01"
+        style={{
+          top: "calc(var(--height) * 0.98)",
+          left: "calc(var(--width) * 0.025)",
+        }}
+      >
+        Whilst often perceived as a palimpsest, <br />
+        the ocean instead is a perpetual reverberation
+      </VerseWrapper>
+      <VerseWrapper
+        className="verse"
+        data-speed="2.5"
+        style={{
+          top: "calc(var(--height) * 0.985)",
+          left: "calc(var(--width) * 0.75)",
+        }}
+      >
+        its arrivals and departures
+        <br />
+        carry within them
+      </VerseWrapper>
+      <VerseWrapper
+        className="verse"
+        data-speed="2"
+        style={{
+          top: "calc(var(--height) * 0.989)",
+          left: "calc(var(--width) * 0.01)",
+        }}
+      >
+        echoes of the rupture of colonial violence and displacement
+      </VerseWrapper>
+      <VerseWrapper
+        className="verse"
+        data-speed="6"
+        style={{
+          top: "calc(var(--height) * 0.9935)",
+          left: "calc(var(--width) * 0.87)",
+        }}
+      >
+        reiterating the legacy
+        <br />
+        of the slave trade
+      </VerseWrapper>
+      <VerseWrapper
+        className="verse"
+        data-speed="1"
+        style={{
+          top: "calc(var(--height) * 1)",
+          left: "calc(var(--width) * 0.2)",
+        }}
+      >
+        Across a vast expanse where <br />
+        histories multiply and resound,{" "}
+      </VerseWrapper>
+      <VerseWrapper
+        className="verse"
+        data-speed="6"
+        style={{
+          top: "calc(var(--height) * 1.005)",
+          left: "calc(var(--width) * 0.5)",
+        }}
+      >
+        its past is not washed away
+      </VerseWrapper>
+      <VerseWrapper
+        className="verse"
+        data-speed="4"
+        style={{
+          top: "calc(var(--height) * 1.01)",
+          left: "calc(var(--width) * 0.4)",
+        }}
+      >
+        but rather
+      </VerseWrapper>
+      <VerseWrapper
+        className="verse"
+        data-speed="2"
+        style={{
+          top: "calc(var(--height) * 1.013)",
+          left: "calc(var(--width) * 0.8)",
+        }}
+      >
+        endlessly
+      </VerseWrapper>
+      <VerseWrapper
+        className="verse"
+        data-speed="4"
+        style={{
+          top: "calc(var(--height) * 1.019)",
+          left: "calc(var(--width) * 0.5)",
+        }}
+      >
+        reconstituted
       </VerseWrapper>
     </div>
   );

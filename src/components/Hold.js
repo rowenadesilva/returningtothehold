@@ -14,10 +14,13 @@ const HoldOne = styled.a.attrs((props) => ({
   z-index: 100;
   right: 2vw;
   // border: 5px solid yellow;
-  transform-origin: right;
+  transform-origin: right top;
   font-size: 12em;
   color: #eef3e5;
-  font-family: "Lyno";
+  // font-family: "Lyno";
+  font-family: "LucidBook";
+  font-feature-settings: "ss01" 1;
+
 
   &.active {
     position: fixed;
@@ -50,7 +53,8 @@ const HoldTwo = styled.a.attrs((props) => ({}))`
   right: 2vw;
   font-size: 2em;
   height: min-content;
-  color: red;
+  color: #eef3e5;
+  font-family: "Lyno";
 
   @media (max-width: 1000px) {
     font-size: 3em;
@@ -83,7 +87,6 @@ function Hold2Div(props) {
   const hold2 = useRef();
 
   if (hold2.current) {
-    console.log(props.trackerPos);
     hold2.current.style.top =
       (window.innerHeight * props.trackerPos) / 100 -
       window.innerHeight +
@@ -91,11 +94,11 @@ function Hold2Div(props) {
       "px";
   }
 
-  return (
-    <HoldTwo ref={hold2}>
-      {/* <Highlight onClick={() => setShowAbout(true)}>HOLD</Highlight> */}
-    </HoldTwo>
-  );
+  //return (
+  // <HoldTwo ref={hold2}>
+  //   <Highlight>HOLD2</Highlight>
+  // </HoldTwo>
+  // );
 }
 
 export default function Hold() {
@@ -109,6 +112,7 @@ export default function Hold() {
   // set hold logo y-pos to scroll position
   useEffect(() => {
     if (holdActivated) {
+      console.log(trackerPos);
       hold1.current.style.top = trackerPos + "vh";
     }
   });
