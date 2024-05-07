@@ -2,23 +2,32 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { TrackerContext } from "./TrackerContext";
 
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
+
 const TableWrapper = styled.table`
   position: absolute;
   border: 1px solid white;
   border-spacing: 0;
   text-align: left;
-  left: 0;
   width: 42vw;
-  top: calc(var(--height) * 0.42);
+  top: calc(var(--height) * 0.417);
   left: calc(var(--width) * 0.3);
   text-align: center;
   font-size: 0.8em;
+  mix-blend-mode: difference;
+  font-family: LucidBook;
 `;
 
 const TableHead = styled.thead`
   display: block;
   border: 1px solid white;
   border-style: none none solid none;
+  font-weight: regular;
 `;
 
 const HeaderColumn = styled.th`
@@ -41,29 +50,34 @@ const BodyColumn = styled.td`
 
 const TableBody = styled.tbody`
   display: block;
-  height: 100vh;
+  height: 1200px;
   overflow-y: scroll;
   overflow-x: hidden;
+
+  @media (max-width: 1000px) {
+    height: 950px;
+  }
+
+  @media (max-width: 768px) {
+    height: 810px;
+  }
+
+  @media (max-width: 550px) {
+  }
 `;
 
 const TabelRow = styled.tr`
-  &:nth-child(even) {
-    background-color: #f2f2f2;
-    color: black;
-  }
+  padding: 0.5em;
 `;
 
 class Table extends Component {
   constructor(props) {
     super(props);
     this.tableRef = React.createRef(null);
+    this.eagle = React.createRef(null);
   }
 
   componentDidUpdate() {
-    // console.log("scroll: " + this.tableRef.current.scrollTop);
-    // console.log("tracker: " + this.props.context);
-    // console.log("clientHeight: " + this.tableRef.current.scrollHeight);
-
     this.tableRef.current.scrollTop = (this.props.context - 41) * 400;
   }
 
@@ -93,14 +107,6 @@ class Table extends Component {
             </tr>
           </TableHead>
           <TableBody ref={this.tableRef}>
-            <TabelRow>
-              <BodyColumn>81106</BodyColumn>
-              <BodyColumn>1807</BodyColumn>
-              <BodyColumn>Eagle</BodyColumn>
-              <BodyColumn>Liverpool</BodyColumn>
-              <BodyColumn>Cameroons</BodyColumn>
-              <BodyColumn>Kingston</BodyColumn>
-            </TabelRow>
             <TabelRow>
               <BodyColumn>81579</BodyColumn>
               <BodyColumn>1806</BodyColumn>
@@ -139,7 +145,7 @@ class Table extends Component {
               <BodyColumn>Governor Wentworth</BodyColumn>
               <BodyColumn>Liverpool</BodyColumn>
               <BodyColumn>Africa, port unspecified</BodyColumn>
-              <BodyColumn>TabelRowinidad, port unspecified</BodyColumn>
+              <BodyColumn>Trinidad, port unspecified</BodyColumn>
             </TabelRow>
             <TabelRow>
               <BodyColumn>81732</BodyColumn>
@@ -215,7 +221,15 @@ class Table extends Component {
               <BodyColumn>Horatio</BodyColumn>
               <BodyColumn>Liverpool</BodyColumn>
               <BodyColumn>Africa, port unspecified</BodyColumn>
-              <BodyColumn>TabelRowinidad, port unspecified</BodyColumn>
+              <BodyColumn>Trinidad, port unspecified</BodyColumn>
+            </TabelRow>
+            <TabelRow>
+              <BodyColumn>81106</BodyColumn>
+              <BodyColumn>1807</BodyColumn>
+              <BodyColumn>Eagle</BodyColumn>
+              <BodyColumn>Liverpool</BodyColumn>
+              <BodyColumn>Cameroons</BodyColumn>
+              <BodyColumn>Kingston</BodyColumn>
             </TabelRow>
             <TabelRow>
               <BodyColumn>83481</BodyColumn>
@@ -337,7 +351,7 @@ class Table extends Component {
               <BodyColumn>Mary</BodyColumn>
               <BodyColumn>Liverpool</BodyColumn>
               <BodyColumn>Gabon</BodyColumn>
-              <BodyColumn>TabelRowinidad, port unspecified</BodyColumn>
+              <BodyColumn>Trinidad, port unspecified</BodyColumn>
             </TabelRow>
             <TabelRow>
               <BodyColumn>82635</BodyColumn>
@@ -377,7 +391,7 @@ class Table extends Component {
               <BodyColumn>Molly</BodyColumn>
               <BodyColumn>Liverpool</BodyColumn>
               <BodyColumn>Calabar</BodyColumn>
-              <BodyColumn>TabelRowinidad, port unspecified</BodyColumn>
+              <BodyColumn>Trinidad, port unspecified</BodyColumn>
             </TabelRow>
             <TabelRow>
               <BodyColumn>82802</BodyColumn>
@@ -493,7 +507,7 @@ class Table extends Component {
               <BodyColumn>Horatio</BodyColumn>
               <BodyColumn>Liverpool</BodyColumn>
               <BodyColumn>Africa, port unspecified</BodyColumn>
-              <BodyColumn>TabelRowinidad, port unspecified</BodyColumn>
+              <BodyColumn>Trinidad, port unspecified</BodyColumn>
             </TabelRow>
             <TabelRow>
               <BodyColumn>83481</BodyColumn>
@@ -615,7 +629,7 @@ class Table extends Component {
               <BodyColumn>Mary</BodyColumn>
               <BodyColumn>Liverpool</BodyColumn>
               <BodyColumn>Gabon</BodyColumn>
-              <BodyColumn>TabelRowinidad, port unspecified</BodyColumn>
+              <BodyColumn>Trinidad, port unspecified</BodyColumn>
             </TabelRow>
             <TabelRow>
               <BodyColumn>82635</BodyColumn>
@@ -655,7 +669,7 @@ class Table extends Component {
               <BodyColumn>Molly</BodyColumn>
               <BodyColumn>Liverpool</BodyColumn>
               <BodyColumn>Calabar</BodyColumn>
-              <BodyColumn>TabelRowinidad, port unspecified</BodyColumn>
+              <BodyColumn>Trinidad, port unspecified</BodyColumn>
             </TabelRow>
             <TabelRow>
               <BodyColumn>82802</BodyColumn>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import gsap from "gsap";
@@ -18,7 +18,6 @@ const VerseWrapper = styled.div`
   width: max-content;
   height: max-content;
   mix-blend-mode: difference;
-  // filter: drop-shadow(0px 10px 4px #001814);
   font-family: "LucidBook";
   font-feature-settings: "ss01" 1;
 
@@ -36,9 +35,7 @@ const VerseWrapper = styled.div`
 `;
 
 export default function Verses() {
-  const verse1 = useRef();
-  // apply parallax effect to any element with a data-speed attribute
-
+  // apply parallax effect to each verse
   function activateParallax() {
     gsap.utils.toArray(".verse").forEach((el) => {
       gsap.to(el, {
@@ -189,7 +186,7 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="2"
+        data-speed="0"
         style={{
           top: "calc(var(--height) * 0.2625)",
           left: "calc(var(--width) * 0.01)",
@@ -214,8 +211,8 @@ export default function Verses() {
         className="verse"
         data-speed="2"
         style={{
-          top: "calc(var(--height) * 0.41)",
-          left: "calc(var(--width) * 0.03)",
+          top: "calc(var(--height) * 0.4078)",
+          left: "calc(var(--width) * 0.01)",
         }}
       >
         In attempts to remap slave voyages,
@@ -269,7 +266,7 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         style={{
-          top: "calc(var(--height) * 0.4551)",
+          top: "calc(var(--height) * 0.465)",
           left: "calc(var(--width) * 0.2)",
         }}
       >
@@ -289,7 +286,7 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="2"
+        data-speed="0"
         style={{
           top: "calc(var(--height) * 0.471)",
           left: "calc(var(--width) * 0.25)",
@@ -327,7 +324,7 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="2"
+        data-speed="0.3"
         style={{
           top: "calc(var(--height) * 0.615)",
           left: "calc(var(--width) * 0.4)",
@@ -338,10 +335,10 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="2"
+        data-speed="1"
         style={{
-          top: "calc(var(--height) * 0.619)",
-          left: "calc(var(--width) * 0.62)",
+          top: "calc(var(--height) * 0.618)",
+          left: "calc(var(--width) * 0.61)",
         }}
       >
         And when the migrants <br />
@@ -349,7 +346,7 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="2"
+        data-speed="0.8"
         style={{
           top: "calc(var(--height) * 0.62)",
           left: "calc(var(--width) * 0.4)",
@@ -363,8 +360,8 @@ export default function Verses() {
         className="verse"
         data-speed="1"
         style={{
-          top: "calc(var(--height) * 0.625)",
-          left: "calc(var(--width) * 0.25)",
+          top: "calc(var(--height) * 0.624)",
+          left: "calc(var(--width) * 0.2)",
         }}
       >
         the camp,
@@ -381,10 +378,10 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="2.5"
+        data-speed="1.1"
         style={{
           top: "calc(var(--height) * 0.629)",
-          left: "calc(var(--width) * 0.15)",
+          left: "calc(var(--width) * 0.1)",
         }}
       >
         the detention <br />
@@ -392,7 +389,7 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="1.5"
+        data-speed="1.2"
         style={{
           top: "calc(var(--height) * 0.631)",
           left: "calc(var(--width) * 0.4)",
@@ -402,10 +399,10 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="2"
+        data-speed="0.5"
         style={{
-          top: "calc(var(--height) * 0.635)",
-          left: "calc(var(--width) * 0.5)",
+          top: "calc(var(--height) * 0.6363)",
+          left: "calc(var(--width) * 0.13)",
         }}
       >
         and they may be <br />
@@ -413,7 +410,7 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="3"
+        data-speed="6"
         style={{
           top: "calc(var(--height) * 0.6425)",
           left: "calc(var(--width) * -0.1)",
@@ -433,20 +430,20 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="6"
+        data-speed="10"
         style={{
           top: "calc(var(--height) * 0.663)",
-          left: "calc(var(--width) * 0.8)",
+          left: "calc(var(--width) * 0.85)",
         }}
       >
         once again.”
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="0.01"
+        data-speed="ß"
         style={{
-          top: "calc(var(--height) * 0.98)",
-          left: "calc(var(--width) * 0.025)",
+          top: "calc(var(--height) * 1.01)",
+          left: "calc(var(--width) * 0.1)",
         }}
       >
         Whilst often perceived as a palimpsest, <br />
@@ -454,9 +451,9 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="2.5"
+        data-speed="1"
         style={{
-          top: "calc(var(--height) * 0.985)",
+          top: "calc(var(--height) * 1.013)",
           left: "calc(var(--width) * 0.75)",
         }}
       >
@@ -468,18 +465,18 @@ export default function Verses() {
         className="verse"
         data-speed="2"
         style={{
-          top: "calc(var(--height) * 0.989)",
-          left: "calc(var(--width) * 0.01)",
+          top: "calc(var(--height) * 1.019)",
+          left: "calc(var(--width) * 0.1)",
         }}
       >
         echoes of the rupture of colonial violence and displacement
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="6"
+        data-speed="2.5"
         style={{
-          top: "calc(var(--height) * 0.9935)",
-          left: "calc(var(--width) * 0.87)",
+          top: "calc(var(--height) * 1.023)",
+          left: "calc(var(--width) * 0.6)",
         }}
       >
         reiterating the legacy
@@ -490,8 +487,8 @@ export default function Verses() {
         className="verse"
         data-speed="1"
         style={{
-          top: "calc(var(--height) * 1)",
-          left: "calc(var(--width) * 0.2)",
+          top: "calc(var(--height) * 1.028)",
+          left: "calc(var(--width) * -0.18)",
         }}
       >
         Across a vast expanse where <br />
@@ -499,10 +496,10 @@ export default function Verses() {
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="6"
+        data-speed="3"
         style={{
-          top: "calc(var(--height) * 1.005)",
-          left: "calc(var(--width) * 0.5)",
+          top: "calc(var(--height) * 1.029)",
+          left: "calc(var(--width) * 0.4)",
         }}
       >
         its past is not washed away
@@ -511,28 +508,28 @@ export default function Verses() {
         className="verse"
         data-speed="4"
         style={{
-          top: "calc(var(--height) * 1.01)",
-          left: "calc(var(--width) * 0.4)",
+          top: "calc(var(--height) * 1.034)",
+          left: "calc(var(--width) * 0.7)",
         }}
       >
         but rather
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="2"
+        data-speed="1"
         style={{
-          top: "calc(var(--height) * 1.013)",
-          left: "calc(var(--width) * 0.8)",
+          top: "calc(var(--height) * 1.037)",
+          left: "calc(var(--width) * 0.5)",
         }}
       >
         endlessly
       </VerseWrapper>
       <VerseWrapper
         className="verse"
-        data-speed="4"
+        data-speed="2"
         style={{
-          top: "calc(var(--height) * 1.019)",
-          left: "calc(var(--width) * 0.5)",
+          top: "calc(var(--height) * 1.049)",
+          left: "calc(var(--width) * 0.6)",
         }}
       >
         reconstituted

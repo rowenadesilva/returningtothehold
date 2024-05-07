@@ -21,16 +21,11 @@ const HoldOne = styled.a.attrs((props) => ({
   font-family: "LucidBook";
   font-feature-settings: "ss01" 1;
 
-
   &.active {
     position: fixed;
     scale: 0.2 !important;
     top: 0;
     margin: 0;
-    &:hover {
-      transform: scale(1.2) !important;
-      transition-duration: 1s !important;
-    }
   }
 
   @media (max-width: 1000px) {
@@ -93,12 +88,6 @@ function Hold2Div(props) {
       20 +
       "px";
   }
-
-  //return (
-  // <HoldTwo ref={hold2}>
-  //   <Highlight>HOLD2</Highlight>
-  // </HoldTwo>
-  // );
 }
 
 export default function Hold() {
@@ -106,12 +95,9 @@ export default function Hold() {
   const trackerPos = useContext(TrackerContext);
   const [showAbout, setShowAbout] = useState(false);
 
-  // check if hold logo finished start sequence
-  const [holdActivated, setHoldActivated] = useState(false);
-
-  // set hold logo y-pos to scroll position
+  // set hold logo y-pos to scroll position after hold has finished start sequence
   useEffect(() => {
-    if (holdActivated) {
+    if (hold1.current.classList.contains("active")) {
       console.log(trackerPos);
       hold1.current.style.top = trackerPos + "vh";
     }
@@ -130,15 +116,25 @@ export default function Hold() {
         start: "bottom bottom",
         end: "top top",
         scrub: true,
-        markers: true,
         onLeave: () => {
-          holdGSAP.scrollTrigger.kill();
           hold1.current.classList.add("active");
-          setHoldActivated(true);
+          holdGSAP.scrollTrigger.kill();
         },
       },
       scale: "0.2",
     });
+
+    const animation = gsap.to(hold1.current, {
+      scale: 1.5,
+      paused: true,
+    });
+
+    hold1.current.addEventListener("mouseenter", () => {
+      if (hold1.current.classList.contains("active")) {
+        animation.play();
+      }
+    });
+    hold1.current.addEventListener("mouseleave", () => animation.reverse());
   });
   return (
     <div>

@@ -27,11 +27,10 @@ const Left = styled.div`
   display: none;
 `;
 
-const HoldDefinition = styled.div`
-  padding: 2vw;
+const Copy = styled.div`
   padding-right: 5vw;
-  // padding-top: 20vh;
-  font-size: 1.3rem;
+  padding-left: 1vw;
+  font-size: 1.1rem;
   color: white;
   line-height: 1.5;
   font-family: "LucidBook";
@@ -48,6 +47,24 @@ const Emphasis = styled.span`
   font-family: "LucidBook";
   font-feature-settings: "ss01" 1;
   color: #2f63be;
+`;
+
+const Reference = styled(Copy)`
+  font-size: 0.8em;
+  font-family: LucidBook;
+`;
+
+const RefNumber = styled.span`
+  color: #2f63be;
+`;
+
+const RefNumberCopy = styled.sup`
+  color: #2f63be;
+`;
+
+const Link = styled.a`
+  color: #2f63be;
+  text-decoration: none;
 `;
 
 export default function About(props) {
@@ -73,30 +90,66 @@ export default function About(props) {
   return (
     <div>
       <Wrapper ref={wrapperRef}>
-        <HoldDefinition>
+        <Copy>
           <HoldTitle>
             The <span style={{ color: "#2f63be" }}>(</span>Hold
             <span style={{ color: "#2f63be" }}>)</span>
           </HoldTitle>
-          In this investigation, the hold derives from Christina Sharpe’s{" "}
-          <Emphasis>In the Wake: On Blackness and Being.</Emphasis> The hold,
-          the space in a ship where the cargo is stored, was the place where
-          captured Africans were shackled and detained. The hold was both real
-          and symbolic in its destruction, both for those who were thrown aboard
-          and for those who survived, “living under the sentence of death”.
-          Sharpe follows the genealogy of the hold, tracing its descendents to
-          contemporary forms of incarceration. The prison, the lager, the camp
-          and the detention centre reiterate the conditions of the hold in the
-          slave ship. Through this thinking, the hold is the blueprint which has
-          shaped the architecture of incarceration today. In this investigation,
-          the voyage of small boats, the subsequent detention of migrants upon
-          arrival, and the loss suffered during and after this journey, is
-          placed within the legacy of the hold, which begins with the slave
-          ship. The chain of subjugation is one of recurrence. There is a
-          repetition–an infinite loop– which ties this thinking together,
-          becoming essential in understanding the nature of racial violence and
-          the ways it is sustained.
-        </HoldDefinition>
+          <Emphasis>The Hold</Emphasis> derives from Christina Sharpe’s book In
+          the Wake: On Blackness and Being.
+          <br />
+          <br />
+          <Emphasis>The Hold</Emphasis>, the space in a ship where the cargo is
+          stored, was the place where captured Africans were shackled and
+          detained. <br /> <br />
+          <Emphasis>The Hold</Emphasis> was both real and symbolic in its
+          destruction, both for those who were thrown aboard and for those who
+          survived, “living under the sentence of death”.
+          <RefNumberCopy>1</RefNumberCopy> <br /> <br />
+          <Emphasis>The Hold</Emphasis> has its descendants to contemporary
+          forms of incarceration such as the prison, the lager, the camp and the
+          detention centre, which reiterate the conditions of the hold in the
+          slave ship.<RefNumberCopy>2</RefNumberCopy> <br /> <br />
+          <Emphasis>The Hold</Emphasis> is the blueprint which has shaped the
+          architecture of incarceration today.
+        </Copy>
+        <Reference>
+          <br />
+          <RefNumber>1</RefNumber> Glissant, Poetics of Relations, 6. <br />
+          <RefNumber>2</RefNumber> Sharpe, In the Wake, 153.
+        </Reference>
+        <Copy>
+          <br />
+          <br />
+          <hr />
+          <br />
+          <br />
+          This investigation was developed from a master’s thesis at the Centre
+          for Research Architecture. The research began in 2022 following the
+          announcement of the Rwanda Migration Bill, which has since been
+          enacted into law. In the UK’s attempt to implement offshore detention,
+          legislation and action has been rapidly unfolding. It is within this
+          climate that this project is ongoing.
+        </Copy>
+        <Copy>
+          <br />
+          <br />
+          <Link href="mailto:"> Rowena De Silva</Link> is an open source
+          researcher. She graduated with an MA from the Centre for Research
+          Architecture in 2023. <br />
+          <br />
+          <Link href="https://finn-steffens.de/" target="_blank">
+            Finn Steffens
+          </Link>{" "}
+          is visual researcher and designer. He graduated with an MA from the
+          Centre for Research Architecture in 2022.
+          <br />
+          <br /> <br />
+          <br />
+          (Last updated on Monday, 05 May 2024)
+          <br /> <br />
+
+        </Copy>
       </Wrapper>
       <Left ref={leftRef} onClick={() => props.notifyParent()} />
     </div>

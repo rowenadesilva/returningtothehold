@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { useDeferredValue } from "react";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -17,7 +16,6 @@ const ChapterWrapper = styled.div`
   margin-left: 20vw;
   mix-blend-mode: difference;
   font-family: Times New Roman, serif;
-
   --pin-margin: 20;
   --end-offset: 80;
   @media (max-height: 900px) {
@@ -44,7 +42,7 @@ const ChapterCopy = styled.div`
 const PinnedChapter = styled.div`
   font-size: 17px;
   text-align: left;
-  font-family: LucidBook; 
+  font-family: LucidBook;
   vertical-align: text-top;
 
   @media (max-width: 1000px) {
@@ -53,7 +51,6 @@ const PinnedChapter = styled.div`
 
   @media (min-width: 1000px && max-height: 900px) {
     font-size: 1em;
-
   }
 
   @media (max-width: 768px) {
@@ -66,8 +63,20 @@ const PinnedChapter = styled.div`
 `;
 
 const ChapterTitle = styled.span`
-  font-weight: 800;
-  color: #2f63be;
+  position: absolute;
+  font-family: LucidBook;
+  color: white;
+  font-size: 1.8em;
+  &::before {
+    content: "(";
+    color: #2f63be;
+    font-feature-settings: "ss01" 1;
+  }
+  &::after {
+    content: ")";
+    color: #2f63be;
+    font-feature-settings: "ss01" 1;
+  }
 `;
 
 const ChapterReference = styled.div`
@@ -99,6 +108,7 @@ const PinnedReference = styled.div`
     font-size: 0.6em;
   }
 `;
+
 const RefNumberCopy = styled.sup`
   color: #2f63be;
 `;
@@ -113,12 +123,9 @@ const Link = styled.a`
 
 const Spotlight = styled.div`
   font-family: LucidBook;
-
   font-size: 2em;
   text-align: left;
-  // background-color: white;
   color: white;
-  // border: 3px solid white;
   padding: 20px;
   border-radius: 10px;
   width: 60%;
@@ -128,10 +135,6 @@ const QuoteRef = styled.div`
   font-size: 0.5em;
   text-align: left;
   width: 100%;
-`;
-
-const Year = styled.span`
-  color: #2f63be;
 `;
 
 export default function Chapters() {
@@ -162,14 +165,6 @@ export default function Chapters() {
   const langhamIndustriesReference5 = useRef();
   const langhamIndustriesReference6 = useRef();
   const langhamIndustriesReference7 = useRef();
-
-  const holdRepeatsTrigger = useRef();
-  const holdRepeats1 = useRef();
-  const holdRepeats2 = useRef();
-  const holdRepeats3 = useRef();
-  const holdRepeats4 = useRef();
-  const holdRepeats5 = useRef();
-  const holdRepeatsReference1 = useRef();
 
   const architectureTrigger = useRef();
   const architecture1 = useRef();
@@ -303,19 +298,6 @@ export default function Chapters() {
         langhamIndustriesTrigger2
       );
 
-      // PIN THE HOLD REPEATS CHAPTER
-      pinningChapters(
-        [
-          holdRepeats1.current,
-          holdRepeats2.current,
-          holdRepeats3.current,
-          holdRepeats4.current,
-          holdRepeats5.current,
-        ],
-        [holdRepeatsReference1.current],
-        holdRepeatsTrigger
-      );
-
       // PIN ARCHITECTURE CHAPTER
       pinningChapters(
         [architecture1.current, architecture2.current, architecture3.current],
@@ -332,6 +314,14 @@ export default function Chapters() {
   return (
     <div>
       {/* INTRO CHAPTER */}
+      <ChapterTitle
+        style={{
+          top: "calc(var(--height) * 0.149)",
+          left: "calc(var(--width) * -0.1)",
+        }}
+      >
+        BIBBY STOCKHOLM
+      </ChapterTitle>
       <ChapterWrapper
         style={{ top: "calc(var(--height) * 0.155)" }}
         ref={wrapperRef}
@@ -375,10 +365,17 @@ export default function Chapters() {
         </ChapterCopy>
       </ChapterWrapper>
       {/* BIBBY EMPIRE CHAPTER */}
+      <ChapterTitle
+        style={{
+          top: "calc(var(--height) * 0.337)",
+          left: "calc(var(--width) * 0.6)",
+        }}
+      >
+        BIBBY EMPIRE
+      </ChapterTitle>
       <ChapterWrapper style={{ top: "calc(var(--height) * 0.34)" }}>
         <ChapterCopy ref={bibbyEmpireTrigger}>
           <PinnedChapter ref={bibbyEmpire1}>
-            <ChapterTitle>BIBBY EMPIRE</ChapterTitle>
             <br />
             The vessel’s parent company, Bibby Line, was founded by John Bibby
             in 1807 in Liverpool, a city which was fundamental to the
@@ -437,11 +434,36 @@ export default function Chapters() {
           </PinnedReference>
         </ChapterReference>
       </ChapterWrapper>
+      <ChapterWrapper
+        style={{
+          top: "calc(var(--height) * 0.4353)",
+          left: "calc(var(--width) * 0.55)",
+        }}
+      >
+        <ChapterReference>
+          <PinnedReference>
+            <Link
+              href="https://www.slavevoyages.org/voyage/database"
+              target="_blank"
+            >
+              "Trans-atlantic Slave Database,” Slave Voyages <br />
+            </Link>
+            accessed 03 September 2023
+          </PinnedReference>
+        </ChapterReference>
+      </ChapterWrapper>
       {/* LANGHAM INDUSTRIES CHAPTER */}
-      <ChapterWrapper style={{ top: "calc(var(--height) * 0.51)" }}>
+      <ChapterTitle
+        style={{
+          top: "calc(var(--height) * 0.515)",
+          left: "calc(var(--width) * 0.01)",
+        }}
+      >
+        LANGHAM INDUSTRIES
+      </ChapterTitle>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.52)" }}>
         <ChapterCopy ref={langhamIndustriesTrigger}>
           <PinnedChapter ref={langhamIndustries1}>
-            <ChapterTitle>LANGHAM INDUSTRIES</ChapterTitle>
             <br />
             Founded by John Langham in 1980, Langham Industries is a
             Dorset-based engineering company working in defence and marine
@@ -495,7 +517,7 @@ export default function Chapters() {
           </PinnedReference>
         </ChapterReference>
       </ChapterWrapper>
-      <ChapterWrapper style={{ top: "calc(var(--height) * 0.56)" }}>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.565)" }}>
         <ChapterCopy ref={langhamIndustriesTrigger2}>
           <PinnedChapter ref={langhamIndustries3}>
             From 2003 until the Brexit Referendum in 2016, Langham Industries
@@ -611,87 +633,9 @@ export default function Chapters() {
           </PinnedChapter>
         </ChapterCopy>
       </ChapterWrapper>
-      <ChapterWrapper style={{ top: "calc(var(--height) * 0.7)" }}>
-        <ChapterCopy ref={holdRepeatsTrigger}>
-          <PinnedChapter
-            ref={holdRepeats1}
-            style={{ width: "90%", left: "calc(var(--width) * 0.01)" }}
-          >
-            <ChapterTitle>THE HOLD REPEATS</ChapterTitle>
-            <br />
-            In June <Year>1997</Year>, the prison ship HMP Weare, was moved to
-            Portland as a solution to the overcrowding of the largest prison in
-            Portland, HMP the Verne. Lasting until <Year>2005</Year>, it is the
-            UK’s most recent use of a prison ship.
-          </PinnedChapter>
-          <PinnedChapter
-            ref={holdRepeats2}
-            style={{ width: "90%", left: "calc(var(--width) * 0.6" }}
-          >
-            Similarly to Bibby Stockholm, the ship was built to house offshore
-            workers in gas and oil. In <Year>1982</Year> it was then acquired by
-            Bibby Line who renamed the vessel Bibby Resolution, which was then
-            bought by the New York City Department of Correction in{" "}
-            <Year>1988</Year> to function as a prison ship.
-          </PinnedChapter>
-          <PinnedChapter
-            ref={holdRepeats3}
-            style={{ width: "90%", left: "calc(var(--width) * 0.01)" }}
-          >
-            After a report was conducted in <Year>2004</Year> of HM Weare which
-            detailed the “unacceptably cramp and claustrophobic” conditions
-            onboard, where prisoners had no access to fresh air, the prison was
-            closed in <Year>2005</Year>, eventually leaving Portland in December{" "}
-            <Year>2009</Year>. It was also mentioned that operational costs were
-            too expensive, despite providing minimal standards for those
-            detained onboard.
-          </PinnedChapter>
-          <PinnedChapter
-            ref={holdRepeats4}
-            style={{ width: "90%", left: "calc(var(--width) * 0.5)" }}
-          >
-            The parallel histories between Bibby Resolution and Bibby Stockholm
-            highlight how HM Weare acts as a precursor to Bibby Stockholm, and
-            the pattern of incarceration that Portland is steeped in.
-            <br /> <br />
-            The resemblance of histories between HMP Weare and Bibby Stockholm
-            is further emphasised by the fact that Bibby Stockholm is docked at
-            the Royal Navy dockyard, in the exact position where HMP Weare was
-            moored.
-          </PinnedChapter>
-          <PinnedChapter
-            ref={holdRepeats5}
-            style={{ width: "90%", left: "calc(var(--width) * -0.1)" }}
-          >
-            The same corporate actors reappear in HMP Weare’s history - Langham
-            Industries and Bibby Line - who are crucially responsible for the
-            utilisation of Bibby Stockholm as a detention prison. The history of
-            Bibby Resolution evidences the historical relationship between Bibby
-            Line and Langham Industries in profiting from Portland’s
-            military-prison nexus. In supplying port infrastructure and refir
-            profit gained from supplying the port infrastructure and , points
-            towards the collusion between maritime companies with a larger
-            military-prison nexus, to not only enable maritime incarceration,
-            but gain a vast profit from the subjugation and indefinite
-            detainment of people.
-          </PinnedChapter>
-        </ChapterCopy>
-        <ChapterReference>
-          <PinnedReference ref={holdRepeatsReference1}>
-            <RefNumber>13</RefNumber>
-            <br />
-            “HM Prison Weare”
-            <br />
-            <Link
-              href="https://www.portlandhistory.co.uk/hm-prison-weare.html"
-              target="_blank"
-            >
-              The Encyclopedia of Portland History
-            </Link>
-            , accessed 03 September 2023
-          </PinnedReference>
-        </ChapterReference>
-      </ChapterWrapper>
+      <ChapterTitle style={{ top: "calc(var(--height) * 0.692)", left: "0" }}>
+        THE HOLD REPEATS
+      </ChapterTitle>
       <ChapterWrapper style={{ top: "calc(var(--height) * 0.902)" }}>
         <ChapterCopy>
           <Spotlight>
@@ -705,10 +649,12 @@ export default function Chapters() {
           </Spotlight>
         </ChapterCopy>
       </ChapterWrapper>
+      <ChapterTitle style={{ top: "calc(var(--height) * 0.918)", left: "70%" }}>
+        ARCHITECTURE
+      </ChapterTitle>
       <ChapterWrapper style={{ top: "calc(var(--height) * 0.92)" }}>
         <ChapterCopy ref={architectureTrigger}>
           <PinnedChapter ref={architecture1}>
-            <ChapterTitle>ARCHITECTURE</ChapterTitle>
             <br />
             The architectural overhaul of Bibby Stockholm optimised its use as a
             carceral zone to hold and detain. Single-use bedrooms were refitted
@@ -786,8 +732,9 @@ export default function Chapters() {
       </ChapterWrapper>
       <ChapterWrapper
         style={{
-          width: "80%",
-          top: "calc(var(--height) * 0.965 )",
+          width: "90%",
+          top: "calc(var(--height) * 0.9635)",
+          left: "-20%",
         }}
       >
         <ChapterCopy>
@@ -802,7 +749,7 @@ export default function Chapters() {
           </PinnedChapter>
         </ChapterCopy>
       </ChapterWrapper>
-      <ChapterWrapper style={{ top: "calc(var(--height) * 1.01)", left: "0" }}>
+      <ChapterWrapper style={{ top: "calc(var(--height) * 0.995", left: "5%" }}>
         <ChapterCopy>
           <Spotlight>
             “They're saying Leonard's death is just the beginning.”
