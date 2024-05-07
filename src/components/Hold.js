@@ -43,29 +43,6 @@ const HoldOne = styled.a.attrs((props) => ({
   }
 `;
 
-const HoldTwo = styled.a.attrs((props) => ({}))`
-  position: fixed;
-  right: 2vw;
-  font-size: 2em;
-  height: min-content;
-  color: #eef3e5;
-  font-family: "Lyno";
-
-  @media (max-width: 1000px) {
-    font-size: 3em;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 2em;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 2em;
-    width: min-content;
-    transform: translateY(-25%);
-  }
-`;
-
 const Highlight = styled.span`
   color: #eef3e5;
   &::before {
@@ -78,17 +55,6 @@ const Highlight = styled.span`
   }
 `;
 
-function Hold2Div(props) {
-  const hold2 = useRef();
-
-  if (hold2.current) {
-    hold2.current.style.top =
-      (window.innerHeight * props.trackerPos) / 100 -
-      window.innerHeight +
-      20 +
-      "px";
-  }
-}
 
 export default function Hold() {
   const hold1 = useRef();
@@ -142,7 +108,6 @@ export default function Hold() {
       <HoldOne ref={hold1}>
         <Highlight onClick={() => setShowAbout(true)}>HOLD</Highlight>
       </HoldOne>
-      <Hold2Div trackerPos={trackerPos} showAbout={showAbout} />
     </div>
   );
 }

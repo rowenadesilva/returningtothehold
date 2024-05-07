@@ -85,7 +85,7 @@ export default function About(props) {
 
   useEffect(() => {
     showAboutSection();
-  }, [props.about]);
+  }, [props.about, showAboutSection]);
 
   return (
     <div>
