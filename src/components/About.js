@@ -85,7 +85,7 @@ export default function About(props) {
 
   useEffect(() => {
     showAboutSection();
-  }, [props.about, showAboutSection]);
+  });
 
   return (
     <div>
@@ -148,7 +148,6 @@ export default function About(props) {
           <br />
           (Last updated on Monday, 05 May 2024)
           <br /> <br />
-
         </Copy>
       </Wrapper>
       <Left ref={leftRef} onClick={() => props.notifyParent()} />
